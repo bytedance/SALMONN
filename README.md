@@ -9,6 +9,7 @@ SALMONN is the first large language model with universal auditory ability, creat
 <a href='https://cf8f64dc98536f6102.gradio.live/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 </div>
+
 ## Demos
 
 Compared with traditional speech and audio processing tasks such as speech recognition and audio caption, SALMONN leverages the general knowledge and cognitive abilities of the LLM to achieve a cognitively oriented audio perception, which dramatically improves the versatility of the model and the richness of the task. In addition, SALMONN is able to follow textual commands, and even spoken commands, with a relatively high degree of accuracy. Since SALMONN only uses training data based on textual commands, listening to spoken commands is also a cross-modal emergent ability.

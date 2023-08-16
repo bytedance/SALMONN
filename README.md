@@ -3,7 +3,7 @@
 
 Welcome to the repo of **SALMONN**!
 
-SALMONN is the first large language model with universal auditory ability, created in collaboration with the Department of the Electronic Engineering of Tsinghua University and ByteDance. Compared with other auditory models that only support speech input or non-speech audio input, SALMONN has the ability to perceive and understand all kinds of audio inputs such as speech, audio events, music, etc., which gives the LLM "ears", so as to emerge advanced capabilities such as multi-language and cross-modal reasoning.
+SALMONN is the first large language model with universal auditory ability, created in collaboration with the Department of the Electronic Engineering of Tsinghua University and ByteDance. Compared with other auditory models that only support speech input or non-speech audio input, SALMONN has the ability to perceive and understand **all kinds of audio inputs** such as speech, audio events, music, etc., which gives the LLM "ears", so as to emerge advanced capabilities such as multi-language and cross-modal reasoning.
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://cf8f64dc98536f6102.gradio.live/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>

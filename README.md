@@ -11,6 +11,6 @@ SALMONN is the first large language model with universal auditory ability, creat
 </div>
 <br />
 
-**Team**: Wenyi Yu, Changli Tang, Guangzhi Sun, Chao Zhang
+**Team Tsinghua**: Wenyi Yu, Changli Tang, Guangzhi Sun, Chao Zhang
 
-  Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
+**Team Bytedance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma

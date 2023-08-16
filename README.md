@@ -18,6 +18,6 @@ SALMONN is the first large language model with universal auditory ability, creat
 ## Online Demo Demonstration
 
 ​<audio id="audio" controls="" preload="none">
-<source id="mp3" src="resource/asr.wav">
+<source id="wav" src="resource/asr.wav">
 </audio>
 

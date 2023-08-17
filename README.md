@@ -8,7 +8,7 @@ SALMONN is a large language model (LLM) enabling speech, audio event, and music 
 We will open source the code and the model checkpoint soon. Stay tuned!
 
 <div style='display:flex; gap: 0.25rem; '>
-<a href='https://cf8f64dc98536f6102.gradio.live/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
+<a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 </div>
 

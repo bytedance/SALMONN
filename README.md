@@ -3,10 +3,12 @@
 
 Welcome to the repo of **SALMONN**!
 
-SALMONN is the first large language model with universal auditory ability, created in collaboration with the Department of the Electronic Engineering of Tsinghua University and ByteDance. Compared with other auditory models that only support speech input or non-speech audio input, SALMONN has the ability to perceive and understand **all kinds of audio inputs** such as speech, audio events, music, etc., which gives the LLM "ears", so as to emerge advanced capabilities such as multi-language and cross-modal reasoning.
+SALMONN is a large language model (LLM) enabling speech, audio event, and music inputs, which is created by the Department of the Electronic Engineering of Tsinghua University and ByteDance. Instead of speech-only input or audio-event-only input, SALMONN can perceive and understand all kinds of audio inputs and therefore obtains emerging capabilities such as multilingual speech recognition & translation and audio-speech reasoning. This can be regarded as giving the LLM "ears" to have cognitive hearing abilities, which makes SALMONN a step towards hearing-enabled artificial general intelligence.
+
+We will open source the code and the model checkpoint soon. Stay tuned!
 
 <div style='display:flex; gap: 0.25rem; '>
-<a href='https://cf8f64dc98536f6102.gradio.live/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
+<a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 </div>
 ## Structure
@@ -32,8 +34,6 @@ Here are some demos of SALMONN.
 | [spoken_query.wav](./resource/audio_demo/spoken_query.wav)   | ![spoken_query](./resource/response_demo/spoken_query.png)   |
 | [audio_story_telling.wav](./resource/audio_demo/audio_story_telling.wav) | ![audio_story_telling](./resource/response_demo/audio_story_telling.png) |
 | [spoken_audio_query.wav](./resource/audio_demo/spoken_audio_query.wav) | ![spoken_audio_query](./resource/response_demo/spoken_audio_query.png) |
-
-
 
 ## Team
 

@@ -11,6 +11,7 @@ We will open source the code and the model checkpoint soon. Stay tuned!
 <a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 </div>
+
 ## Structure
 
 SALMONN adopts a speech & audio encoder to encode generic audio representation, then uses an audio-text aligner to map the audio feature into textual space. Finally, the large language model answers based on the textual prompt and the auditory tokens.

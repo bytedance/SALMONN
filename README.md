@@ -9,6 +9,11 @@ SALMONN is the first large language model with universal auditory ability, creat
 <a href='https://cf8f64dc98536f6102.gradio.live/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 </div>
+## Structure
+
+SALMONN adopts a speech & audio encoder to encode generic audio representation, then uses an audio-text aligner to map the audio feature into textual space. Finally, the large language model answers based on the textual prompt and the auditory tokens.
+
+<div align=center><img src="resource/structure.png" height="75%" width="75%"/></div>
 
 ## Demos
 

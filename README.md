@@ -54,3 +54,14 @@ Here are some examples of SALMONN.
 **Team Tsinghua**: Wenyi Yu, Changli Tang, Guangzhi Sun, Chao Zhang
 
 **Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
+
+## ✨ Citation
+If you find SALMONN great and useful, please cite our paper:
+```
+@article{tang2023salmonn,
+      title={{SALMONN}: Towards Generic Hearing Abilities for Large Language Models}, 
+      author={Changli, Tang and Wenyi, Yu and Guangzhi, Sun and Xianzhao, Chen and Tian, Tan and Wei, Li and Lu, Lu and Zejun, Ma and Chao, Zhang},
+      journal={arXiv:2310.13289},
+      year={2023}
+}
+```

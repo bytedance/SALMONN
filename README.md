@@ -8,7 +8,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio event, and musi
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
-<a href=''><img src='https://img.shields.io/badge/paper-PDF-green'></a>
+<a href='https://arxiv.org/pdf/2310.13289.pdf'><img src='https://img.shields.io/badge/paper-PDF-green'></a>
 <a href='https://huggingface.co/MSIIP/SALMONN'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
 </div>
 

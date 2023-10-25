@@ -1,6 +1,6 @@
 # SALMONN: Speech Audio Language Music Open Neural Network
 
-<div align=center><img src="resource/salmon.png" height="256px" width="256px"/></div>
+<div align=center><img src="[resource/salmon.png](https://media.discordapp.net/attachments/960793400427294803/1166725405579956324/salmon2.jpg?ex=654b88b5&is=653913b5&hm=62fa09daafc251c3fd3411d37d08fd405873b32c97884cc22fbf94c9a7748d4f&=&width=898&height=422)" height="256px" width="256px"/></div>
 
 🚀🚀 Welcome to the repo of **SALMONN**!
 

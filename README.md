@@ -4,7 +4,7 @@
 
 🚀🚀 Welcome to the repo of **SALMONN**!
 
-SALMONN is a large language model (LLM) enabling **speech, audio event, and music inputs**, which is developed by the Department of Electronic Engineering of Tsinghua University and ByteDance. Instead of speech-only input or audio-event-only input, SALMONN can perceive and understand all kinds of audio inputs and therefore obtains emerging capabilities such as multilingual speech recognition & translation and audio-speech co-reasoning. This can be regarded as giving the LLM "ears" and cognitive hearing abilities, which makes SALMONN a step towards hearing-enabled artificial general intelligence.
+SALMONN is a large language model (LLM) enabling **speech, audio event, and music inputs**, which is developed by the Department of Electronic Engineering at Tsinghua University and ByteDance. Instead of speech-only input or audio-event-only input, SALMONN can perceive and understand all kinds of audio inputs and therefore obtains emerging capabilities such as multilingual speech recognition & translation and audio-speech co-reasoning. This can be regarded as giving the LLM "ears" and cognitive hearing abilities, which makes SALMONN a step towards hearing-enabled artificial general intelligence.
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
@@ -14,7 +14,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio event, and musi
 
 ## 🔥 News
 
-- [10-08] ✨ We release **the model checkpoint** and **the inference code** of SALMONN !
+- [10-08] ✨ We release **the model checkpoint** and **the inference code** for SALMONN !
 
 ## 🌟 Structure
 

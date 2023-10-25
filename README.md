@@ -56,7 +56,7 @@ Here are some examples of SALMONN.
 **Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
 
 ## ✨ Citation
-If you find SALMONN great and useful, please cite our paper:
+If you find SALMONN useful, please cite our paper:
 ```
 @article{tang2023salmonn,
       title={{SALMONN}: Towards Generic Hearing Abilities for Large Language Models}, 

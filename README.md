@@ -1,12 +1,12 @@
+# SALMONN: Speech Audio Language Music Open Neural Network
+
+<div align=center><img src="resource/salmon.png" height="256px" width="256px"/></div>
+
 <h1 align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+There!+👋;Welcome+to+SALMONN;&center=true&size=30">
   </a>
 </h1>
-
-# SALMONN: Speech Audio Language Music Open Neural Network
-
-<div align=center><img src="resource/salmon.png" height="256px" width="256px"/></div>
 
 🚀🚀 Welcome to the repo of **SALMONN**!
 

@@ -65,3 +65,8 @@ If you find SALMONN useful, please cite our paper:
       year={2023}
 }
 ```
+## All Thanks to Our Contributors 
+
+<a href="https://github.com/bytedance/SALMONN/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=bytedance/SALMONN" />
+</a>

@@ -14,7 +14,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio event, and musi
 
 ## 🔥 News
 
-- [10-08] ✨ We release **the model checkpoint** and **the inference code** for SALMONN !
+- [10-08] ✨ We release **the model checkpoint** and **the inference code** for SALMONN!
 
 ## 🌟 Structure
 

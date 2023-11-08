@@ -15,7 +15,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio events, and mus
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/gradio-Demo-blue'></a>
 <a href='https://arxiv.org/pdf/2310.13289.pdf'><img src='https://img.shields.io/badge/paper-PDF-green'></a>
-<a href='https://huggingface.co/MSIIP/SALMONN'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
+<a href='https://huggingface.co/tsinghua-ee/SALMONN'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
 </div>
 
 ## 🔥 News
@@ -47,7 +47,7 @@ Here are some examples of SALMONN.
 2. Download [whisper large v2](https://huggingface.co/openai/whisper-large-v2/tree/main) to ```whisper_path```.
 3. Download [Fine-tuned BEATs_iter3+ (AS2M) (cpt2)](https://valle.blob.core.windows.net/share/BEATs/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt?sv=2020-08-04&st=2023-03-01T07%3A51%3A05Z&se=2033-03-02T07%3A51%3A00Z&sr=c&sp=rl&sig=QJXmSJG9DbMKf48UDIU1MfzIro8HQOf3sqlNXiflY1I%3D) to `beats_path`.
 4. Download [vicuna 13B v1.1](https://huggingface.co/lmsys/vicuna-13b-v1.1/tree/main) to ```vicuna_path```.
-5. Download [salmonn v1](https://huggingface.co/MSIIP/SALMONN/blob/main/salmonn_v1.pth) to ```ckpt_path```.
+5. Download [salmonn v1](https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth) to ```ckpt_path```.
 6. Running with ```python3 cli_inference.py --ckpt_path xxx --whisper_path xxx --beats_path xxx --vicuna_path xxx``` in A100-SXM-80GB. Now you can input ```wav_path``` and ```prompt```. Enjoy yourself !
 
 ## 🌈 How to launch a web demo

@@ -7,3 +7,4 @@ transformers==4.28.0
 sentencepiece==0.1.97
 accelerate==0.20.3
 bitsandbytes==0.35.0
+gradio==3.23.0

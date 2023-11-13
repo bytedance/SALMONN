@@ -21,8 +21,8 @@ SALMONN is a large language model (LLM) enabling **speech, audio events, and mus
 
 ## 🔥 News
 
-- [10-08] ✨ We released **the model checkpoint** and **the inference code** for SALMONN-13B!
-- [11-13] 🎁 We released a **7B version of SALMONN** at [tsinghua-ee/SALMONN-7B](https://huggingface.co/tsinghua-ee/SALMONN-7B), and held the 7B demo [here](https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio)!
+- [10-08] ✨ We have released [**the model checkpoint**](https://huggingface.co/tsinghua-ee/SALMONN) and **the inference code** for SALMONN-13B!
+- [11-13] 🎁 We have released a **7B version of SALMONN** at [tsinghua-ee/SALMONN-7B](https://huggingface.co/tsinghua-ee/SALMONN-7B) and built the 7B demo [here](https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio)!
 
 ## 🌟 Structure
 

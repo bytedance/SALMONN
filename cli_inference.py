@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+import torch
 import argparse
 from model import SALMONN
        
@@ -44,7 +44,9 @@ if __name__ == "__main__":
         prompt = input("Your Prompt:\n")
         try:
             print("Output:")
-            print(model.generate(wav_path, prompt=prompt)[0])
+            # for environment with cuda>=117
+            with torch.cuda.amp.autocast(dtype=torch.float16):
+                print(model.generate(wav_path, prompt=prompt)[0])
         except Exception as e:
             print(e)
             if args.debug:

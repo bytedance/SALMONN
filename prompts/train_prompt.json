@@ -1,0 +1,250 @@
+{
+    "asr": [
+        "<Speech><SpeechHere></Speech> Can you transcribe the speech into a written format?",
+        "<Speech><SpeechHere></Speech> Listen to the speech and write down its content.",
+        "<Speech><SpeechHere></Speech> What is the content of the speech you heard?",
+        "<Speech><SpeechHere></Speech> Please write down the transcription of the speech.",
+        "<Speech><SpeechHere></Speech> Please transcribe the speech into a written format.",
+        "<Speech><SpeechHere></Speech> Write down the content of the speech you heard.",
+        "<Speech><SpeechHere></Speech> Can you write down the transcription of the speech?",
+        "<Speech><SpeechHere></Speech> Put the speech into a written format.",
+        "<Speech><SpeechHere></Speech> Please help me to transcribe the speech into a written format.",
+        "<Speech><SpeechHere></Speech> Recognize the content of the speech you heard.",
+        "<Speech><SpeechHere></Speech> Can you recognize what you heard in the speech?",
+        "<Speech><SpeechHere></Speech> Recognize the speech and write it down in a written format.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and recognize its content.",
+        "<Speech><SpeechHere></Speech> Give me the transcription of the speech you heard.",
+        "<Speech><SpeechHere></Speech> Recognize the speech and give me the transcription."
+    ],
+    "asr_zh": [
+        "<Speech><SpeechHere></Speech> 前面的语音说了什么？",
+        "<Speech><SpeechHere></Speech> 请将语音中的内容写下来。",
+        "<Speech><SpeechHere></Speech> 请识别这段中文语音。",
+        "<Speech><SpeechHere></Speech> 听前面的音频，写出对方说的内容。",
+        "<Speech><SpeechHere></Speech> 写下你听到的内容。",
+        "<Speech><SpeechHere></Speech> 请记下语音中人说的话。",
+        "<Speech><SpeechHere></Speech> 仔细听这段语音，记下语音中的话",
+        "<Speech><SpeechHere></Speech> 将你听到的话写下来",
+        "<Speech><SpeechHere></Speech> 这个人说了什么？请记下来。",
+        "<Speech><SpeechHere></Speech> 请将语音转换为文字",
+        "<Speech><SpeechHere></Speech> 请识别这个人说的内容"
+    ],
+    "asr_de": [
+        "<Speech><SpeechHere></Speech> Können Sie die Rede in ein schriftliches Format übertragen?",
+        "<Speech><SpeechHere></Speech> Hören Sie sich die Rede an und schreiben Sie ihren Inhalt auf.",
+        "<Speech><SpeechHere></Speech> Bitte notieren Sie die Transkription der Rede.",
+        "<Speech><SpeechHere></Speech> Geben Sie mir die Transkription der Rede, die Sie gehört haben.",
+        "<Speech><SpeechHere></Speech> Was hat dieser Mann gesagt? Bitte schreiben Sie es auf.",
+        "<Speech><SpeechHere></Speech> Können Sie die Transkription der Rede aufschreiben?",
+        "<Speech><SpeechHere></Speech> Hören Sie der Stimme aufmerksam zu und notieren Sie die Wörter in der Stimme",
+        "<Speech><SpeechHere></Speech> Schreiben Sie auf, was Sie hören.",
+        "<Speech><SpeechHere></Speech> Bitte Sprache in Text umwandeln.",
+        "<Speech><SpeechHere></Speech> Erkennen Sie den Inhalt der Rede, die Sie gehört haben."
+    ],
+    "translation_ec": [
+        "<Speech><SpeechHere></Speech> Can you translate the speech into Chinese?",
+        "<Speech><SpeechHere></Speech> Please translate the speech you heard into Chinese.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and translate it into Chinese.",
+        "<Speech><SpeechHere></Speech> Give me the Chinese translation of this speech.",
+        "<Speech><SpeechHere></Speech> Could you please provide a Chinese translation for the speech?",
+        "<Speech><SpeechHere></Speech> Would you be willing to translate the speech into Chinese for me?",
+        "<Speech><SpeechHere></Speech> Would you be able to render the speech in Chinese?",
+        "<Speech><SpeechHere></Speech> Could you assist me in translating the speech into Chinese?",
+        "<Speech><SpeechHere></Speech> Can you help me convert the speech into Chinese text?",
+        "<Speech><SpeechHere></Speech> Please convert the speech into Chinese text.",
+        "<Speech><SpeechHere></Speech> 请将这段语音的内容翻译成中文。",
+        "<Speech><SpeechHere></Speech> 你能把这段语音用中文表达出来吗？",
+        "<Speech><SpeechHere></Speech> 请将你听到的语音用中文写出来。"
+    ],
+    "translation_ce": [
+        "<Speech><SpeechHere></Speech> Can you translate the speech into English?",
+        "<Speech><SpeechHere></Speech> Please translate the speech you heard into English.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and translate it into English.",
+        "<Speech><SpeechHere></Speech> Give me the English translation of this speech.",
+        "<Speech><SpeechHere></Speech> Could you please provide an English translation for the speech?",
+        "<Speech><SpeechHere></Speech> Would you be willing to translate the speech into English for me?",
+        "<Speech><SpeechHere></Speech> Would you be able to render the speech in English",
+        "<Speech><SpeechHere></Speech> Could you assist me in translating the speech into English?",
+        "<Speech><SpeechHere></Speech> Can you help me convert the speech into English text?",
+        "<Speech><SpeechHere></Speech> Please convert the speech into English text."
+    ],
+    "count_audio": [
+        "<Speech><SpeechHere></Speech> Can you tell me how many pieces of speeches are there in the audio?",
+        "<Speech><SpeechHere></Speech> Can you tell me how many pieces of speeches is this audio consists of?",
+        "<Speech><SpeechHere></Speech> Please count the number of pieces of speeches in the audio you heard.",
+        "<Speech><SpeechHere></Speech> Please tell me the number of speeches in this audio.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and tell me hwo many fragments are there in it.",
+        "<Speech><SpeechHere></Speech> The speech you heard might consist of several speeches and please count the number of speeches.",
+        "<Speech><SpeechHere></Speech> How many pieces of speeches did you hear in this audio?"
+    ],
+    "count_word": [
+        "<Speech><SpeechHere></Speech> How many words did you hear in this audio?",
+        "<Speech><SpeechHere></Speech> Can you tell me how many words are there in the audio?",
+        "<Speech><SpeechHere></Speech> How many words does this speech you hear consist of?",
+        "<Speech><SpeechHere></Speech> Please count the number of words in this speech.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and count how many words are there.",
+        "<Speech><SpeechHere></Speech> Please help me record the number of words the speech you heard consists of.",
+        "<Speech><SpeechHere></Speech> Give me the number of words in this speech."
+    ],
+    "audiocaption": [
+        "<Speech><SpeechHere></Speech> Listen to this audio clip and provide its caption.",
+        "<Speech><SpeechHere></Speech> Describe the following audio in a caption.",
+        "<Speech><SpeechHere></Speech> Based on the sound you hear, create a caption for this audio.",
+        "<Speech><SpeechHere></Speech> Can you describe the scene or event depicted in this audio?",
+        "<Speech><SpeechHere></Speech> Could you summarise what's happening in this audio?",
+        "<Speech><SpeechHere></Speech> What does this audio describe?",
+        "<Speech><SpeechHere></Speech> Please describe the audio."
+    ],
+    "audiocaption_zh": [
+        "<Speech><SpeechHere></Speech> 仔细听这段音频，给我音频的描述。",
+        "<Speech><SpeechHere></Speech> 请描述音频中发生的事件。",
+        "<Speech><SpeechHere></Speech> 基于你听到的东西，描述这段音频的内容。",
+        "<Speech><SpeechHere></Speech> 你能描述一下这段音频中描绘的场景或事件吗？",
+        "<Speech><SpeechHere></Speech> 你能够总结音频中发生的事件吗",
+        "<Speech><SpeechHere></Speech> 这段音频中发生了什么？请告诉我。",
+        "<Speech><SpeechHere></Speech> 说说这段音频的内容。"
+    ],
+    "audiocaption_de": [
+        "<Speech><SpeechHere></Speech> Hören Sie sich diese Aufnahme genau an und geben Sie mir die Audiobeschreibung.",
+        "<Speech><SpeechHere></Speech> Beschreiben Sie die Ereignisse, die im Audio vorkommen.",
+        "<Speech><SpeechHere></Speech> Beschreiben Sie den Inhalt dieses Audios auf der Grundlage dessen, was Sie hören.",
+        "<Speech><SpeechHere></Speech> Können Sie die Szene oder das Ereignis beschreiben, das in diesem Audio zu hören ist?",
+        "<Speech><SpeechHere></Speech> Können Sie die Ereignisse in der Audioaufnahme zusammenfassen?",
+        "<Speech><SpeechHere></Speech> Was passiert in diesem Audio? Bitte sagen Sie es mir.",
+        "<Speech><SpeechHere></Speech> Sagen Sie uns, worum es in dem Audio geht."
+    ],
+    "audiocaption_v2": [
+        "<Speech><SpeechHere></Speech> Please write down what your hear in the audio."
+    ],
+    "QA": [
+        "<Speech><SpeechHere></Speech> {}"
+    ],
+    "inference_QA": [
+        "<Speech><SpeechHere></Speech> {}"
+    ],
+    "gender_QA": [
+        "<Speech><SpeechHere></Speech> {}"
+    ],
+    "gender_recognition": [
+        "<Speech><SpeechHere></Speech> What is the gender of the speaker?",
+        "<Speech><SpeechHere></Speech> Use one word to describe the speaker's gender.",
+        "<Speech><SpeechHere></Speech> Describe the speaker's gender.",
+        "<Speech><SpeechHere></Speech> Can you accurately identify the gender of the speaker?",
+        "<Speech><SpeechHere></Speech> Can you distinguish the gender of the speaker?",
+        "<Speech><SpeechHere></Speech> Describe the gender of the person speaking.",
+        "<Speech><SpeechHere></Speech> What is the speaker's gender based on the audio?",
+        "<Speech><SpeechHere></Speech> Tell me about the gender of the person you hear.",
+        "<Speech><SpeechHere></Speech> Is the speaker male or female?"
+    ],
+    "info_retrieval":[
+        "<Speech><SpeechHere></Speech> The speech says '{}'. Please check the time when each word appears and ends in that speech.",
+        "<Speech><SpeechHere></Speech> The speech says '{}'. Write the start and end time of each word in the speech to form a sequence."
+    ],
+    "info_retrieval_wotext": [
+        "<Speech><SpeechHere></Speech> Please check the time when each word appears and ends in that speech.",
+        "<Speech><SpeechHere></Speech> Write the start and end time of each word in the speech to form a sequence."  
+    ],
+    "phone_retrieval": [
+        "<Speech><SpeechHere></Speech> Please check the time when each phoneme appears and ends in that speech.",
+        "<Speech><SpeechHere></Speech> Write the start and end time of each phoneme in the speech to form a sequence."  
+    ],
+    "phone_recognition": [
+        "<Speech><SpeechHere></Speech> Please transcribe the audio clip into its corresponding phonetic representation.",
+        "<Speech><SpeechHere></Speech> Write the sequence of phonemes corresponding to this speech.",
+        "<Speech><SpeechHere></Speech> Provide the phonetic transcription for the speech.",
+        "<Speech><SpeechHere></Speech> Transcribe the phonemes for the speech please.",
+        "<Speech><SpeechHere></Speech> Can you recognize the phonetic representation in the speech?",
+        "<Speech><SpeechHere></Speech> Listen to the speech and recognize its phonetic representation",
+        "<Speech><SpeechHere></Speech> What is the phoneme transcription of the speech?"
+    ],
+    "audio_speech_description":[
+        "<Speech><SpeechHere></Speech> Describe the speech and the background audio",
+        "<Speech><SpeechHere></Speech> Record the speech and the background audio"
+    ],
+    "speech_separation": [
+        "<Speech><SpeechHere></Speech> There are two people talking in the audio, please write what they say in order.",
+        "<Speech><SpeechHere></Speech> Please write down what you hear each person says.",
+        "<Speech><SpeechHere></Speech> Can you record what each person says?",
+        "<Speech><SpeechHere></Speech> Transcribe the words spoken by each person in the audio."
+    ],
+    "speech_query": [
+        "<Speech><SpeechHere></Speech> Please answer the question in detail.",
+        "<Speech><SpeechHere></Speech> There is a question in the speech. Please answer it in detail."
+    ],
+    "emotion_recognition": [
+        "<Speech><SpeechHere></Speech> Describe the emotion of the speaker in one word.",
+        "<Speech><SpeechHere></Speech> Use one word to describe the speaker's emotion."
+    ],
+    "music_description": [
+        "<Speech><SpeechHere></Speech> Listen to this music clip and describe the music.",
+        "<Speech><SpeechHere></Speech> Please describe the music.",
+        "<Speech><SpeechHere></Speech> Provide a description of the music.",
+        "<Speech><SpeechHere></Speech> Analyze the music in this clip and offer a description.",
+        "<Speech><SpeechHere></Speech> Give me a description of the music in this clip."
+    ],
+    "lyrics_recognition": [
+        "<Speech><SpeechHere></Speech> Listen to the song and write down its content.",
+        "<Speech><SpeechHere></Speech> Please recognize what the singer sings.",
+        "<Speech><SpeechHere></Speech> Please write down the transcription of the speech.",
+        "<Speech><SpeechHere></Speech> Give me the transcription of the song you heard.",
+        "<Speech><SpeechHere></Speech> Recognize the song and give me the transcription.",
+        "<Speech><SpeechHere></Speech> Listen to the song and recognize its content.",
+        "<Speech><SpeechHere></Speech> Please help me to transcribe the speech into a written format.",
+        "<Speech><SpeechHere></Speech> Can you recognize what you heard in the song?"
+    ],
+    "speaker_verification": [
+        "<Speech><SpeechHere></Speech> Are the two people speaking successively the same person? Answer yes or no.",
+        "<Speech><SpeechHere></Speech> Do you only hear the same person talking? Answer yes or no.",
+        "<Speech><SpeechHere></Speech> Is only one person speaking in the audio? Answer yes or no."
+    ],
+    "fluent_speech_audio": [
+        "<Speech><SpeechHere></Speech> Describe the background audio and the speech in a fluent sentence."
+    ],
+    "audio_story_telling": [
+        "<Speech><SpeechHere></Speech> Based on the audio, write a story in detail. Your story should be highly related to the audio.",
+        "<Speech><SpeechHere></Speech> Please write a story in detail based on the audio. Your story should contain all the elements in the audio.",
+        "<Speech><SpeechHere></Speech> Please generate a long story that is highly related to the audio."
+    ],
+    "speech_audio_query": [
+        "<Speech><SpeechHere></Speech> Please answer the speaker's question in detail based on the background sound."
+    ],
+    "slot_filling": [
+        "<Speech><SpeechHere></Speech> According to the speech, what is the {}?"
+    ],
+    "translation_en2ja": [
+        "<Speech><SpeechHere></Speech> Listen to the speech and translate it into Japanese."
+    ],
+    "translation_en2de": [
+        "<Speech><SpeechHere></Speech> Listen to the speech and translate it into German."
+    ],
+    "speech_audio_coreasoning": [
+        "<Speech><SpeechHere></Speech> Use your strong reasoning skills to answer the speaker's question in detail based on the background sound."
+    ],
+    "keywords": [
+        "<Speech><SpeechHere></Speech> Give me only three keywords of the text."
+    ],
+    "speaker_diarization_asr": [
+        "<Speech><SpeechHere></Speech> Identify each speaker in turn and what is said.",
+        "<Speech><SpeechHere></Speech> Write down the content of each speaker and the corresponding speech in turn.",
+        "<Speech><SpeechHere></Speech> Please recognize each speaker and transcribe their speech content."
+    ],
+    "time_QA": [
+        "<Speech><SpeechHere></Speech> When does the word '{}' begin and end?"
+    ],
+    "audio_time": [
+        "<Speech><SpeechHere></Speech> Please list all audio events and their start and end times.",
+        "<Speech><SpeechHere></Speech> Could you please write down all the events in the audio and give me their start and end times?",
+        "<Speech><SpeechHere></Speech> Could you enumerate all instances of audio events, including their initiation and termination times?",
+        "<Speech><SpeechHere></Speech> Please provide me all audio incidents, noting their start and end times."
+    ],
+    "summary": [
+        "<Speech><SpeechHere></Speech> Give me the summary of the speech content.",
+        "<Speech><SpeechHere></Speech> Listen to the speech and summarise its content"
+    ],
+    "speaker_diarization": [
+        "<Speech><SpeechHere></Speech> Write down in order when each speaker starts and stops talking. You need to use incremental numbers to differentiate between speakers."
+    ],
+    "speech_instruction": [
+        "<Speech><SpeechHere></Speech>"
+    ]
+}

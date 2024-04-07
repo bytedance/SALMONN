@@ -1,0 +1,4 @@
+*.pyc
+/output
+arnold.sh
+/configs_local

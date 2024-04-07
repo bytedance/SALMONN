@@ -122,7 +122,7 @@ class IterLoader:
         return len(self._dataloader)
 
 
-def prepare_one_sample(wav_path, wav_processor):
+def prepare_one_sample(wav_path, wav_processor, cuda_enabled=True):
     audio, sr = sf.read(wav_path)
     if len(audio.shape) == 2: # stereo to mono
         audio = audio[:, 0]
@@ -133,8 +133,12 @@ def prepare_one_sample(wav_path, wav_processor):
 
     spectrogram = wav_processor(audio, sampling_rate=sr, return_tensors="pt")["input_features"]
 
-    return {
+    samples = {
         "spectrogram": spectrogram,
         "raw_wav": torch.from_numpy(audio).unsqueeze(0),
-        "padding_mask": torch.zeros(len(audio), dtype=torch.bool),
+        "padding_mask": torch.zeros(len(audio), dtype=torch.bool).unsqueeze(0),
     }
+    if cuda_enabled:
+        samples = move_to_cuda(samples)
+
+    return samples

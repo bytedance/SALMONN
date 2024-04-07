@@ -22,41 +22,41 @@ from models.salmonn import SALMONN
 from utils import prepare_one_sample
 
 
-if __name__ == "__main__":
+parser = argparse.ArgumentParser()
+parser.add_argument("--cfg-path", type=str, required=True, help='path to configuration file')
+parser.add_argument("--device", type=str, default="cuda:0")
+parser.add_argument(
+    "--options",
+    nargs="+",
+    help="override some settings in the used config, the key-value pair "
+    "in xxx=yyy format will be merged into config file (deprecate), "
+    "change to --cfg-options instead.",
+)
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--cfg-path", type=str, required=True, help='path to configuration file')
-    parser.add_argument("--device", type=str, default="cuda:0")
-    parser.add_argument(
-        "--options",
-        nargs="+",
-        help="override some settings in the used config, the key-value pair "
-        "in xxx=yyy format will be merged into config file (deprecate), "
-        "change to --cfg-options instead.",
-    )
+args = parser.parse_args()
+cfg = Config(args)
 
-    args = parser.parse_args()
-    cfg = Config(args)
+model = SALMONN.from_config(cfg.config.model)
+model.to(args.device)
+model.eval()
 
-    model = SALMONN.from_config(cfg.config.model)
-    model.to(args.device)
-    model.eval()
+wav_processor = WhisperFeatureExtractor.from_pretrained(cfg.config.model.whisper_path)
 
-    wav_processor = WhisperFeatureExtractor.from_pretrained(cfg.config.model.whisper_path)
-
-    while True:
+while True:
+    try:
         print("=====================================")
         wav_path = input("Your Wav Path:\n")
         prompt = input("Your Prompt:\n")
 
         samples = prepare_one_sample(wav_path, wav_processor)
-
-        try:
-            print("Output:")
-            # for environment with cuda>=117
-            with torch.cuda.amp.autocast(dtype=torch.float16):
-                print(model.generate(samples, cfg.config.generate, prompt=[prompt])[0])
-        except Exception as e:
-            print(e)
-            if args.debug:
-                import pdb; pdb.set_trace()
+        prompt = [
+            cfg.config.model.prompt_template.format("<Speech><SpeechHere></Speech> " + prompt.strip())
+        ]
+        print("Output:")
+        # for environment with cuda>=117
+        # with torch.cuda.amp.autocast(dtype=torch.float16):
+        #     print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
+        print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
+    except Exception as e:
+        print(e)
+        import pdb; pdb.set_trace()

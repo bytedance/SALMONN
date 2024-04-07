@@ -42,4 +42,4 @@ generate:
   temperature: 1.0
   top_p: 0.9
   repetition_penalty: 1.0
-  length_penalty: 10.0
+  length_penalty: 1.0

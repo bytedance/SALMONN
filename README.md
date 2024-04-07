@@ -43,7 +43,7 @@ Here are some examples of SALMONN.
 | [music.wav](./resource/audio_demo/music.wav)           | ![mc](resource/response_demo/mc.png)         |
 
 
-## 🌈 How to inference in CLI
+## 🌈 How to train a model
 
 For SALMONN-13B v1, you need to use the following dependencies:
 1. Our environment: The python version is 3.9.17, and other required packages can be installed with the following command: ```pip install -r requirements.txt```.
@@ -51,12 +51,17 @@ For SALMONN-13B v1, you need to use the following dependencies:
 3. Download [Fine-tuned BEATs_iter3+ (AS2M) (cpt2)](https://valle.blob.core.windows.net/share/BEATs/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt?sv=2020-08-04&st=2023-03-01T07%3A51%3A05Z&se=2033-03-02T07%3A51%3A00Z&sr=c&sp=rl&sig=QJXmSJG9DbMKf48UDIU1MfzIro8HQOf3sqlNXiflY1I%3D) to `beats_path`.
 4. Download [vicuna 13B v1.1](https://huggingface.co/lmsys/vicuna-13b-v1.1/tree/main) to ```vicuna_path```.
 5. Download [salmonn v1](https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth) to ```ckpt_path```.
-6. Running with ```python3 cli_inference.py --ckpt_path xxx --whisper_path xxx --beats_path xxx --vicuna_path xxx``` in A100-SXM-80GB. Now you can input ```wav_path``` and ```prompt```. Enjoy yourself !
+6. Running with ```python3 train.py --cfg-path configs/config.yaml``` in A100-SXM-80GB.
+
+## 🌈 How to inference in CLI
+
+1. Same as **How to train a model: 1-5**.
+2. Running with ```python3 cli_inference.py --cfg-path configs/decode_config.yaml``` in A100-SXM-80GB. Now you can input ```wav_path``` and ```prompt```. Enjoy yourself !
 
 ## 🌈 How to launch a web demo
 
-1. Same as **How to inference in CLI: 1-5**.
-2. Running with ```python3 web_demo.py --ckpt_path xxx --whisper_path xxx --beats_path xxx --vicuna_path xxx``` in A100-SXM-80GB.
+1. Same as **How to train a model: 1-5**.
+2. Running with ```python3 web_demo.py --cfg-path configs/decode_config.yaml``` in A100-SXM-80GB.
 
 ## 👀 Team
 

@@ -54,9 +54,9 @@ while True:
         ]
         print("Output:")
         # for environment with cuda>=117
-        # with torch.cuda.amp.autocast(dtype=torch.float16):
-        #     print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
-        print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
+        with torch.cuda.amp.autocast(dtype=torch.float16):
+            print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
+        # print(model.generate(samples, cfg.config.generate, prompts=prompt)[0])
     except Exception as e:
         print(e)
         import pdb; pdb.set_trace()

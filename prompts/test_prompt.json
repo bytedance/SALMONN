@@ -3,11 +3,8 @@
     "asr_zh": "<Speech><SpeechHere></Speech> 请将语音中的内容写下来。",
     "asr_de": "<Speech><SpeechHere></Speech> Hören Sie sich die Rede an und schreiben Sie ihren Inhalt auf.",
     "translation_ec": "<Speech><SpeechHere></Speech> Listen to the speech and translate it into Chinese.",
-    "translation_ce": "<Speech><SpeechHere></Speech> Listen to the speech and translate it into English.",
     "audiocaption": "<Speech><SpeechHere></Speech> Please describe the audio.",
     "audiocaption_v2": "<Speech><SpeechHere></Speech> Please write down what your hear in the audio.",
-    "audiocaption_zh": "<Speech><SpeechHere></Speech> 说说这段音频的内容。",
-    "audiocaption_de": "<Speech><SpeechHere></Speech> Sagen Sie uns, worum es in dem Audio geht.",
     "QA": "<Speech><SpeechHere></Speech> {}",
     "gender_QA": "<Speech><SpeechHere></Speech> {}",
     "phone_recognition": "<Speech><SpeechHere></Speech> Provide the phonetic transcription for the speech.",
@@ -26,13 +23,5 @@
     "translation_en2de": "<Speech><SpeechHere></Speech> Listen to the speech and translate it into German.",
     "speech_audio_coreasoning": "<Speech><SpeechHere></Speech> Use your strong reasoning skills to answer the speaker's question in detail based on the background sound.",
     "keywords": "<Speech><SpeechHere></Speech> Give me only three keywords of the text.",
-    "speaker_diarization_asr": "<Speech><SpeechHere></Speech> Please recognize each speaker and transcribe their speech content.",
-    "time_QA": "<Speech><SpeechHere></Speech> When does the word '{}' begin and end?",
-    "info_retrieval": "<Speech><SpeechHere></Speech> The speech says '{}'. Please check the time when each word appears and ends in that speech.",
-    "info_retrieval_wotext": "<Speech><SpeechHere></Speech> Please check the time when each word appears and ends in that speech.",
-    "audio_time": "<Speech><SpeechHere></Speech> Please list all audio events and their start and end times.",
-    "summary": "<Speech><SpeechHere></Speech> Give me the summary of the speech content.",
-    "speaker_diarization": "<Speech><SpeechHere></Speech> Write down in order when each speaker starts and stops talking. You need to use incremental numbers to differentiate between speakers.",
-    "speech_instruction": "<Speech><SpeechHere></Speech>",
-    "phone_retrieval": "<Speech><SpeechHere></Speech> Please check the time when each phoneme appears and ends in that speech."
+    "speaker_diarization_asr": "<Speech><SpeechHere></Speech> Please recognize each speaker and transcribe their speech content."
 }

@@ -33,7 +33,7 @@ from .utils import StoppingCriteriaSub
 class SALMONN(nn.Module):
     @classmethod
     def init_speech_Qformer(cls, num_query_token, speech_width, num_hidden_layers=2):
-        encoder_config = BertConfig.from_pretrained("/mnt/bn/audio-visual-llm-data/torch_home/hub/checkpoints/bert-base-uncased")
+        encoder_config = BertConfig.from_pretrained("bert-base-uncased")
         encoder_config.num_hidden_layers = num_hidden_layers
         encoder_config.encoder_width = speech_width
         # insert cross-attention layer every other block

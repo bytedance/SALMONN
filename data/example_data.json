@@ -1,0 +1,14 @@
+{
+    "annotation": [
+        {
+            "path": "/data/LibriSpeech/train-clean-100/103/1240/103-1240-0000.flac",
+            "text": "Chapter one missus rachel lynde is surprised missus rachel lynde lived just where the avonlea main road dipped down into a little hollow fringed with alders and ladies eardrops and traversed by a brook",
+            "task": "asr"
+        },
+        {
+            "path": "/data/LibriSpeech/train-clean-100/103/1240/103-1240-0001.flac",
+            "text": "That had its source away back in the woods of the old cuthbert place it was reputed to be an intricate headlong brook in its earlier course through those woods with dark secrets of pool and cascade but by the time it reached lynde's hollow it was a quiet well conducted little stream",
+            "task": "asr"
+        }
+    ]
+}

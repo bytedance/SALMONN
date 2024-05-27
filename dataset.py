@@ -63,6 +63,13 @@ class SALMONNDataset(Dataset):
         audio, sr = sf.read(ann["path"])
         if len(audio.shape) == 2: # stereo to mono
             audio = audio[:, 0]
+        if "expand_wav" in ann:
+            for p in ann["expand_wav"]:
+                expand_audio, _ = sf.read(p)
+                if len(expand_audio.shape) == 2:
+                    expand_audio = expand_audio[:, 0]
+                sil = np.zeros(1600, dtype=float)
+                audio = np.concatenate((audio, sil, expand_audio), axis=0)
         if len(audio) < sr: # pad audio to at least 1s
             sil = np.zeros(sr - len(audio), dtype=float)
             audio = np.concatenate((audio, sil), axis=0)

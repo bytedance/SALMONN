@@ -25,6 +25,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio events, and mus
 - [2023-11-13] 🎁 We have released a **7B version of SALMONN** at [tsinghua-ee/SALMONN-7B](https://huggingface.co/tsinghua-ee/SALMONN-7B) and built the 7B demo [here](https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio)!
 - [2024-01-16] 💖 Our paper was accepted by ICLR 2024!
 - [2024-04-07] 🤖 We have released all the codes you need to train your own SALMONN! Try some cool things!
+- [2024-05-28] 🧳 We have released all the annotations (including 600k SQA/AQA data and 50k audio-based storytelling data) for the 3-stage training of SALMONN! Feel free to download them [here](https://drive.google.com/file/d/15cQO--rtMM9JD22y-A5oXXvT3DujgE2e/view?usp=sharing)!
 
 ## 🌟 Structure
 

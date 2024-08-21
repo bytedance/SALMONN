@@ -48,4 +48,4 @@ bilinear_pooling: False
 low_groupsize: 1
 # # high_groupsize: 20
 ext_same_qformer: True
-cache_dir: /scratch/OpenSource/SALMONN/video_salmonn/ckpt/pretrained_ckpt
+cache_dir: ./ckpt/pretrained_ckpt

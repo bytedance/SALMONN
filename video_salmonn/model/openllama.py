@@ -331,6 +331,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                     vision_width=self.visual_hidden_size,
                     num_hidden_layers = self.seglen if self.xsegalign else 2,
                     causal_encoder=self.causal_encoder,
+                    cache_dir=self.cache_dir,
                 )
                 if self.instructblip_video:
                     self.video_Qformer.resize_token_embeddings(len(self.bert_tokenizer))
@@ -365,6 +366,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                         vision_width=self.speech_encoder.config.d_model,
                         num_hidden_layers = 2,
                         causal_encoder=self.causal_encoder,
+                        cache_dir=self.cache_dir,
                     )
                     if self.instructblip_video:
                         self.speech_Qformer.resize_token_embeddings(len(self.bert_tokenizer))
@@ -395,6 +397,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                         vision_width=self.joint_size,
                         num_hidden_layers = 2,
                         causal_encoder=self.causal_encoder,
+                        cache_dir=self.cache_dir,
                     )
                     self.joint_Qformer.bert.embeddings.word_embeddings = None
                     self.joint_Qformer.bert.embeddings.position_embeddings = None
@@ -417,12 +420,14 @@ class OpenLLAMAPEFTModel(nn.Module):
                             vision_width=self.visual_hidden_size,
                             num_hidden_layers = self.seglen if self.xsegalign else 2,
                             causal_encoder=self.causal_encoder,
+                            cache_dir=self.cache_dir,
                         )
                         self.high_Qformer, self.high_query_tokens = self.init_video_Qformer(
                             num_query_token = int(self.num_video_query_token * self.ext_groupsize[1] / self.groupsize),
                             vision_width=self.visual_hidden_size,
                             num_hidden_layers = self.seglen if self.xsegalign else 2,
                             causal_encoder=self.causal_encoder,
+                            cache_dir=self.cache_dir,
                         )
 
                         self.low_Qformer.bert.embeddings.word_embeddings = None
@@ -446,6 +451,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                             vision_width=self.visual_hidden_size,
                             num_hidden_layers = self.seglen if self.xsegalign else 2,
                             causal_encoder=self.causal_encoder,
+                            cache_dir=self.cache_dir,
                         )
 
                         self.low_Qformer.bert.embeddings.word_embeddings = None
@@ -461,6 +467,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                             vision_width=self.visual_hidden_size,
                             num_hidden_layers = self.seglen if self.xsegalign else 2,
                             causal_encoder=self.causal_encoder,
+                            cache_dir=self.cache_dir,
                         )
 
                         self.high_Qformer.bert.embeddings.word_embeddings = None
@@ -484,6 +491,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                         vision_width=self.speech_encoder.config.d_model + self.beats.cfg.encoder_embed_dim,
                         num_hidden_layers = self.ps_n_qformer_layers,
                         causal_encoder=self.causal_encoder,
+                        cache_dir=self.cache_dir,
                     )
                 else:
                     self.speech_Qformer, self.speech_query_tokens = self.init_video_Qformer(
@@ -491,6 +499,7 @@ class OpenLLAMAPEFTModel(nn.Module):
                         vision_width=self.speech_encoder.config.d_model,
                         num_hidden_layers = self.ps_n_qformer_layers,
                         causal_encoder=self.causal_encoder,
+                        cache_dir=self.cache_dir,
                     )
                 if self.ps_instruct:
                     bert_model = torch.load("/mnt/bn/audio-visual-llm-data/torch_home/hub/checkpoints/bert-base-uncased/pytorch_model.bin", map_location='cpu')

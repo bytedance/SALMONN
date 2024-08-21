@@ -1,0 +1,206 @@
+{
+    "asr": [
+        "Can you transcribe the speech into a written format?",
+        "Listen to the speech and write down its content.",
+        "What is the content of the speech you heard?",
+        "Please write down the transcription of the speech.",
+        "Please transcribe the speech into a written format.",
+        "Write down the content of the speech you heard.",
+        "Can you write down the transcription of the speech?",
+        "Put the speech into a written format.",
+        "Please help me to transcribe the speech into a written format.",
+        "Recognize the content of the speech you heard.",
+        "Can you recognize what you heard in the speech?",
+        "Recognize the speech and write it down in a written format.",
+        "Listen to the speech and recognize its content.",
+        "Give me the transcription of the speech you heard.",
+        "Recognize the speech and give me the transcription."
+    ],
+    "asr_zh": [
+        "前面的语音说了什么？",
+        "请将语音中的内容写下来。",
+        "听前面的音频，写出对方说的内容。",
+        "写下你听到的内容。",
+        "请记下语音中人说的话。",
+        "仔细听这段语音，记下语音中的话",
+        "将你听到的话写下来",
+        "这个人说了什么？请记下来。",
+        "请将语音转换为文字",
+        "请识别这个人说的内容"
+    ],
+    "asr_de": [
+        "Können Sie die Rede in ein schriftliches Format übertragen?",
+        "Hören Sie sich die Rede an und schreiben Sie ihren Inhalt auf.",
+        "Bitte notieren Sie die Transkription der Rede.",
+        "Geben Sie mir die Transkription der Rede, die Sie gehört haben.",
+        "Was hat dieser Mann gesagt? Bitte schreiben Sie es auf.",
+        "Können Sie die Transkription der Rede aufschreiben?",
+        "Hören Sie der Stimme aufmerksam zu und notieren Sie die Wörter in der Stimme",
+        "Schreiben Sie auf, was Sie hören.",
+        "Bitte Sprache in Text umwandeln.",
+        "Erkennen Sie den Inhalt der Rede, die Sie gehört haben."
+    ],
+    "translation_ec": [
+        "Can you translate the speech into Chinese?",
+        "Please translate the speech you heard into Chinese.",
+        "Listen to the speech and translate it into Chinese.",
+        "Give me the Chinese translation of this speech.",
+        "Could you please provide a Chinese translation for the speech?",
+        "Would you be willing to translate the speech into Chinese for me?",
+        "Would you be able to render the speech in Chinese?",
+        "Could you assist me in translating the speech into Chinese?",
+        "Can you help me convert the speech into Chinese text?",
+        "Please convert the speech into Chinese text.",
+        "请将这段语音的内容翻译成中文。",
+        "你能把这段语音用中文表达出来吗？",
+        "请将你听到的语音用中文写出来。"
+    ],
+    "translation_ce": [
+        "Can you translate the speech into English?",
+        "Please translate the speech you heard into English.",
+        "Listen to the speech and translate it into English.",
+        "Give me the English translation of this speech.",
+        "Could you please provide an English translation for the speech?",
+        "Would you be willing to translate the speech into English for me?",
+        "Would you be able to render the speech in English",
+        "Could you assist me in translating the speech into English?",
+        "Can you help me convert the speech into English text?",
+        "Please convert the speech into English text.",
+        "请将这段语音的内容翻译成英文。",
+        "你能把这段语音用英文表达出来吗？",
+        "请将你听到的语音用英文写出来。"
+    ],
+    "translation_ce_pe": [
+        "Can you translate the speech into English?",
+        "Please translate the speech you heard into English.",
+        "Listen to the speech and translate it into English.",
+        "Give me the English translation of this speech.",
+        "Could you please provide an English translation for the speech?",
+        "Would you be willing to translate the speech into English for me?",
+        "Would you be able to render the speech in English",
+        "Could you assist me in translating the speech into English?",
+        "Can you help me convert the speech into English text?",
+        "Please convert the speech into English text."
+    ],
+    "count_audio": [
+        "Can you tell me how many pieces of speeches are there in the audio?",
+        "Can you tell me how many pieces of speeches is this audio consists of?",
+        "Please count the number of pieces of speeches in the audio you heard.",
+        "Please tell me the number of speeches in this audio.",
+        "Listen to the speech and tell me hwo many fragments are there in it.",
+        "The speech you heard might consist of several speeches and please count the number of speeches.",
+        "How many pieces of speeches did you hear in this audio?"
+    ],
+    "count_word": [
+        "How many words did you hear in this audio?",
+        "Can you tell me how many words are there in the audio?",
+        "How many words does this speech you hear consist of?",
+        "Please count the number of words in this speech.",
+        "Listen to the speech and count how many words are there.",
+        "Please help me record the number of words the speech you heard consists of.",
+        "Give me the number of words in this speech."
+    ],
+    "audiocaption": [
+        "Listen to this audio clip and provide its caption.",
+        "Describe the following audio in a caption.",
+        "Based on the sound you hear, create a caption for this audio.",
+        "Can you describe the scene or event depicted in this audio?",
+        "Could you summarise what's happening in this audio?",
+        "What does this audio describe?",
+        "Please describe the audio."
+    ],
+    "audiocaption_v2": [
+        "Please write down what your hear in the audio."
+    ],
+    "QA": [
+        "{}"
+    ],
+    "inference_QA": [
+        "{}"
+    ],
+    "gender_QA": [
+        "{}"
+    ],
+    "gender_recognition": [
+        "What is the gender of the speaker?",
+        "Use one word to describe the speaker's gender.",
+        "Describe the speaker's gender.",
+        "Can you accurately identify the gender of the speaker?",
+        "Can you distinguish the gender of the speaker?",
+        "Describe the gender of the person speaking.",
+        "What is the speaker's gender based on the audio?",
+        "Tell me about the gender of the person you hear.",
+        "Is the speaker male or female?"
+    ],
+    "info_retrieval":[
+        "Please check the time when each word appears and ends in that speech.",
+        "Write the start and end time of each word in the speech to form a sequence."
+    ],
+    "phone_recognition": [
+        "Please transcribe the audio clip into its corresponding phonetic representation.",
+        "Write the sequence of phonemes corresponding to this speech.",
+        "Provide the phonetic transcription for the speech.",
+        "Transcribe the phonemes for the speech please.",
+        "Can you recognize the phonetic representation in the speech?",
+        "Listen to the speech and recognize its phonetic representation",
+        "What is the phoneme transcription of the speech?"
+    ],
+    "audio_speech_description":[
+        "Describe the speech and the background audio",
+        "Record the speech and the background audio"
+    ],
+    "speech_separation": [
+        "There are two people talking in the audio, please write what they say in order.",
+        "Please write down what you hear each person says.",
+        "Can you record what each person says?",
+        "Transcribe the words spoken by each person in the audio."
+    ],
+    "speech_query": [
+        "Please answer the question in the speech.",
+        "Please answer the question.",
+        "Can you answer the previous question?",
+        "There is a question in the speech. Please answer it."
+    ],
+    "emotion_recognition": [
+        "Describe the emotion of the speaker in one word.",
+        "Use one word to describe the speaker's emotion."
+    ],
+    "music_description": [
+        "Listen to this music clip and describe the music.",
+        "Please describe the music.",
+        "Provide a description of the music.",
+        "Analyze the music in this clip and offer a description.",
+        "Give me a description of the music in this clip."
+    ],
+    "lyrics_recognition": [
+        "Listen to the song and write down its content.",
+        "Please recognize what the singer sings.",
+        "Please write down the transcription of the speech.",
+        "Give me the transcription of the song you heard.",
+        "Recognize the song and give me the transcription.",
+        "Listen to the song and recognize its content.",
+        "Please help me to transcribe the speech into a written format.",
+        "Can you recognize what you heard in the song?"
+    ],
+    "speaker_verification": [
+        "Are the two people speaking successively the same person? Answer yes or no.",
+        "Do you only hear the same person talking? Answer yes or no.",
+        "Is only one person speaking in the audio? Answer yes or no."
+    ],
+    "fluent_speech_audio": [
+        "Describe the background audio and the speech in a fluent sentence."
+    ],
+    "audio_story_telling": [
+        "Based on the audio, write a story in detail. Your story should be highly related to the audio."
+    ],
+    "speech_audio_query": [
+        "Please answer the speaker's question in detail based on the background sound."
+    ],
+    "summarization": [
+        "Please give me the summarization of the speech before.",
+        "summarise the speech before into several sentences."
+    ],
+    "speaker_asr": [
+        "Here are several people talking. Please recognize and write down what they are saying and add a speaker number to each sentence."
+    ]
+}

@@ -29,7 +29,7 @@ The result is saved in the following path:
 ./ckpt/MultiResQFormer/<DateTime>/eval_result.json
 ```
 
-Expecting the folling result:
+Expecting the following result:
 ```
 [
     {

@@ -1,0 +1,22 @@
+# generation hyper-parameters
+max_len: 512
+penalty_alpha: 0.6
+top_k: 10
+top_p: 0.7
+random_prefix_len: 5
+sample_num: 2
+decoding_method: sampling
+generate_len: 512
+
+# lora hyper-parameters
+lora_r: 32
+lora_alpha: 32
+lora_dropout: 0.1
+
+# some train configuration, more can be found under dsconfig folder
+train:
+    seed: 0
+    warmup_rate: 0.3
+    epochs: 10
+    max_length: 1024
+    max_shard_size: 80GB

@@ -1,0 +1,51 @@
+model: openllama_peft
+imagebind_ckpt_path: ""
+vicuna_ckpt_path: /scratch/LLM/LLM.ckpts/vicuna-13b-v1.5  # Should be modified to your own place
+orig_delta_path: ""
+delta_ckpt_path: ./ckpt/MultiResQFormer/pytorch_model_4_5001.pt
+
+all_decode_info: [
+  ["audiovideoimage", "audiovisual_video_input", "example.json"]
+]
+
+stage: 2y
+max_tgt_len: 512 # 32000
+yu_lora_r: 32 # 8
+yu_lora_alpha: 32
+yu_lora_dropout: 0.1
+lora_target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"] # ['q_proj', 'v_proj']
+use_lora: "true"
+qformer: "true"
+use_whisper: "true"
+use_blip: "true"
+instructblip: "true"
+proj_checkpoint: ""
+num_video_query: 30
+instructblip_video: "false"
+video_window_size: 240
+skip_vqformer: "false"
+speech_qformer: "false"
+early_align: "true"
+cascaded: ""
+causal: "false"
+diversity_loss: "false"
+causal_attention: "true" # "false"
+groupsize: 10
+alignmode: 2
+pure_aud: False
+num_speech_query: 1
+second_per_frame: 0.333333
+second_stride: 0.333333
+sin_pos: False
+use_beats: True # True
+return_raw: True # True
+n_pos: 120
+flash_attn: False
+batch_size: 1
+infer_mode: 2
+bilinear_pooling: False
+# ext_groupsize: [1, 30]
+low_groupsize: 1
+# # high_groupsize: 20
+ext_same_qformer: True
+cache_dir: ./ckpt/pretrained_ckpt

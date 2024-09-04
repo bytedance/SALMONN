@@ -1,0 +1,20 @@
+models:
+    openllama:
+        model_name: OpenLLAMAModel
+        agent_name: DeepSpeedAgent
+        stage1_train_dataset: SupervisedDataset
+        test_dataset: SelfInstructTestDataset
+    openllama_peft:
+        model_name: OpenLLAMAPEFTModel
+        agent_name: DeepSpeedAgent
+        stage1_train_dataset: SupervisedDataset
+        test_dataset: SelfInstructTestDataset
+    openllama_peft_small:
+        model_name: OpenLLAMAPEFTModel
+        agent_name: DeepSpeedAgent
+        stage1_train_dataset: SupervisedDataset
+        test_dataset: SelfInstructTestDataset
+
+# ========= Global configuration ========== #
+logging_step: 5
+# ========= Global configuration ========== #

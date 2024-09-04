@@ -20,7 +20,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio events, and mus
 </div>
 
 ## 🔥 News
-
+- [2024-09-04] We have released the model and inference code for video-SALMONN! See [here](video_salmonn/READMe.md)!
 - [2024-05-28] 🧳 We have released all the annotations (including 600k SQA/AQA data and 50k audio-based storytelling data) for the 3-stage training of SALMONN! Feel free to download them [here](https://drive.google.com/file/d/15cQO--rtMM9JD22y-A5oXXvT3DujgE2e/view?usp=sharing)!
 - [2024-04-07] 🤖 We have released all the codes you need to train your own SALMONN! Try some cool things!
 - [2024-01-16] 💖 Our paper was accepted by ICLR 2024!
@@ -74,7 +74,7 @@ For SALMONN-13B v1, you need to use the following dependencies:
 **Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
 
 ## ✨ Citation
-If you find SALMONN useful, please cite our paper:
+If you find SALMONN useful, please cite the paper:
 ```
 @inproceedings{
   tang2024salmonn,

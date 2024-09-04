@@ -74,7 +74,7 @@ For SALMONN-13B v1, you need to use the following dependencies:
 **Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
 
 ## ✨ Citation
-If you find SALMONN useful, please cite the paper:
+If you find SALMONN / video-SALMONN useful, please cite the paper:
 ```
 @inproceedings{
   tang2024salmonn,
@@ -83,5 +83,14 @@ If you find SALMONN useful, please cite the paper:
   booktitle={The Twelfth International Conference on Learning Representations},
   year={2024},
   url={https://openreview.net/forum?id=14rn7HpKVk}
+}
+
+@inproceedings{
+  sun2024videosalmonn,
+  title={video-{SALMONN}: Speech-Enhanced Audio-Visual Large Language Models},
+  author={Guangzhi Sun and Wenyi Yu and Changli Tang and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Yuxuan Wang and Chao Zhang},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024},
+  url={https://openreview.net/forum?id=nYsh5GFIqX}
 }
 ```

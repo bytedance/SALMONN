@@ -166,3 +166,5 @@ launch.sh
 /output
 arnold.sh
 /configs_local
+
+/video_salmonn/ckpt/*

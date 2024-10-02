@@ -1,6 +1,6 @@
 model: openllama_peft
 imagebind_ckpt_path: ""
-vicuna_ckpt_path: /scratch/LLM/LLM.ckpts/vicuna-13b-v1.5  # Should be modified to your own place
+vicuna_ckpt_path: lmsys/vicuna-13b-v1.5  # Should be modified to your own place
 orig_delta_path: ""
 delta_ckpt_path: ./ckpt/MultiResQFormer/pytorch_model_4_5001.pt
 

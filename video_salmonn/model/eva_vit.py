@@ -425,7 +425,7 @@ def create_eva_vit_g(img_size=224,drop_path_rate=0.4,use_checkpoint=False,precis
         norm_layer=partial(nn.LayerNorm, eps=1e-6),
         use_checkpoint=use_checkpoint,
     )
-    cached_file = "/scratch/OpenSource/SALMONN/video_salmonn/ckpt/pretrained_ckpt/eva_vit_g.pth"  # Change this to your local path
+    cached_file = "./ckpt/pretrained_ckpt/eva_vit_g.pth"  # Change this to your local path
     state_dict = torch.load(cached_file, map_location="cpu")    
     interpolate_pos_embed(model,state_dict)
     

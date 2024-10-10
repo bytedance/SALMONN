@@ -1,9 +1,9 @@
 ## Inference
 
 ### Preparation
-Install the environment with the following specified config:
+The python version is 3.9.20, and other required packages can be installed with the following command: 
 ```
-conda env create -f videosalmonn.yml
+pip install -r requirements.txt
 ```
 Create directory to store checkpoints (If modify the structure/rename directories, need to change config files and model files accordingly)
 ```

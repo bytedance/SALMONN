@@ -1,0 +1,15 @@
+torch==2.0.0+cu118
+torchaudio==2.0.1+cu118
+torchvision==0.15.1+cu118
+pytorchvideo==0.1.5
+tqdm==4.66.1
+pyyaml==6.0.1
+transformers==4.40.1
+pytorchvideo==0.1.5
+einops==0.7.0
+peft==0.5.0
+data==0.4
+ftfy==6.2.3
+timm==1.0.8
+sentencepiece==0.1.99
+protobuf==4.24.4

@@ -52,7 +52,7 @@ Here are some examples of SALMONN.
 For SALMONN-13B v1, you need to use the following dependencies:
 1. Our environment: The python version is 3.9.17, and other required packages can be installed with the following command: ```pip install -r requirements.txt```.
 2. Download [whisper large v2](https://huggingface.co/openai/whisper-large-v2/tree/main) to ```whisper_path```.
-3. Download [Fine-tuned BEATs_iter3+ (AS2M) (cpt2)](https://onedrive.live.com/?authkey=%21APLo1x9WFLcaKBI&id=6B83B49411CA81A7%2125955&cid=6B83B49411CA81A7&parId=root&parQt=sharedby&o=OneUp) to `beats_path`.
+3. Download [Fine-tuned BEATs_iter3+ (AS2M) (cpt2)](https://1drv.ms/u/s!AqeByhGUtINrgcpj8ujXH1YUtxooEg?e=E9Ncea) to `beats_path`.
 4. Download [vicuna 13B v1.1](https://huggingface.co/lmsys/vicuna-13b-v1.1/tree/main) to ```llama_path```.
 5. Running with ```python3 train.py --cfg-path configs/config.yaml``` in A100-SXM-80GB.
 

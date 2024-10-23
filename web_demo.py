@@ -21,6 +21,7 @@ import gradio as gr
 from config import Config
 from models.salmonn import SALMONN
 from utils import prepare_one_sample
+import re
 
 
 parser = argparse.ArgumentParser()
@@ -65,7 +66,6 @@ def upload_speech(gr_speech, text_input, chat_state):
             chat_state)
 
 def gradio_ask(user_message, chatbot, chat_state):
-    
     if len(user_message) == 0:
         return gr.update(interactive=True, placeholder='Input should not be empty!'), chatbot, chat_state
     chat_state.append(user_message)
@@ -76,13 +76,14 @@ def gradio_ask(user_message, chatbot, chat_state):
 def gradio_answer(chatbot, chat_state, num_beams, temperature, top_p):
     samples = prepare_one_sample(chat_state[0], wav_processor)
     prompt = [
-        cfg.config.model.prompt_template.format(chat_state[1].strip())
+        cfg.config.model.prompt_template.format("<Speech><SpeechHere></Speech> " + chat_state[1].strip())
     ]
     with torch.cuda.amp.autocast(dtype=torch.float16):
         llm_message = model.generate(
             samples, cfg.config.generate, prompts=prompt
         )
-    chatbot[-1][1] = llm_message[0]
+    llm_msg = re.sub("<s>|<\/s>", "", llm_message[0])
+    chatbot[-1][1] = " ".join(llm_msg.split())
     return chatbot, chat_state
 
 title = """<h1 align="center">SALMONN: Speech Audio Language Music Open Neural Network</h1>"""
@@ -158,10 +159,10 @@ with gr.Blocks() as demo:
     upload_button.click(upload_speech, [speech, text_input, chat_state], [speech, text_input, upload_button, chat_state])
 
     text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state]).then(
-        gradio_answer, [chatbot, chat_state, cfg], [chatbot, chat_state]
+        gradio_answer, [chatbot, chat_state, num_beams, temperature, top_p], [chatbot, chat_state]
     )
     clear.click(gradio_reset, [chat_state], [chatbot, speech, text_input, upload_button, chat_state], queue=False)
 
 
 
-demo.launch(share=True, enable_queue=True, server_port=int(args.port))
+demo.queue().launch(share=True, server_port=int(args.port))

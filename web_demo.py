@@ -158,10 +158,11 @@ with gr.Blocks() as demo:
     upload_button.click(upload_speech, [speech, text_input, chat_state], [speech, text_input, upload_button, chat_state])
 
     text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state]).then(
-        gradio_answer, [chatbot, chat_state, cfg], [chatbot, chat_state]
+        gradio_answer, [chatbot, chat_state], [chatbot, chat_state]
     )
     clear.click(gradio_reset, [chat_state], [chatbot, speech, text_input, upload_button, chat_state], queue=False)
 
 
 
-demo.launch(share=True, enable_queue=True, server_port=int(args.port))
+# demo.launch(share=True, enable_queue=True, server_port=int(args.port))
+demo.launch(share=True, server_port=int(args.port))

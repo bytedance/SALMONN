@@ -1,0 +1,2774 @@
+{
+    "annotation": [
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro08/Ses04M_impro08_F024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_M022.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_2/Ses02F_script02_2_F042.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_2/Ses04F_script03_2_M034.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_2/Ses03F_script02_2_F038.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_1/Ses03F_script03_1_F019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_M033.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_1b/Ses05M_script01_1b_M003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M030.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro05/Ses03F_impro05_F005.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_F012.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_M013.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M010.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M031.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro08/Ses04M_impro08_M028.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_F002.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro04/Ses05M_impro04_F016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro07/Ses02F_impro07_M028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_M031.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_2/Ses03M_script01_2_F010.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_2/Ses03F_script02_2_M041.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro03/Ses03F_impro03_M010.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_M037.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro02/Ses04F_impro02_F009.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_M027.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro08/Ses04M_impro08_M013.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_2/Ses02F_script01_2_F005.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F010.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro01/Ses03M_impro01_F022.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_1/Ses04M_script02_1_M032.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_1/Ses02F_script02_1_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro04/Ses05M_impro04_F012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_2/Ses02F_script02_2_M001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_1/Ses01M_script02_1_M042.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_1/Ses03M_script03_1_F005.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_M029.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_2/Ses02M_script02_2_F016.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro07/Ses02M_impro07_M032.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_3/Ses01M_script01_3_M031.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_2/Ses03M_script02_2_F040.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M026.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro01/Ses04M_impro01_F012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_F006.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F008.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_M030.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M032.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro08/Ses02F_impro08_F004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script01_3/Ses02M_script01_3_M022.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_M001.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script01_3/Ses05F_script01_3_F024.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_M027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_2/Ses05M_script02_2_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_1/Ses03F_script01_1_M052.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro03/Ses04M_impro03_M017.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_1/Ses01M_script01_1_F035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05b/Ses03M_impro05b_M027.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_M023.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_M006.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_F035.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_1/Ses02M_script03_1_F029.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_M017.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08a/Ses03M_impro08a_F015.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_M015.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro03/Ses02M_impro03_M021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_F021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_F018.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro07/Ses01M_impro07_M033.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F032.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_M013.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro02/Ses04F_impro02_M021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_M005.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_M005.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_1/Ses05M_script01_1_M017.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_M001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro06/Ses03F_impro06_M010.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_F030.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_F039.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script01_3/Ses05F_script01_3_M023.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro02/Ses02M_impro02_F001.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_F017.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_1/Ses03F_script03_1_M007.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_F016.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_M004.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script02_2/Ses05F_script02_2_F017.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro07/Ses01F_impro07_M019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_3/Ses05M_script01_3_M036.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_2/Ses04M_script01_2_F003.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05a/Ses03M_impro05a_F012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro05/Ses02F_impro05_M003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F011.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_F031.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro02/Ses05M_impro02_F024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_1/Ses01M_script03_1_M014.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_1/Ses05F_script03_1_F025.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_2/Ses05M_script02_2_M005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro04/Ses03M_impro04_F023.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_M029.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M038.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro07/Ses02M_impro07_M006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro04/Ses01F_impro04_F033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro04/Ses03F_impro04_M013.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro05/Ses05M_impro05_M009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_F019.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro03/Ses02F_impro03_M026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05a/Ses03M_impro05a_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M036.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_F041.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro02/Ses05F_impro02_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_1/Ses03M_script01_1_M003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F039.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M014.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_1/Ses05F_script03_1_M018.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M033.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_M011.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_M047.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro05/Ses02M_impro05_M013.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro06/Ses01M_impro06_F028.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F000.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_F025.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_1/Ses05M_script02_1_M003.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_M023.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_1/Ses01M_script02_1_M046.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro06/Ses03F_impro06_F010.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_1/Ses02M_script02_1_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro04/Ses03F_impro04_M018.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro07/Ses05M_impro07_M014.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_M014.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_3/Ses05M_script01_3_M039.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_2/Ses01F_script02_2_M024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_M016.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_M020.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro03/Ses03M_impro03_M020.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro05/Ses05M_impro05_F008.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_F033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_M009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F041.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro06/Ses02F_impro06_M006.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_1/Ses04M_script03_1_M007.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script02_2/Ses05F_script02_2_F019.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_M042.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_F017.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_F041.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro02/Ses05M_impro02_M027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_1/Ses05F_script03_1_F033.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro03/Ses01F_impro03_M003.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro03/Ses05M_impro03_M023.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script01_3/Ses02M_script01_3_M010.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_F022.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_F000.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_1/Ses01F_script01_1_M017.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_F024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_1/Ses01M_script01_1_M040.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro07/Ses02M_impro07_M018.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_1/Ses01M_script03_1_F038.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_M005.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro04/Ses01F_impro04_M005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_M005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_M011.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F044.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_F035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro05/Ses04F_impro05_F008.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_M035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M041.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_3/Ses04F_script01_3_M028.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_1/Ses02F_script01_1_F027.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_2/Ses01F_script02_2_F022.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F007.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_2/Ses05F_script03_2_M037.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro03/Ses04M_impro03_M026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_2/Ses04F_script03_2_F012.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro03/Ses03F_impro03_M006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_M025.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_M022.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_1/Ses03M_script02_1_F005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_1/Ses04F_script03_1_M006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_M032.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05b/Ses03M_impro05b_F004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_1/Ses01M_script03_1_M012.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_F003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_F016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_1/Ses01F_script02_1_M024.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro03/Ses04F_impro03_F044.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro07/Ses05M_impro07_M018.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_F021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro01/Ses04M_impro01_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M013.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_M025.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_M029.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_2/Ses01F_script02_2_F043.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro01/Ses05M_impro01_F003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F023.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro01/Ses02M_impro01_F004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro02/Ses02F_impro02_F004.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_F032.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_M034.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro08/Ses02F_impro08_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_M022.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_F002.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro02/Ses01M_impro02_F013.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_1/Ses01M_script01_1_F031.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro03/Ses03F_impro03_F011.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_F003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro04/Ses01M_impro04_F020.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro08/Ses02M_impro08_M026.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F011.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro05/Ses02M_impro05_F002.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_F019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_2/Ses03F_script02_2_M016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro06/Ses01F_impro06_F019.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_M049.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_F009.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_1/Ses01F_script03_1_M026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_2/Ses02M_script02_2_M002.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro03/Ses02M_impro03_M024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro07/Ses02M_impro07_F028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro01/Ses02F_impro01_F019.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_F019.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_M019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_3/Ses04F_script01_3_M036.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_3/Ses03F_script01_3_M006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_1/Ses05F_script03_1_M030.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M010.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_F040.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro06/Ses05M_impro06_M013.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_F041.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_1/Ses04M_script03_1_F025.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro06/Ses03F_impro06_M011.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_M006.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro01/Ses01M_impro01_F000.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro03/Ses03M_impro03_F026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_M037.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro08/Ses02M_impro08_F019.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_M000.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_2/Ses05F_script03_2_M008.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro01/Ses03M_impro01_M004.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_2/Ses03M_script02_2_F041.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_M020.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script02_1/Ses05F_script02_1_M020.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro06/Ses04M_impro06_F002.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_F031.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M014.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_1/Ses04F_script02_1_F017.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro07/Ses05M_impro07_M039.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_2/Ses04M_script02_2_M037.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro05/Ses02F_impro05_M001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro03/Ses02F_impro03_F021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro05/Ses05M_impro05_F017.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_1/Ses04M_script02_1_M008.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_3/Ses02F_script01_3_F016.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script01_2/Ses02M_script01_2_F002.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro05/Ses03F_impro05_F011.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_1b/Ses05M_script01_1b_M001.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_M014.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M014.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_M014.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro05/Ses01M_impro05_F032.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_M020.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro03/Ses05M_impro03_M011.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro07/Ses05M_impro07_F021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_3/Ses05M_script01_3_F013.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_1/Ses01M_script01_1_M002.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro06/Ses01F_impro06_F013.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_F017.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_M033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05b/Ses03M_impro05b_F029.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_2/Ses05M_script02_2_F013.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F065.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_M033.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro03/Ses01F_impro03_F010.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F030.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F034.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script01_3/Ses02M_script01_3_M015.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M022.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro03/Ses05F_impro03_M058.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro03/Ses03F_impro03_M015.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_M021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M020.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_1/Ses05F_script03_1_M026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M023.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro06/Ses02F_impro06_F009.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro03/Ses04M_impro03_M024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_1/Ses02F_script01_1_M013.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_F027.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_2/Ses04M_script02_2_F029.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_1/Ses02M_script02_1_M016.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F017.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M042.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro04/Ses03F_impro04_M002.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_F016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_2/Ses02F_script03_2_M036.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_1/Ses01F_script02_1_M009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_1/Ses03F_script01_1_M036.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro07/Ses02F_impro07_M011.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro06/Ses04F_impro06_F006.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M034.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_F042.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_F002.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_2/Ses05F_script03_2_M038.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_M021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_F022.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_1/Ses04F_script02_1_M009.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro08/Ses02M_impro08_M009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro05/Ses01F_impro05_F017.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro07/Ses02F_impro07_F023.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M022.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro05/Ses04M_impro05_F013.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro01/Ses05F_impro01_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_F006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F005.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_M029.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_1/Ses02M_script03_1_F028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_M024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro05/Ses01M_impro05_M025.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_M034.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_M024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F060.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_M004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_1/Ses02F_script02_1_M017.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_2/Ses05F_script03_2_F000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05b/Ses03M_impro05b_F015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_M025.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro03/Ses05F_impro03_F056.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_2/Ses02F_script02_2_M000.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_M027.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_M039.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M028.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_3/Ses04F_script01_3_M030.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro06/Ses05M_impro06_F006.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro08/Ses03F_impro08_F012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_2/Ses02M_script02_2_F038.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_2/Ses03M_script02_2_M032.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_1/Ses01F_script02_1_M026.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_3/Ses03F_script01_3_M003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_1/Ses02M_script03_1_M031.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_2/Ses04F_script03_2_F021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_M021.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_F044.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro05/Ses01F_impro05_F028.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_1/Ses02F_script01_1_F037.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro05/Ses01M_impro05_F033.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_F007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro08/Ses05M_impro08_F028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_M027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_1/Ses05M_script03_1_M009.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08a/Ses03M_impro08a_M007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05a/Ses03M_impro05a_M028.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_F014.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro02/Ses05F_impro02_F035.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_1/Ses02M_script03_1_M015.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F032.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro05/Ses01F_impro05_M002.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro04/Ses05M_impro04_F001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_2/Ses04M_script02_2_F013.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_2/Ses04F_script03_2_F041.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro02/Ses01F_impro02_F008.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro03/Ses03M_impro03_F006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script01_1/Ses05F_script01_1_M003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro07/Ses05M_impro07_F020.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_1/Ses05M_script03_1_F005.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_M073.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro05/Ses04M_impro05_F003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_1/Ses02M_script02_1_M000.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_M016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro05/Ses02M_impro05_F011.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_2/Ses04M_script01_2_F020.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro04/Ses03M_impro04_F004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_F023.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro04/Ses01F_impro04_M025.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_F035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro07/Ses01M_impro07_F011.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro01/Ses01F_impro01_F005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_2/Ses02M_script02_2_M015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_M028.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_F026.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_2/Ses02F_script02_2_M029.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_F042.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_1/Ses05M_script03_1_M028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro03/Ses04M_impro03_M008.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_M002.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F004.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro03/Ses01M_impro03_F008.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro06/Ses05M_impro06_M005.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro04/Ses03F_impro04_F024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro03/Ses04F_impro03_F048.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_F035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_F040.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_F026.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_2/Ses03M_script02_2_M041.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script02_1/Ses05F_script02_1_M012.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_1/Ses04F_script02_1_M040.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_1/Ses04M_script02_1_M012.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro02/Ses04F_impro02_M018.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_F014.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro08/Ses02F_impro08_M011.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro07/Ses01F_impro07_M007.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_1/Ses05M_script03_1_M022.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_F015.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_2/Ses03F_script03_2_M016.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro04/Ses01M_impro04_F014.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_1/Ses02F_script01_1_F025.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_M009.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro01/Ses05M_impro01_F009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro04/Ses03F_impro04_M007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro06/Ses01F_impro06_M007.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro05/Ses05M_impro05_M004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script02_1/Ses02F_script02_1_M041.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro02/Ses01F_impro02_F016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M030.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_F029.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_M019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro04/Ses02M_impro04_F016.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M041.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_F012.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_3/Ses01F_script01_3_F007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro03/Ses05F_impro03_M062.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script01_1/Ses02M_script01_1_M038.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_2/Ses02M_script02_2_F045.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_F026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script02_1/Ses03F_script02_1_M006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_F036.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_M022.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro07/Ses02M_impro07_F009.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_1/Ses02F_script03_1_M001.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script03_2/Ses04F_script03_2_M037.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_1/Ses04M_script03_1_M028.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro03/Ses04M_impro03_F016.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_2/Ses03M_script02_2_F033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro08/Ses02M_impro08_M005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08a/Ses03M_impro08a_M006.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F026.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_2/Ses04F_script01_2_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro06/Ses01F_impro06_F011.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_M024.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_1/Ses05M_script02_1_M031.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro05a/Ses03M_impro05a_F024.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro01/Ses04M_impro01_M003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_F033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro04/Ses04M_impro04_F005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_F030.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_1/Ses03M_script03_1_F003.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro06/Ses01M_impro06_M027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro04/Ses02M_impro04_F003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_1/Ses02F_script01_1_M021.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script01_1/Ses05F_script01_1_F000.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script02_2/Ses01M_script02_2_M028.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro03/Ses05F_impro03_M065.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro03/Ses02M_impro03_M016.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro03/Ses03F_impro03_M002.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_1/Ses01M_script01_1_F042.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro05/Ses04F_impro05_F011.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro02/Ses02M_impro02_M001.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_F017.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro06/Ses04F_impro06_M014.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro01/Ses01M_impro01_F001.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_3/Ses04F_script01_3_F014.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_3/Ses03F_script01_3_M020.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro01/Ses01F_impro01_F000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro04/Ses02M_impro04_F015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_M015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_F000.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro07/Ses04M_impro07_M029.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script02_1/Ses03M_script02_1_M000.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_1/Ses03F_script03_1_M027.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_F021.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_M007.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro05/Ses02F_impro05_M005.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro03/Ses01F_impro03_M011.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro01/Ses03M_impro01_F000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_M031.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script03_1/Ses03F_script03_1_M020.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro02/Ses03M_impro02_M029.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_1/Ses03M_script01_1_F046.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script03_2/Ses05F_script03_2_M010.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script01_2/Ses02F_script01_2_M007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro05/Ses01M_impro05_M028.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_1/Ses05M_script03_1_M032.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro05/Ses01F_impro05_F023.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro06/Ses05M_impro06_F003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script01_3/Ses03M_script01_3_M018.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro05/Ses05F_impro05_M015.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script02_1/Ses04M_script02_1_M002.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_M045.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_script01_3/Ses05F_script01_3_M024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_2/Ses04M_script01_2_F006.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro03/Ses05F_impro03_M067.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_1/Ses04M_script01_1_F034.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script01_1/Ses01F_script01_1_M007.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro03/Ses04F_impro03_M030.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro06/Ses02M_impro06_F003.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_3/Ses05M_script01_3_F027.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_impro06/Ses01F_impro06_F005.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro08/Ses02F_impro08_F003.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro04/Ses05F_impro04_M027.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M020.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro02/Ses03F_impro02_F028.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_2/Ses05M_script02_2_F029.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_impro03/Ses02F_impro03_F028.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_F025.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_2/Ses05M_script01_2_M015.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro03/Ses01M_impro03_M021.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script01_1/Ses04F_script01_1_F023.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_script02_2/Ses04F_script02_2_F037.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_2/Ses01M_script03_2_M033.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02F_script03_2/Ses02F_script03_2_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro03/Ses04F_impro03_M047.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro02/Ses05F_impro02_M026.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script03_1/Ses01M_script03_1_F010.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_2/Ses01M_script01_2_F004.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script02_2/Ses01F_script02_2_M026.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro07/Ses04F_impro07_F031.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08b/Ses03M_impro08b_M011.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro08/Ses04F_impro08_M019.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro06/Ses01M_impro06_M000.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_1/Ses02M_script03_1_M021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_F031.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01F_script03_2/Ses01F_script03_2_F029.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro08/Ses02M_impro08_M018.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_2/Ses03M_script03_2_M009.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_F036.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro08a/Ses03M_impro08a_M000.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04F_impro04/Ses04F_impro04_F018.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_impro03/Ses02M_impro03_F024.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script03_2/Ses05M_script03_2_M045.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro02/Ses05F_impro02_M005.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_script01_3/Ses01M_script01_3_F021.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro06/Ses05F_impro06_F024.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script03_2/Ses02M_script03_2_M039.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script02_1/Ses05M_script02_1_M021.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script03_2/Ses04M_script03_2_F035.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_impro08/Ses05M_impro08_M020.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_script03_1/Ses03M_script03_1_F006.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_script01_2/Ses04M_script01_2_M019.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_impro07/Ses03F_impro07_M004.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session1/sentences/wav/Ses01M_impro06/Ses01M_impro06_F014.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03F_script01_3/Ses03F_script01_3_M027.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session2/sentences/wav/Ses02M_script02_1/Ses02M_script02_1_F016.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro06/Ses03M_impro06_M016.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05M_script01_1/Ses05M_script01_1_M022.wav",
+            "text": "ang",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro08/Ses05F_impro08_F029.wav",
+            "text": "neu",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session5/sentences/wav/Ses05F_impro07/Ses05F_impro07_M009.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session3/sentences/wav/Ses03M_impro07/Ses03M_impro07_F019.wav",
+            "text": "hap",
+            "task": "emotion_recognition"
+        },
+        {
+            "path": "{data_root}/Session4/sentences/wav/Ses04M_impro06/Ses04M_impro06_M017.wav",
+            "text": "sad",
+            "task": "emotion_recognition"
+        }
+    ]
+}

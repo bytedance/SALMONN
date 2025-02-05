@@ -14,11 +14,11 @@
 
 model:
   # paths
-  llama_path: "path to llama model"
-  whisper_path: "path to whisper model"
-  beats_path: "path to beats model"
+  llama_path: "/mnt/dssk/data_rw/shubham/l2p/llama3"
+  whisper_path: "/mnt/dssk/data_rw/shubham/l2p/whisper/"
+  beats_path: "/mnt/dssk/data_rw/shubham/l2p/beats/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt"
 
-  ckpt: "model ckpt" # if not "", load model from ckpt for training or evaluation
+  ckpt: "" # if not "", load model from ckpt for training or evaluation
 
   freeze_whisper: True
   freeze_beats: True
@@ -48,16 +48,17 @@ model:
   end_sym: "</s>"
 
 datasets:
-  train_ann_path: "path to train data"
-  valid_ann_path: "path to valid data"
-  test_ann_path: "path to test data"
+  train_ann_path: "/home/toolkit/SALMONN/data/IEMOCAP/ie-train.json"
+  valid_ann_path: "/home/toolkit/SALMONN/data/IEMOCAP/ie-valid.json"
+  test_ann_path: "/home/toolkit/SALMONN/data/IEMOCAP/ie-test.json"
 
-  whisper_path: "path to whisper model"
+  whisper_path: "/mnt/dssk/data_rw/shubham/l2p/whisper/"
+  data_root: "users/rwhetten/IEMOCAP/IEMOCAP_full_release/"
 
 run:
   # log & settings
   seed: 42
-  output_dir: "output directory"
+  output_dir: "baseline_run"
   evaluate: False # if True, only evaluate model on test data
 
   log_freq: 5
@@ -73,6 +74,9 @@ run:
   amp: True
   world_size: 1
   dist_url: "env://"
+
+  run_name: "baseline"
+  project_name: "l2p"
 
   # optimizer & scheduler
   optims:

@@ -20,7 +20,7 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from transformers import LlamaTokenizer, StoppingCriteriaList
+from transformers import LlamaTokenizerFast, StoppingCriteriaList, AutoModelForCausalLM
 from peft import LoraConfig, TaskType, get_peft_model
 
 from .Qformer import BertConfig, BertLMHeadModel
@@ -106,22 +106,28 @@ class SALMONN(nn.Module):
         self.low_resource = low_resource
 
         logging.info('Loading LLaMA Tokenizer')
-        self.llama_tokenizer = LlamaTokenizer.from_pretrained(llama_path, use_fast=False)
+        self.llama_tokenizer = LlamaTokenizerFast.from_pretrained(llama_path)
         self.llama_tokenizer.add_special_tokens({'pad_token': '[PAD]'})
         self.llama_tokenizer.padding_side = "right"
 
         logging.info('Loading LLaMA Model')
         if self.low_resource:
-            self.llama_model = LlamaForCausalLM.from_pretrained(
+            self.llama_model = AutoModelForCausalLM.from_pretrained(
                 llama_path,
                 torch_dtype=torch.float16,
                 load_in_8bit=True,
                 device_map={"": device_8bit},
+                use_safetensors=True,
+                ignore_mismatched_sizes=True  # Allow mismatched sizes
+
             )
         else:
-            self.llama_model = LlamaForCausalLM.from_pretrained(
+            self.llama_model = AutoModelForCausalLM.from_pretrained(
                 llama_path,
                 torch_dtype=torch.float16,
+                use_safetensors=True,
+                ignore_mismatched_sizes=True  # Allow mismatched sizes
+
             )
 
         self.llama_model.resize_token_embeddings(len(self.llama_tokenizer))

@@ -23,10 +23,15 @@ from transformers import WhisperFeatureExtractor
 
 
 class SALMONNDataset(Dataset):
-    def __init__(self, ann_path, whisper_path):
+    def __init__(self, ann_path, whisper_path, data_root):
         super().__init__()
 
         self.annotation = json.load(open(ann_path, "r"))["annotation"]
+        # Replace `{data_root}` in all paths
+        for entry in self.annotation :
+            entry["path"] = entry["path"].replace("{data_root}", data_root)
+
+        self.data_root = data_root
 
         self.wav_processor = WhisperFeatureExtractor.from_pretrained(whisper_path)
 

@@ -7,7 +7,7 @@ from .sft_dataset_nomix import SupervisedAudioVisualDataset4Test
 
 '''
 def get_tokenizer(model):
-    tokenizer = LlamaTokenizer.from_pretrained(model)
+    tokenizer = LlamaTokenizerFast.from_pretrained(model)
     tokenizer.bos_token_id, tokenizer.eos_token_id = 1, 2
     tokenizer.pad_token = tokenizer.eos_token
     return tokenizer

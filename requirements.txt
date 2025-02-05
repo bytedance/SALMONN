@@ -1,10 +1,11 @@
-torch==2.0.1
-torchaudio==2.0.2
+torch==2.5.1+cu121
+torchaudio==2.5.1+cu121
 peft==0.3.0
 soundfile 
 librosa
-transformers==4.28.0
+transformers==4.48.2
 sentencepiece==0.1.97
 accelerate==0.20.3
-bitsandbytes==0.35.0
+bitsandbytes==0.45.1
 gradio==3.23.0
+wandb==0.19.6

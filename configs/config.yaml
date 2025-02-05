@@ -35,10 +35,14 @@ model:
   freeze_speech_llama_proj: False
 
   # LoRA
-  lora: True
+  lora: False
   lora_rank: 8
   lora_alpha: 32
   lora_dropout: 0.1
+
+  # Soft Prompting
+  soft_prompts: True
+  num_soft_prompt_tokens: 20
 
   multi_prompt: True
   prompt_template: "USER: {}\nASSISTANT:"

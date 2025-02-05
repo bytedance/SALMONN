@@ -83,6 +83,9 @@ class SALMONN(nn.Module):
         lora_rank=8,
         lora_alpha=32,
         lora_dropout=0.1,
+        
+        soft_prompts=True,
+        num_soft_prompt_tokens=20,
 
         multi_prompt=False,
         prompt_path="",
@@ -104,6 +107,9 @@ class SALMONN(nn.Module):
         self.max_txt_len = max_txt_len
         self.end_sym = end_sym
         self.low_resource = low_resource
+        
+        self.soft_prompts = soft_prompts
+        self.num_soft_prompt_tokens = num_soft_prompt_tokens
 
         logging.info('Loading LLaMA Tokenizer')
         self.llama_tokenizer = LlamaTokenizerFast.from_pretrained(llama_path)
@@ -146,6 +152,14 @@ class SALMONN(nn.Module):
             self.llama_model = get_peft_model(self.llama_model, self.peft_config)
             self.llama_model.print_trainable_parameters()
             logging.info('LoRA Training')
+        elif self.soft_prompts:
+            logging.info("Using Soft Prompting for fine-tuning.")
+            self.soft_prompt_length = self.num_soft_prompt_tokens
+            with torch.no_grad():
+                base_embedding_mean = self.llama_model.model.embed_tokens.weight.mean(dim=0)  # Compute mean embedding
+                noise = torch.randn(1, self.num_soft_prompt_tokens, self.llama_model.config.hidden_size) * 0.02  # Small noise
+                self.soft_prompt_embeddings = nn.Parameter(base_embedding_mean.unsqueeze(0).unsqueeze(0) + noise)
+
 
         assert whisper_path
         logging.info('Loading Whisper Model')
@@ -277,6 +291,13 @@ class SALMONN(nn.Module):
                 audio_embeds = None
 
         return self._encode_auditory_feature(speech_embeds, audio_embeds=audio_embeds)
+    
+    def inject_soft_prompt(self, input_embeds):
+        """Prepends soft prompts to the input embeddings."""
+        batch_size = input_embeds.shape[0]
+        soft_prompt_expanded = self.soft_prompt_embeddings.expand(batch_size, -1, -1)
+        return torch.cat([soft_prompt_expanded, input_embeds], dim=1)
+
 
     def prompt_wrap(self, embeds, atts, prompt, multi_prompt=False):
         if prompt:
@@ -379,6 +400,13 @@ class SALMONN(nn.Module):
 
         inputs_embeds = torch.cat([bos_embeds, speech_embeds, to_regress_embeds], dim=1)
         attention_mask = torch.cat([atts_bos, speech_atts, to_regress_tokens.attention_mask], dim=1)
+        
+        if self.use_soft_prompting:
+            inputs_embeds = self.inject_soft_prompt(inputs_embeds)
+            soft_prompt_mask = torch.ones(
+                inputs_embeds.shape[0], self.num_soft_prompt_tokens, device=inputs_embeds.device, dtype=attention_mask.dtype
+            )  # Create an attention mask for the soft prompts
+            attention_mask = torch.cat([soft_prompt_mask, attention_mask], dim=1)
 
         # calulate loss
         with self.maybe_autocast():
@@ -425,6 +453,18 @@ class SALMONN(nn.Module):
 
         embeds = torch.cat([bos_embeds, speech_embeds], dim=1)
         attns = torch.cat([atts_bos, speech_atts], dim=1)
+        
+        if self.use_soft_prompting:
+            embeds = self.inject_soft_prompt(embeds)
+            
+            # Create a soft prompt attention mask (all ones)
+            soft_prompt_mask = torch.ones(
+                (embeds.shape[0], self.num_soft_prompt_tokens), 
+                dtype=attns.dtype, 
+                device=attns.device
+            )
+            # Prepend the soft prompt mask to the existing attention mask
+            attns = torch.cat([soft_prompt_mask, attns], dim=1)
 
         stop_words_ids = [torch.tensor([2]).cuda()]  
         stopping_criteria = StoppingCriteriaList([StoppingCriteriaSub(stops=stop_words_ids)])

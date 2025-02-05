@@ -58,7 +58,7 @@ datasets:
 run:
   # log & settings
   seed: 42
-  output_dir: "baseline_run"
+  output_dir: "baseline_run_wandb"
   evaluate: False # if True, only evaluate model on test data
 
   log_freq: 5

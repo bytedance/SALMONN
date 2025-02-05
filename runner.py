@@ -92,9 +92,9 @@ class Runner:
         
         if is_main_process():  # Prevent multiple processes from initializing wandb
             wandb.init(
-                project=self.config.run.project_name,  # Replace with your W&B project
+                project=self.config.config.run.project_name,  # Replace with your W&B project
                 config=self.config.to_dict(),
-                name=self.config.run.run_name,
+                name=self.config.config.run.run_name,
                 dir=str(self.output_dir),
             )
 

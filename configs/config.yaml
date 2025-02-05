@@ -35,13 +35,13 @@ model:
   freeze_speech_llama_proj: False
 
   # LoRA
-  lora: False
+  lora: True
   lora_rank: 8
   lora_alpha: 32
   lora_dropout: 0.1
 
   # Soft Prompting
-  soft_prompts: True
+  soft_prompts: False
   num_soft_prompt_tokens: 20
 
   multi_prompt: True

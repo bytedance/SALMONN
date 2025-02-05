@@ -108,7 +108,7 @@ class SALMONN(nn.Module):
         self.end_sym = end_sym
         self.low_resource = low_resource
         
-        self.soft_prompts = soft_prompts
+        self.use_soft_prompting = soft_prompts
         self.num_soft_prompt_tokens = num_soft_prompt_tokens
 
         logging.info('Loading LLaMA Tokenizer')
@@ -152,14 +152,24 @@ class SALMONN(nn.Module):
             self.llama_model = get_peft_model(self.llama_model, self.peft_config)
             self.llama_model.print_trainable_parameters()
             logging.info('LoRA Training')
-        elif self.soft_prompts:
+            num_trainable_params = sum(p.numel() for p in self.llama_model.parameters() if p.requires_grad)
+            total_params = sum(p.numel() for p in self.llama_model.parameters())
+
+        elif self.use_soft_prompting:
             logging.info("Using Soft Prompting for fine-tuning.")
             self.soft_prompt_length = self.num_soft_prompt_tokens
             with torch.no_grad():
                 base_embedding_mean = self.llama_model.model.embed_tokens.weight.mean(dim=0)  # Compute mean embedding
                 noise = torch.randn(1, self.num_soft_prompt_tokens, self.llama_model.config.hidden_size) * 0.02  # Small noise
                 self.soft_prompt_embeddings = nn.Parameter(base_embedding_mean.unsqueeze(0).unsqueeze(0) + noise)
+            num_trainable_params = self.soft_prompt_embeddings.numel()
+            total_params = sum(p.numel() for p in self.llama_model.parameters()) + num_trainable_params
 
+        # Compute percentage
+        trainable_ratio = (num_trainable_params / total_params) * 100
+
+        # Print results
+        logging.info(f"LoRA enabled: Trainable params = {num_trainable_params:,} Total Params: {total_params:,} ({trainable_ratio:.4f}% of total params)")
 
         assert whisper_path
         logging.info('Loading Whisper Model')
@@ -381,9 +391,13 @@ class SALMONN(nn.Module):
         targets = to_regress_tokens.input_ids.masked_fill(
             to_regress_tokens.input_ids == self.llama_tokenizer.pad_token_id, -100
         )
+        empty_target_length = speech_atts.shape[1] + 1
+        if self.use_soft_prompting:
+            empty_target_length += self.num_soft_prompt_tokens
+            
         empty_targets = (
             torch.ones(
-                [speech_atts.shape[0], speech_atts.shape[1] + 1],
+                [speech_atts.shape[0], empty_target_length],
                 dtype=torch.long
             ).to(spectrogram.device).fill_(-100)
         )
@@ -507,6 +521,9 @@ class SALMONN(nn.Module):
         lora_rank = config.get("lora_rank", 8)
         lora_alpha = config.get("lora_alpha", 32)
         lora_dropout = config.get("lora_dropout", 0.1)
+        
+        soft_prompts = config.get("soft_prompts", False)
+        num_soft_prompt_tokens = config.get("num_soft_prompt_tokens", 20)
 
         multi_prompt = config.get("multi_prompt", False)
         prompt_path = config.get("prompt_path", "")
@@ -534,6 +551,8 @@ class SALMONN(nn.Module):
             lora_rank=lora_rank,
             lora_alpha=lora_alpha,
             lora_dropout=lora_dropout,
+            soft_prompts=soft_prompts,
+            num_soft_prompt_tokens=num_soft_prompt_tokens,
             multi_prompt=multi_prompt,
             prompt_path=prompt_path,
             prompt_template=prompt_template,

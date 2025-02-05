@@ -30,6 +30,40 @@ from .beats.BEATs import BEATsConfig, BEATs
 from .utils import StoppingCriteriaSub
 
 
+class PromptPool(nn.Module):
+    def __init__(self, num_prompts=20, prompt_dim=1024, model_input_embeds=None):
+        super().__init__()
+        self.num_prompts = num_prompts
+        
+        # Initialize keys with small random values
+        self.prompt_keys = nn.Parameter(torch.randn(num_prompts, prompt_dim) * 0.01)  # Learnable keys
+        
+        # Initialize values based on model input embeddings mean plus noise
+        if model_input_embeds is not None:
+            mean_embedding = model_input_embeds.mean(dim=0, keepdim=True)
+            self.prompt_values = nn.Parameter(mean_embedding + torch.randn(num_prompts, prompt_dim) * 0.01)
+        else:
+            self.prompt_values = nn.Parameter(torch.randn(num_prompts, prompt_dim))
+            
+        self.dropout = nn.Dropout(0.1)
+
+    def forward(self, input_embedding, top_k=5):
+        """
+        Selects the top-k relevant prompts based on similarity with the input.
+        Arguments:
+        - input_embedding: [batch_size, hidden_dim]
+        - top_k: Number of prompts to select
+        """
+        # Compute similarities between input and prompt keys
+        similarities = torch.matmul(input_embedding, self.prompt_keys.T)  # [batch_size, num_prompts]
+        similarities = self.dropout(similarities)
+        topk_indices = torch.topk(similarities, top_k, dim=1).indices  # Get top-k prompt indices
+
+        # Gather the selected prompts in a vectorized manner
+        selected_prompts = self.prompt_values[topk_indices]  # [batch_size, top_k, prompt_dim]
+        return selected_prompts
+    
+    
 class SALMONN(nn.Module):
     @classmethod
     def init_speech_Qformer(cls, num_query_token, speech_width, num_hidden_layers=2):
@@ -86,6 +120,10 @@ class SALMONN(nn.Module):
         
         soft_prompts=True,
         num_soft_prompt_tokens=20,
+        
+        l2p=False,
+        pool_size=30,
+        prompt_size=10,
 
         multi_prompt=False,
         prompt_path="",
@@ -110,6 +148,8 @@ class SALMONN(nn.Module):
         
         self.use_soft_prompting = soft_prompts
         self.num_soft_prompt_tokens = num_soft_prompt_tokens
+        
+        self.l2p=l2p,
 
         logging.info('Loading LLaMA Tokenizer')
         self.llama_tokenizer = LlamaTokenizerFast.from_pretrained(llama_path)
@@ -164,12 +204,26 @@ class SALMONN(nn.Module):
                 self.soft_prompt_embeddings = nn.Parameter(base_embedding_mean.unsqueeze(0).unsqueeze(0) + noise)
             num_trainable_params = self.soft_prompt_embeddings.numel()
             total_params = sum(p.numel() for p in self.llama_model.parameters()) + num_trainable_params
+        
+        elif self.l2p:
+            logging.info("Using Learning to prompt for fine-tuning.")
+            self.pool_size=pool_size,
+            self.prompt_size=prompt_size,
+            with torch.no_grad():
+                base_embedding_mean = self.llama_model.model.embed_tokens.weight.mean(dim=0)  # Compute mean embedding
+                noise = torch.randn(1, self.num_soft_prompt_tokens, self.llama_model.config.hidden_size) * 0.02  # Small noise
+                self.prompt_pool = PromptPool(
+                    num_prompts=self.pool_size,
+                    prompt_dim=base_embedding_mean.shape[-1],
+                    model_input_embeds=base_embedding_mean+noise,)
+            num_trainable_params = self.prompt_size * base_embedding_mean.shape[-1]
+            total_params = sum(p.numel() for p in self.llama_model.parameters()) + num_trainable_params
 
         # Compute percentage
         trainable_ratio = (num_trainable_params / total_params) * 100
 
         # Print results
-        logging.info(f"LoRA enabled: Trainable params = {num_trainable_params:,} Total Params: {total_params:,} ({trainable_ratio:.4f}% of total params)")
+        logging.info(f"Trainable params = {num_trainable_params:,} Total Params: {total_params:,} ({trainable_ratio:.4f}% of total params)")
 
         assert whisper_path
         logging.info('Loading Whisper Model')
@@ -302,12 +356,19 @@ class SALMONN(nn.Module):
 
         return self._encode_auditory_feature(speech_embeds, audio_embeds=audio_embeds)
     
-    def inject_soft_prompt(self, input_embeds):
-        """Prepends soft prompts to the input embeddings."""
-        batch_size = input_embeds.shape[0]
-        soft_prompt_expanded = self.soft_prompt_embeddings.expand(batch_size, -1, -1)
-        return torch.cat([soft_prompt_expanded, input_embeds], dim=1)
-
+    def inject_soft_prompt(self, inputs_embeds, input_representations=None):
+        """
+        Injects soft prompts into the input embeddings. Supports both fixed and L2P-style soft prompts.
+        """
+        if self.use_l2p:
+            assert input_representations is not None, "Input representations are required for L2P."
+            selected_prompts = self.prompt_pool(input_representations, top_k=self.prompt_size)  # Select relevant prompts
+            inputs_embeds = torch.cat([selected_prompts, inputs_embeds], dim=1)
+        else:
+            batch_size = inputs_embeds.size(0)
+            soft_prompts = self.soft_prompt_embeddings.expand(batch_size, -1, -1)
+            inputs_embeds = torch.cat([soft_prompts, inputs_embeds], dim=1)
+        return inputs_embeds
 
     def prompt_wrap(self, embeds, atts, prompt, multi_prompt=False):
         if prompt:
@@ -391,13 +452,10 @@ class SALMONN(nn.Module):
         targets = to_regress_tokens.input_ids.masked_fill(
             to_regress_tokens.input_ids == self.llama_tokenizer.pad_token_id, -100
         )
-        empty_target_length = speech_atts.shape[1] + 1
-        if self.use_soft_prompting:
-            empty_target_length += self.num_soft_prompt_tokens
-            
+        
         empty_targets = (
             torch.ones(
-                [speech_atts.shape[0], empty_target_length],
+                [speech_atts.shape[0], speech_atts.shape[1] + 1],
                 dtype=torch.long
             ).to(spectrogram.device).fill_(-100)
         )
@@ -415,12 +473,21 @@ class SALMONN(nn.Module):
         inputs_embeds = torch.cat([bos_embeds, speech_embeds, to_regress_embeds], dim=1)
         attention_mask = torch.cat([atts_bos, speech_atts, to_regress_tokens.attention_mask], dim=1)
         
-        if self.use_soft_prompting:
-            inputs_embeds = self.inject_soft_prompt(inputs_embeds)
+        if self.use_soft_prompting or self.l2p:
+            num_tokens = self.num_soft_prompt_tokens if self.use_soft_prompting else self.prompt_size
+            inputs_embeds = self.inject_soft_prompt(inputs_embeds, speech_embeds.mean(1))
             soft_prompt_mask = torch.ones(
-                inputs_embeds.shape[0], self.num_soft_prompt_tokens, device=inputs_embeds.device, dtype=attention_mask.dtype
+                inputs_embeds.shape[0], num_tokens, device=inputs_embeds.device, dtype=attention_mask.dtype
             )  # Create an attention mask for the soft prompts
             attention_mask = torch.cat([soft_prompt_mask, attention_mask], dim=1)
+            empty_targets = (
+                torch.ones(
+                    [targets.shape[0], num_tokens],
+                    dtype=torch.long
+                ).to(spectrogram.device).fill_(-100)
+            )
+            targets = torch.cat([empty_targets, targets], dim=1)
+            
 
         # calulate loss
         with self.maybe_autocast():
@@ -469,7 +536,7 @@ class SALMONN(nn.Module):
         attns = torch.cat([atts_bos, speech_atts], dim=1)
         
         if self.use_soft_prompting:
-            embeds = self.inject_soft_prompt(embeds)
+            embeds = self.inject_soft_prompt(embeds, speech_embeds.mean(1))
             
             # Create a soft prompt attention mask (all ones)
             soft_prompt_mask = torch.ones(

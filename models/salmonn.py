@@ -40,8 +40,7 @@ class PromptPool(nn.Module):
         
         # Initialize values based on model input embeddings mean plus noise
         if model_input_embeds is not None:
-            mean_embedding = model_input_embeds.mean(dim=0, keepdim=True)
-            self.prompt_values = nn.Parameter(mean_embedding + torch.randn(num_prompts, prompt_dim) * 0.01)
+            self.prompt_values = nn.Parameter(model_input_embeds)
         else:
             self.prompt_values = nn.Parameter(torch.randn(num_prompts, prompt_dim))
             
@@ -149,7 +148,11 @@ class SALMONN(nn.Module):
         self.use_soft_prompting = soft_prompts
         self.num_soft_prompt_tokens = num_soft_prompt_tokens
         
-        self.l2p=l2p,
+        self.l2p=l2p
+        self.pool_size=pool_size
+        self.prompt_size=prompt_size
+        
+        print(pool_size, type(pool_size))
 
         logging.info('Loading LLaMA Tokenizer')
         self.llama_tokenizer = LlamaTokenizerFast.from_pretrained(llama_path)
@@ -207,16 +210,15 @@ class SALMONN(nn.Module):
         
         elif self.l2p:
             logging.info("Using Learning to prompt for fine-tuning.")
-            self.pool_size=pool_size,
-            self.prompt_size=prompt_size,
             with torch.no_grad():
                 base_embedding_mean = self.llama_model.model.embed_tokens.weight.mean(dim=0)  # Compute mean embedding
-                noise = torch.randn(1, self.num_soft_prompt_tokens, self.llama_model.config.hidden_size) * 0.02  # Small noise
+                print(self.pool_size, type(self.pool_size), self.llama_model.config.hidden_size, type(self.llama_model.config.hidden_size))
+                noise = torch.randn(1, self.pool_size, self.llama_model.config.hidden_size) * 0.02  # Small noise
                 self.prompt_pool = PromptPool(
                     num_prompts=self.pool_size,
                     prompt_dim=base_embedding_mean.shape[-1],
-                    model_input_embeds=base_embedding_mean+noise,)
-            num_trainable_params = self.prompt_size * base_embedding_mean.shape[-1]
+                    model_input_embeds=base_embedding_mean.unsqueeze(0).unsqueeze(0) + noise,)
+            num_trainable_params = self.pool_size * base_embedding_mean.shape[-1]
             total_params = sum(p.numel() for p in self.llama_model.parameters()) + num_trainable_params
 
         # Compute percentage
@@ -360,7 +362,8 @@ class SALMONN(nn.Module):
         """
         Injects soft prompts into the input embeddings. Supports both fixed and L2P-style soft prompts.
         """
-        if self.use_l2p:
+        print(self.l2p)
+        if self.l2p:
             assert input_representations is not None, "Input representations are required for L2P."
             selected_prompts = self.prompt_pool(input_representations, top_k=self.prompt_size)  # Select relevant prompts
             inputs_embeds = torch.cat([selected_prompts, inputs_embeds], dim=1)
@@ -591,6 +594,10 @@ class SALMONN(nn.Module):
         
         soft_prompts = config.get("soft_prompts", False)
         num_soft_prompt_tokens = config.get("num_soft_prompt_tokens", 20)
+        
+        l2p = config.get("l2p", False)
+        pool_size = config.get("pool_size", 30)
+        prompt_size = config.get("prompt_size", 10)
 
         multi_prompt = config.get("multi_prompt", False)
         prompt_path = config.get("prompt_path", "")
@@ -620,6 +627,9 @@ class SALMONN(nn.Module):
             lora_dropout=lora_dropout,
             soft_prompts=soft_prompts,
             num_soft_prompt_tokens=num_soft_prompt_tokens,
+            l2p=l2p,
+            pool_size=pool_size,
+            prompt_size=prompt_size,
             multi_prompt=multi_prompt,
             prompt_path=prompt_path,
             prompt_template=prompt_template,

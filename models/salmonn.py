@@ -59,6 +59,8 @@ class PromptPool(nn.Module):
         topk_indices = torch.topk(similarities, top_k, dim=1).indices  # Get top-k prompt indices
 
         # Gather the selected prompts in a vectorized manner
+        assert (topk_indices >= 0).all() and (topk_indices < self.prompt_values.size(0)).all(), "Index out of bounds!"
+
         selected_prompts = self.prompt_values[topk_indices]  # [batch_size, top_k, prompt_dim]
         return selected_prompts
     
@@ -213,11 +215,11 @@ class SALMONN(nn.Module):
             with torch.no_grad():
                 base_embedding_mean = self.llama_model.model.embed_tokens.weight.mean(dim=0)  # Compute mean embedding
                 print(self.pool_size, type(self.pool_size), self.llama_model.config.hidden_size, type(self.llama_model.config.hidden_size))
-                noise = torch.randn(1, self.pool_size, self.llama_model.config.hidden_size) * 0.02  # Small noise
+                noise = torch.randn(self.pool_size, self.llama_model.config.hidden_size) * 0.02  # Small noise
                 self.prompt_pool = PromptPool(
                     num_prompts=self.pool_size,
                     prompt_dim=base_embedding_mean.shape[-1],
-                    model_input_embeds=base_embedding_mean.unsqueeze(0).unsqueeze(0) + noise,)
+                    model_input_embeds=base_embedding_mean.unsqueeze(0) + noise)
             num_trainable_params = self.pool_size * base_embedding_mean.shape[-1]
             total_params = sum(p.numel() for p in self.llama_model.parameters()) + num_trainable_params
 
@@ -362,7 +364,6 @@ class SALMONN(nn.Module):
         """
         Injects soft prompts into the input embeddings. Supports both fixed and L2P-style soft prompts.
         """
-        print(self.l2p)
         if self.l2p:
             assert input_representations is not None, "Input representations are required for L2P."
             selected_prompts = self.prompt_pool(input_representations, top_k=self.prompt_size)  # Select relevant prompts

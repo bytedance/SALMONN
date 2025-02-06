@@ -34,6 +34,8 @@ class PromptPool(nn.Module):
     def __init__(self, num_prompts=20, prompt_dim=1024, model_input_embeds=None):
         super().__init__()
         self.num_prompts = num_prompts
+        self.usage_counts = torch.zeros(num_prompts, dtype=torch.long)  # Track frequency of each prompt
+
         
         # Initialize keys with small random values
         self.prompt_keys = nn.Parameter(torch.randn(num_prompts, prompt_dim) * 0.01)  # Learnable keys
@@ -44,7 +46,6 @@ class PromptPool(nn.Module):
         else:
             self.prompt_values = nn.Parameter(torch.randn(num_prompts, prompt_dim))
             
-        self.dropout = nn.Dropout(0.1)
 
     def forward(self, input_embedding, top_k=5):
         """
@@ -55,8 +56,10 @@ class PromptPool(nn.Module):
         """
         # Compute similarities between input and prompt keys
         similarities = torch.matmul(input_embedding, self.prompt_keys.T)  # [batch_size, num_prompts]
-        similarities = self.dropout(similarities)
+
         topk_indices = torch.topk(similarities, top_k, dim=1).indices  # Get top-k prompt indices
+        unique, counts = torch.unique(topk_indices, return_counts=True)
+        self.usage_counts.index_add_(0, unique, counts)
 
         # Gather the selected prompts in a vectorized manner
         assert (topk_indices >= 0).all() and (topk_indices < self.prompt_values.size(0)).all(), "Index out of bounds!"

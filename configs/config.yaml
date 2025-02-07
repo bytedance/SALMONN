@@ -14,7 +14,9 @@
 
 model:
   # paths
-  llama_path: "/mnt/dssk/data_rw/shubham/l2p/llama3"
+  # llama_path: "/mnt/dssk/data_rw/shubham/l2p/llama3"
+  llama_model_name: "meta-llama/Meta-Llama-3-8B"
+  cache_dir: "/mnt/dssk/data_rw/shubham/l2p/llama3"
   whisper_path: "/mnt/dssk/data_rw/shubham/l2p/whisper/"
   beats_path: "/mnt/dssk/data_rw/shubham/l2p/beats/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt"
 

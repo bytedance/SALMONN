@@ -20,7 +20,7 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from transformers import LlamaTokenizerFast, StoppingCriteriaList, AutoModelForCausalLM
+from transformers import AutoTokenizer, StoppingCriteriaList, AutoModelForCausalLM
 from peft import LoraConfig, TaskType, get_peft_model
 
 from .Qformer import BertConfig, BertLMHeadModel
@@ -101,11 +101,12 @@ class SALMONN(nn.Module):
 
     def __init__(
         self,
-        llama_path="",
+        llama_model_name="",
         whisper_path="",
         freeze_whisper=True,
         beats_path="",
         freeze_beats=True,
+        cache_dir = "",
 
         use_speech_Qformer=True,
         num_speech_query_token=1,
@@ -160,31 +161,33 @@ class SALMONN(nn.Module):
         print(pool_size, type(pool_size))
 
         logging.info('Loading LLaMA Tokenizer')
-        self.llama_tokenizer = LlamaTokenizerFast.from_pretrained(llama_path)
-        self.llama_tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+        self.llama_tokenizer = AutoTokenizer.from_pretrained(
+            llama_model_name,
+            cache_dir=cache_dir
+        )
+        if self.llama_tokenizer.pad_token is None:
+            self.llama_tokenizer.add_special_tokens({'pad_token': '[PAD]'})  
+            self.llama_model.resize_token_embeddings(len(self.llama_tokenizer))
+      
         self.llama_tokenizer.padding_side = "right"
 
+        
         logging.info('Loading LLaMA Model')
         if self.low_resource:
             self.llama_model = AutoModelForCausalLM.from_pretrained(
-                llama_path,
+                llama_model_name,
+                cache_dir=cache_dir,
                 torch_dtype=torch.float16,
                 load_in_8bit=True,
-                device_map={"": device_8bit},
-                use_safetensors=True,
-                ignore_mismatched_sizes=True  # Allow mismatched sizes
-
+                device_map={"": device_8bit}
             )
         else:
             self.llama_model = AutoModelForCausalLM.from_pretrained(
-                llama_path,
-                torch_dtype=torch.float16,
-                use_safetensors=True,
-                ignore_mismatched_sizes=True  # Allow mismatched sizes
-
+                llama_model_name,
+                cache_dir=cache_dir,
+                torch_dtype=torch.float16
             )
-
-        self.llama_model.resize_token_embeddings(len(self.llama_tokenizer))
+            
         for name, param in self.llama_model.named_parameters():
             param.requires_grad = False
         logging.info('Loading LLaMA Done')
@@ -570,7 +573,9 @@ class SALMONN(nn.Module):
 
     @classmethod
     def from_config(cls, config):
-        llama_path = config.get("llama_path")
+        # llama_path = config.get("llama_path")
+        llama_model_name = config.get("llama_model_name")
+        cache_dir = config.get("cache_dir")
         whisper_path = config.get("whisper_path")
         freeze_whisper = config.get("freeze_whisper", True)
         beats_path = config.get("beats_path", "")
@@ -607,7 +612,8 @@ class SALMONN(nn.Module):
         device_8bit = config.get("device_8bit", 0)
 
         model = cls(
-            llama_path=llama_path,
+            llama_model_name=llama_model_name,
+            cache_dir=cache_dir,
             whisper_path=whisper_path,
             freeze_whisper=freeze_whisper,
             beats_path=beats_path,

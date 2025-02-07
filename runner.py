@@ -6,6 +6,7 @@ import time
 import datetime
 from pathlib import Path
 import logging
+import wandb
 
 import torch
 import torch.distributed as dist
@@ -88,6 +89,15 @@ class Runner:
         )
 
         self.log_config()
+        
+        if is_main_process():  # Prevent multiple processes from initializing wandb
+            logging.info(f"Initializing run name for wandb: {self.config.config.run.run_name}")
+            wandb.init(
+                project=self.config.config.run.project_name,  # Replace with your W&B project
+                config=self.config.to_dict(),
+                name=self.config.config.run.run_name,
+                dir=str(self.output_dir),
+            )
 
     def unwrap_dist_model(self, model):
         if self.use_distributed:
@@ -109,7 +119,12 @@ class Runner:
         )
         header = "Train: data epoch: [{}]".format(epoch)
 
-        for i in metric_logger.log_every(range(self.iters_per_epoch), self.config.config.run.log_freq, header=header, logger=self.log_writter, start_step=epoch*self.iters_per_epoch):
+        for i in metric_logger.log_every(
+                range(self.iters_per_epoch),
+                self.config.config.run.log_freq,
+                header=header,
+                logger=self.log_writter,
+                start_step=epoch*self.iters_per_epoch):
             if i >= self.iters_per_epoch:
                 break
 
@@ -136,6 +151,15 @@ class Runner:
 
             metric_logger.update(loss=loss.item())
             metric_logger.update(lr=self.optimizer.param_groups[0]["lr"])
+            
+            # Log training metrics to wandb
+            if is_main_process():
+                wandb.log({
+                    "train/loss": loss.item(),
+                    "learning_rate": self.optimizer.param_groups[0]["lr"], 
+                    "epoch": epoch, 
+                    "iteration": i})
+
 
         metric_logger.synchronize_between_processes()
         logging.info("Averaged stats: " + str(metric_logger.global_avg()))
@@ -221,6 +245,15 @@ class Runner:
         ret = {"loss": 0, "agg_metrics": 0}
         ret["loss"] = (res["loss"] / res["n_sample"]).item()
         ret["agg_metrics"] = (res["correct"] / res["n_token"]).item()
+        
+        # Log validation results to wandb
+        if is_main_process():
+            wandb.log({
+                "val/loss": ret["loss"],
+                "val/accuracy": ret["agg_metrics"],
+                "epoch": epoch
+            })
+
 
         return ret
 
@@ -299,6 +332,11 @@ class Runner:
         # testing phase
         if self.evaluate_only:
             test_log = self.valid_epoch("best", "test", decode=True, save_json=True)
+            if is_main_process():
+                wandb.log({
+                    "test/loss": test_log.get("loss", 0), 
+                    "test/accuracy": test_log.get("agg_metrics", 0)})
+
 
         total_time = time.time() - start_time
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))

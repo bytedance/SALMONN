@@ -91,6 +91,7 @@ class Runner:
         self.log_config()
         
         if is_main_process():  # Prevent multiple processes from initializing wandb
+            logging.info(f"Initializing run name for wandb: {self.config.config.run.run_name}")
             wandb.init(
                 project=self.config.config.run.project_name,  # Replace with your W&B project
                 config=self.config.to_dict(),

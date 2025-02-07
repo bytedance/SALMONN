@@ -40,6 +40,16 @@ model:
   lora_alpha: 32
   lora_dropout: 0.1
 
+  # Soft Prompting
+  soft_prompts: False
+  num_soft_prompt_tokens: 20
+
+
+  # Pooled Soft Prompting
+  l2p: False
+  pool_size: 30
+  prompt_size: 10
+
   multi_prompt: True
   prompt_template: "USER: {}\nASSISTANT:"
   prompt_path: "prompts/train_prompt.json"

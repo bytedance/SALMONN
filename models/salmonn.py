@@ -165,12 +165,6 @@ class SALMONN(nn.Module):
             llama_model_name,
             cache_dir=cache_dir
         )
-        if self.llama_tokenizer.pad_token is None:
-            self.llama_tokenizer.add_special_tokens({'pad_token': '[PAD]'})  
-            self.llama_model.resize_token_embeddings(len(self.llama_tokenizer))
-      
-        self.llama_tokenizer.padding_side = "right"
-
         
         logging.info('Loading LLaMA Model')
         if self.low_resource:
@@ -187,6 +181,12 @@ class SALMONN(nn.Module):
                 cache_dir=cache_dir,
                 torch_dtype=torch.float16
             )
+            
+        if self.llama_tokenizer.pad_token is None:
+            logging.info("There is no pad token present, using eos token instead")
+            self.llama_tokenizer.pad_token = self.llama_tokenizer.eos_token
+      
+        self.llama_tokenizer.padding_side = "right"
             
         for name, param in self.llama_model.named_parameters():
             param.requires_grad = False

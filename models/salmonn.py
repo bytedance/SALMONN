@@ -460,14 +460,8 @@ class SALMONN(nn.Module):
             to_regress_tokens.input_ids == self.llama_tokenizer.pad_token_id, -100
         )
         
-        empty_targets = (
-            torch.ones(
-                [speech_atts.shape[0], speech_atts.shape[1] + 1],
-                dtype=torch.long
-            ).to(spectrogram.device).fill_(-100)
-        )
-        targets = torch.cat([empty_targets, targets], dim=1)
-
+        empty_target_size = speech_atts.shape[1] + 1 # speech tokens and bos token
+        
         batch_size = speech_embeds.shape[0]
         bos = torch.ones(
             [batch_size, 1],
@@ -487,13 +481,16 @@ class SALMONN(nn.Module):
                 inputs_embeds.shape[0], num_tokens, device=inputs_embeds.device, dtype=attention_mask.dtype
             )  # Create an attention mask for the soft prompts
             attention_mask = torch.cat([soft_prompt_mask, attention_mask], dim=1)
-            empty_targets = (
-                torch.ones(
-                    [targets.shape[0], num_tokens],
-                    dtype=torch.long
-                ).to(spectrogram.device).fill_(-100)
-            )
-            targets = torch.cat([empty_targets, targets], dim=1)
+            empty_target_size += num_tokens
+            
+        # insert empty target tokens
+        empty_targets = (
+            torch.ones(
+                [targets.shape[0], empty_target_size],
+                dtype=torch.long
+            ).to(spectrogram.device).fill_(-100)
+        )
+        targets = torch.cat([empty_targets, targets], dim=1)
             
 
         # calulate loss
@@ -513,8 +510,6 @@ class SALMONN(nn.Module):
             mask = (labels != -100)
             correct = (results[mask] == labels[mask]).float().sum()
             total = len(labels[mask])
-
-        if verbose:
             return {"loss": loss, "correct": correct, "total": total}
 
         return {"loss": loss}

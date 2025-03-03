@@ -25,3 +25,14 @@ Our finetuned SALMONN-7B checkpoint can also be downloaded [here](https://huggin
 ## Run and inference
 
 Just follow the repo of SALMONN.
+
+## Citation
+```
+@inproceedings{wang2024enabling,
+  title={Enabling Auditory Large Language Models for Automatic Speech Quality Evaluation},
+  author={Wang, Siyin and Yu, Wenyi and Yang, Yudong and Tang, Changli and Li, Yixuan and Zhuang, Jimin and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Sun, Guangzhi and others},
+  booktitle={Proc. ICASSP},
+  address={Hyderabad},
+  year={2025}
+}
+```

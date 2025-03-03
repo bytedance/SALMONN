@@ -21,7 +21,7 @@ SALMONN is a large language model (LLM) enabling **speech, audio events, and mus
 </div>
 
 ## 🔥 News
-- [2024-09-04] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](quality_assessment/README.md)!
+- [2025-03-03] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](quality_assessment/README.md)!
 - [2024-09-04] We have released the model and inference code for **video-SALMONN**! See [here](video_salmonn/README.md)!
 - [2024-05-28] 🧳 We have released all the annotations (including 600k SQA/AQA data and 50k audio-based storytelling data) for the 3-stage training of SALMONN! Feel free to download them [here](https://drive.google.com/file/d/15cQO--rtMM9JD22y-A5oXXvT3DujgE2e/view?usp=sharing)!
 - [2024-04-07] 🤖 We have released all the codes you need to train your own SALMONN! Try some cool things!

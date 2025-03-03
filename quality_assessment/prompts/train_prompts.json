@@ -1,0 +1,36 @@
+{
+    "mos_evaluation_description": [
+        "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample.",
+        "<Speech><SpeechHere></Speech> Could you please evaluate the quality of this speech sample?",
+        "<Speech><SpeechHere></Speech> Give me an assessment of the quality of this speech sample."
+    ],
+    "mos_evaluation_onlyscore": [
+        "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score.",
+        "<Speech><SpeechHere></Speech> Could you please show me a score of the quality of this speech sample?",
+        "<Speech><SpeechHere></Speech> Give me a score to summarize the quality of this speech sample."
+    ],
+    "mos_evaluation_onlyscore_nisqa": [
+        "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score according to NISQA standards.",
+        "<Speech><SpeechHere></Speech> Could you please show me a score of the quality of this speech sample in accordance with NISQA standards?",
+        "<Speech><SpeechHere></Speech> Give me a score to summarize the quality of this speech sample based on NISQA standards."
+    ],
+    "mos_evaluation_onlyscore_somos": [
+        "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score based on SOMOS standards.",
+        "<Speech><SpeechHere></Speech> Could you please show me a score of the quality of this speech sample according to SOMOS standards?",
+        "<Speech><SpeechHere></Speech> Give me a score to summarize the quality of this speech sample in accordance with SOMOS standards."
+    ],
+    "mos_evaluation_onlyscore_bvcc": [
+        "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score in accordance with BVCC standards.",
+        "<Speech><SpeechHere></Speech> Could you please show me a score of the quality of this speech sample based on BVCC standards?",
+        "<Speech><SpeechHere></Speech> Give me a score to summarize the quality of this speech sample according to BVCC standards."
+    ],
+    "mos_ABtest": [
+        "<Speech><SpeechHere></Speech> Could you please indicate which speech sample has better quality?",
+        "<Speech><SpeechHere></Speech> Can you determine which speech sample is superior in quality?",
+        "<Speech><SpeechHere></Speech> Would you be able to let me know which speech sample sounds better?",
+        "<Speech><SpeechHere></Speech> Please tell me which speech sample is of higher quality."
+    ],
+    "spk_evaluation_onlyscore": [
+        "<Speech><SpeechHere></Speech> Please give a score of the speaker similarity of the voices in the audio."
+    ]
+}

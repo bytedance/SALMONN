@@ -1,0 +1,9 @@
+{
+    "mos_evaluation_description": "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample.",
+    "mos_evaluation_onlyscore": "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score.",
+    "spk_evaluation_onlyscore": "<Speech><SpeechHere></Speech> Please give a score of the speaker similarity of the voices in the audio.",
+    "mos_ABtest": "<Speech><SpeechHere></Speech> Could you please indicate which speech sample has better quality?",
+    "mos_evaluation_onlyscore_nisqa": "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score according to NISQA standards.",
+    "mos_evaluation_onlyscore_somos": "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score based on SOMOS standards.",
+    "mos_evaluation_onlyscore_bvcc": "<Speech><SpeechHere></Speech> Please evaluate the quality of the speech sample and only answer me with a score in accordance with BVCC standards.",
+}

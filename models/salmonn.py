@@ -20,7 +20,7 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from transformers import LlamaTokenizer, StoppingCriteriaList
+from transformers import LlamaTokenizer, StoppingCriteriaList, AutoTokenizer
 from peft import LoraConfig, TaskType, get_peft_model
 
 from .Qformer import BertConfig, BertLMHeadModel
@@ -185,6 +185,9 @@ class SALMONN(nn.Module):
             # in the modality adapter
             # Removed: word/position embeddings, layer outputs/intermediates, CLS head
             # Retained: cross-attention layers, Q tokens, self-attention, FFN
+            with open("Qformer.log", "w") as file:
+                for name, module in self.speech_Qformer.bert.named_modules():
+                    file.write(f"{name}: {module}\n")
             self.speech_Qformer.bert.embeddings.word_embeddings = None
             self.speech_Qformer.bert.embeddings.position_embeddings = None
             for layer in self.speech_Qformer.bert.encoder.layer:
@@ -236,40 +239,75 @@ class SALMONN(nn.Module):
             if self.use_speech_Qformer:
                 speech_embeds = self.ln_speech(speech_embeds)
                 if audio_embeds is not None:
+                    # pad audio and speech embeddings to equal seq_len T -> (B, T, C1), (B, T, C2)
+                    # and concat them along the channel dimension to get speech_embeds
+                    # X: (B, T, C1+C2)
                     audio_embeds = self.ln_audio(audio_embeds)
                     if audio_embeds.size(1) < speech_embeds.size(1):
                         audio_embeds = F.pad(audio_embeds, (0, 0, 0, speech_embeds.size(1) - audio_embeds.size(1)))
                     elif audio_embeds.size(1) > speech_embeds.size(1):
                         speech_embeds = F.pad(speech_embeds, (0, 0, 0, audio_embeds.size(1) - speech_embeds.size(1)))
                     speech_embeds = torch.cat((speech_embeds, audio_embeds), dim=-1)
+                # attention mask (B, T)
                 speech_atts = torch.ones(speech_embeds.size()[:-1], dtype=torch.long).to(speech_embeds.device)
 
+                print("0 - Shape of speech_embs (B, T, C): ", speech_embeds.shape) # [1, 1500, 2048]
+                # Default Case: window
                 if self.window_level_Qformer:
                     B, T, C = speech_embeds.shape
                     kernel = round(1500 * self.second_per_window / 30.0)
                     stride = round(1500 * self.second_stride / 30.0)
                     kernel = (1, kernel)
                     stride = (1, stride)
+                    # X: (B, T, C) -> (B, C, 1, T)
                     speech_embeds_tr = speech_embeds.transpose(1, 2).unsqueeze(2)
+                    # X: (B, C, 1, T) -> (B, C*K, L)
                     speech_embeds_overlap = F.unfold(speech_embeds_tr, kernel_size=kernel, dilation=1, padding=0, stride=stride)
+                    # L: number of windows
                     _, _, L = speech_embeds_overlap.shape
+                    # X: (B, C*K, L) → (B, C, K, L)
                     speech_embeds_overlap = speech_embeds_overlap.view(B, -1, kernel[1], L)
+                    # X: (B, C, K, L) -> (B, L, K, C)
                     speech_embeds_overlap = torch.permute(speech_embeds_overlap, [0, 3, 2, 1])
+                    # X: (B*L, K, C), e.g. [88, 17, 2048]
                     speech_embeds = speech_embeds_overlap.reshape(-1, kernel[1], C)
+                    # M: (B*L, K), all ones (no masking)
                     speech_atts = torch.ones(speech_embeds.size()[:-1], dtype=torch.long, device=speech_embeds.device)
 
+                # no_window: Q: (1, Q, C) -> (B, Q, C) 
+                # window: Q: (1, Q, C) e.g. [1, 1, 768] -> (B*L, Q, C)
                 query_tokens = self.speech_query_tokens.expand(speech_embeds.shape[0], -1, -1)
+
+                # no_window:
+                # K: (B, T, C) = X (B, C, T) * W_K (C, C)
+                # V: (B, T, C) = X (B, C, T) * W_V (C, C)
+                # attn_score: (B, Q, T) = Q (B, Q, C) · Kᵀ (B, C, T)
+                # attn_prob: (B, Q, T) = softmax(attn_score, dim = -1)
+                # query_output: (B, Q, C) = attn_prob (B, Q, T) · V (B, T, C), e.g. [1, 1, 768]
+                # _________________________________________________________
+    
+                # window:
+                # K: (B*L, K, C)   =   X * W_K
+                # V: (B*L, K, C)   =   X * W_V
+                # attn_score: (B*L, Q, K) = Q (B*L, Q, C) ⋅ Kᵀ (B*L, C, K)
+                # attn_prob:  (B*L, Q, K) = softmax(attn_score, dim = -1)
+                # query_output: (B*L, Q, C) = attn_prob (B*L, Q, K) ⋅ V (B*L, K, C), e.g. [88, 1, 768]
+                # _________________________________________________________
                 query_output = self.speech_Qformer.bert(
                     query_embeds=query_tokens,
                     encoder_hidden_states=speech_embeds,
                     encoder_attention_mask=speech_atts,
                     return_dict=True,
                 )
+
+                # no_window, X: (B, Q, C) -> (B, Q, d), e.g. [1, 1, 5120]
+                # _________________________________________________________
+
+                # window, X: (B*L, Q, C) -> (B*L, Q, d), e.g. [88, 1, 5120]
                 speech_embeds = self.speech_llama_proj(query_output.last_hidden_state)
-
                 if self.window_level_Qformer:
+                    # X: (B*L, Q, d) → (B, L*Q, d), e.g. [1, 88, 5120]
                     speech_embeds = speech_embeds.view(B, -1, speech_embeds.size(2)).contiguous()
-
                 speech_atts = torch.ones(speech_embeds.size()[:-1], dtype=torch.long).to(speech_embeds.device)
             else:
                 raise NotImplementedError
@@ -277,6 +315,18 @@ class SALMONN(nn.Module):
         return speech_embeds, speech_atts
 
     def encode_speech(self, spectrogram, raw_wav=None, audio_padding_mask=None):
+        """
+        Encodes spectrogram and optional raw audio into a unified feature representation.
+
+        Args:
+            spectrogram (B, T_spec, D_spec): Input spectrogram features. 
+            raw_wav (B, T_audio): Raw audio waveform for BEATs encoding.
+            audio_padding_mask (B, T_audio): Padding mask for raw audio.
+
+        Returns:
+            speech_embeds (B, Q, D_llama): Encoded speech/audio features.
+            speech_atts (B, Q): Attention mask for encoded features.
+        """
         with self.maybe_autocast():
             speech_embeds = self.speech_encoder(spectrogram, return_dict=True).last_hidden_state
 
@@ -288,6 +338,19 @@ class SALMONN(nn.Module):
         return self._encode_auditory_feature(speech_embeds, audio_embeds=audio_embeds)
 
     def prompt_wrap(self, embeds, atts, prompt, multi_prompt=False):
+        """
+        Wraps speech/audio embeddings with prompt embeddings.
+
+        Args:
+            embeds (B, Q, D): Speech/audio embeddings. 
+            atts (B, Q): Attention mask for speech/audio embeddings.
+            prompt (str or list): Prompt(s) containing "<SpeechHere>" marker.
+            multi_prompt (bool): Whether to use multiple prompts (one per batch item).
+
+        Returns:
+            wrapped_embeds (B, T, D): Concatenated prompt and speech/audio embeddings.
+            wrapped_atts (B, T): Concatenated attention masks.
+        """
         if prompt:
             if multi_prompt:
                 p_before = []

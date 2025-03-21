@@ -129,6 +129,7 @@ class SALMONN(nn.Module):
             param.requires_grad = False
         logging.info('Loading LLaMA Done')
 
+        # randomly initialize LORA parameters
         if self.lora:
             self.peft_config = LoraConfig(
                 task_type=TaskType.CAUSAL_LM, 
@@ -141,6 +142,7 @@ class SALMONN(nn.Module):
             self.llama_model.print_trainable_parameters()
             logging.info('LoRA Training')
 
+        # loading Whisper model from huggingface (remote/local)
         assert whisper_path
         logging.info('Loading Whisper Model')
         self.speech_encoder = WhisperModel.from_pretrained(whisper_path).encoder
@@ -151,6 +153,8 @@ class SALMONN(nn.Module):
             self.speech_encoder.eval()
             logging.info("freeze Whisper")
         
+        # loading BEATs from local .pt into CPU RAM
+        # BEATs model is optional, only used for audio feature extraction
         if self.beats_path:
             logging.info("Loading BEATs Model")
             beats_ckpt = torch.load(self.beats_path, map_location='cpu')
@@ -164,15 +168,23 @@ class SALMONN(nn.Module):
                 self.beats.eval()
                 logging.info("freeze BEATs")
 
+        # initialize speech QFormer
         if self.use_speech_Qformer:
+            # initialize the QFormer
+            # if BEATs is used, speech and audio features are concatenated along hidden_size dimension
             if self.beats_path:
                 self.speech_Qformer, self.speech_query_tokens = self.init_speech_Qformer(
                     num_query_token=num_speech_query_token, speech_width=self.speech_encoder.config.d_model + self.beats.cfg.encoder_embed_dim
                 )
+            # if BEATs is not used
             else:
                 self.speech_Qformer, self.speech_query_tokens = self.init_speech_Qformer(
                     num_query_token=num_speech_query_token, speech_width=self.speech_encoder.config.d_model
                 )
+            # Modify the QFormer by selectively removing its components for using it as feature extractor 
+            # in the modality adapter
+            # Removed: word/position embeddings, layer outputs/intermediates, CLS head
+            # Retained: cross-attention layers, Q tokens, self-attention, FFN
             self.speech_Qformer.bert.embeddings.word_embeddings = None
             self.speech_Qformer.bert.embeddings.position_embeddings = None
             for layer in self.speech_Qformer.bert.encoder.layer:
@@ -186,6 +198,8 @@ class SALMONN(nn.Module):
                 self.speech_query_tokens.requires_grad = False
                 logging.info("freeze Speech QFormer")
 
+            # add linear head for modality adapter, from n_channels of QFormer Feature Extractor 
+            # to hidden_size of LLM
             logging.info('Loading speech LLAMA proj')
             self.speech_llama_proj = nn.Linear(
                 self.speech_Qformer.config.hidden_size, self.llama_model.config.hidden_size
@@ -203,7 +217,8 @@ class SALMONN(nn.Module):
             # feel free to add other aligners here
             raise NotImplementedError
 
-        # prepare prompts
+        # load prompt templates from json file in prompt_path 
+        # for each task defined in the json file, load into self.prmompt_dcit as {task:prompt_template} 
         self.prompt_dict = {}
         if prompt_path:
             try:

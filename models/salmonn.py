@@ -16,6 +16,7 @@ import logging
 import json
 import contextlib
 import random
+from typing import Optional, Union, List
 
 import torch
 import torch.nn as nn
@@ -308,6 +309,7 @@ class SALMONN(nn.Module):
                 if self.window_level_Qformer:
                     # X: (B*L, Q, d) → (B, L*Q, d), e.g. [1, 88, 5120]
                     speech_embeds = speech_embeds.view(B, -1, speech_embeds.size(2)).contiguous()
+                # M: (B, L*Q), all ones (no masking)
                 speech_atts = torch.ones(speech_embeds.size()[:-1], dtype=torch.long).to(speech_embeds.device)
             else:
                 raise NotImplementedError
@@ -319,13 +321,13 @@ class SALMONN(nn.Module):
         Encodes spectrogram and optional raw audio into a unified feature representation.
 
         Args:
-            spectrogram (B, T_spec, D_spec): Input spectrogram features. 
+            spectrogram (B, T_spec, d_spec): Input spectrogram features. 
             raw_wav (B, T_audio): Raw audio waveform for BEATs encoding.
             audio_padding_mask (B, T_audio): Padding mask for raw audio.
 
         Returns:
-            speech_embeds (B, Q, D_llama): Encoded speech/audio features.
-            speech_atts (B, Q): Attention mask for encoded features.
+            speech_embeds (B, L*Q, d): Encoded speech/audio features.
+            speech_atts (B, L*Q): Attention mask for encoded features.
         """
         with self.maybe_autocast():
             speech_embeds = self.speech_encoder(spectrogram, return_dict=True).last_hidden_state
@@ -339,16 +341,16 @@ class SALMONN(nn.Module):
 
     def prompt_wrap(self, embeds, atts, prompt, multi_prompt=False):
         """
-        Wraps speech/audio embeddings with prompt embeddings.
+        Wraps speech/audio embeddings with prompt embeddings (masked)
 
         Args:
-            embeds (B, Q, D): Speech/audio embeddings. 
-            atts (B, Q): Attention mask for speech/audio embeddings.
+            embeds (B, L*Q, d): Speech/audio embeddings. 
+            atts (B, L*Q): Attention mask for speech/audio embeddings.
             prompt (str or list): Prompt(s) containing "<SpeechHere>" marker.
             multi_prompt (bool): Whether to use multiple prompts (one per batch item).
 
         Returns:
-            wrapped_embeds (B, T, D): Concatenated prompt and speech/audio embeddings.
+            wrapped_embeds (B, T, d): Concatenated prompt and speech/audio embeddings.
             wrapped_atts (B, T): Concatenated attention masks.
         """
         if prompt:
@@ -393,6 +395,25 @@ class SALMONN(nn.Module):
             return embeds, atts
 
     def forward(self, samples, verbose=False):
+        """
+        Forward pass for the SALMONN model.
+        Concat the embeddings of BOS, speech, and text
+        Concat the attenion mask and target of BOS (masked), speech (masked), and text (non-masked except padded)
+        Feed the combined embeddings into the LLM, get the loss and other metrics
+        
+        Args:
+            samples (dict): A dictionary containing input samples with keys:
+                - "spectrogram": Spectrogram input (B, T_spec, D_spec)
+                - "raw_wav" (optional): Raw audio waveform (B, T_audio)
+                - "padding_mask" (optional): Mask for padded audio regions (B, T_audio)
+                - "task": List of task identifiers for each sample
+                - "Q" (optional): Questions for QA tasks
+                - "text": Target text to generate
+            verbose (bool, optional): Whether to print verbose information. Defaults to False.
+                
+        Returns:
+            dict: Model outputs containing loss and other metrics
+        """
         # detect whether there are multi tasks in this batch
         task = list(set(samples["task"]))
         if len(task) > 1 or "QA" in task:
@@ -407,18 +428,21 @@ class SALMONN(nn.Module):
             else:
                 prompt = random.choice(self.prompt_dict[samples["task"][0]])
 
-        # use speech/audio encoder to encode speech/audio
-        spectrogram = samples["spectrogram"]
-        raw_wav = samples.get("raw_wav", None)
-        audio_padding_mask = samples.get("padding_mask", None)
+        # Extract inputs from samples
+        spectrogram = samples["spectrogram"]  # (B, T_spec, D_spec)
+        raw_wav = samples.get("raw_wav", None)  # (B, T_audio)
+        audio_padding_mask = samples.get("padding_mask", None)  # (B, T_audio)
 
+        # Encode speech/audio into embeddings, speech_embeds: (B, L*Q, d), speech_atts: (B, L*Q)
         speech_embeds, speech_atts = self.encode_speech(spectrogram, raw_wav=raw_wav, audio_padding_mask=audio_padding_mask)
 
         # wrap speech_embeds with prompts
+        # speech_embeds: (B, T, d), speech_atts: (B, T)， T = L*Q + T_prompt
         if self.prompt_dict:
             speech_embeds, speech_atts = self.prompt_wrap(speech_embeds, speech_atts, prompt, multi_prompt=self.multi_prompt)
 
         # prepare inputs for LLM
+        # join the list of str in samples["text"] into a single str, separate with end_sym
         text = [t + self.end_sym for t in samples["text"]]
         to_regress_tokens = self.llama_tokenizer(
             text,
@@ -428,10 +452,14 @@ class SALMONN(nn.Module):
             max_length=self.max_txt_len,
             add_special_tokens=False
         ).to(spectrogram.device)
+        # text embeddings: (B, T_text, d)
         to_regress_embeds = self.llama_model.model.embed_tokens(to_regress_tokens.input_ids) if not self.lora else self.llama_model.model.model.embed_tokens(to_regress_tokens.input_ids)
+        
+        # mask for text tokens, original token_ids except the padded ones are masked with -100: (B, T_text)
         targets = to_regress_tokens.input_ids.masked_fill(
             to_regress_tokens.input_ids == self.llama_tokenizer.pad_token_id, -100
         )
+        # mask for BOS+speech tokens, all masked with -100: (B, T_speech + 1)
         empty_targets = (
             torch.ones(
                 [speech_atts.shape[0], speech_atts.shape[1] + 1],
@@ -441,15 +469,20 @@ class SALMONN(nn.Module):
         targets = torch.cat([empty_targets, targets], dim=1)
 
         batch_size = speech_embeds.shape[0]
+        # BOS token: (B, 1)
         bos = torch.ones(
             [batch_size, 1],
             dtype=to_regress_tokens.input_ids.dtype,
             device=to_regress_tokens.input_ids.device,
         ) * self.llama_tokenizer.bos_token_id
+        # BOS token embeddings: (B, 1, d)
         bos_embeds = self.llama_model.model.embed_tokens(bos) if not self.lora else self.llama_model.model.model.embed_tokens(bos)
+        # attention mask for BOS token: (B, 1)
         atts_bos = speech_atts[:, :1]
 
+        # combined inputs_embeds: (B, 1 + T_speech + T_txt, d)
         inputs_embeds = torch.cat([bos_embeds, speech_embeds, to_regress_embeds], dim=1)
+        # combined attention_mask: (B, 1 + T_speech + T_txt)
         attention_mask = torch.cat([atts_bos, speech_atts, to_regress_tokens.attention_mask], dim=1)
 
         # calulate loss
@@ -475,7 +508,23 @@ class SALMONN(nn.Module):
 
         return {"loss": loss}
 
-    def generate(self, samples, generate_cfg, prompts=None):
+    def generate(
+        self,
+        samples: dict,
+        generate_cfg: dict,
+        prompts: Optional[Union[str, List[str]]] = None
+    ) -> List[str]:
+        """
+        Generates text output from speech/audio input using the model.
+
+        Args:
+            samples: Input samples with spectrogram (B, T_spec, d_spec), optional raw_wav (B, T_audio)
+            generate_cfg: Generation parameters (max_new_tokens, num_beams, temperature, etc.)
+            prompts: Optional prompt template(s) for generation
+
+        Returns:
+            List of generated text outputs, one per batch item
+        """
         batch_size = samples["spectrogram"].shape[0]
 
         spectrogram = samples["spectrogram"]
@@ -519,6 +568,7 @@ class SALMONN(nn.Module):
 
     @classmethod
     def from_config(cls, config):
+        """Creates a SALMONN model instance from a configuration dictionary."""
         llama_path = config.get("llama_path")
         whisper_path = config.get("whisper_path")
         freeze_whisper = config.get("freeze_whisper", True)

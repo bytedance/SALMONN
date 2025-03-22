@@ -56,23 +56,23 @@ datasets:
 
 run:
   # log & settings
-  seed: 42
-  output_dir: "output directory"
+  seed: 42 # random seed
+  output_dir: "output directory" # directory to save checkpoints & tensorboard logs, etc.
   evaluate: False # if True, only evaluate model on test data
 
   log_freq: 5
-  epoch_based: False
-  iters_per_epoch: 3000
-  accum_grad_iters: 1
-  batch_size_train: 8
-  batch_size_eval: 8
-  num_workers: 8
+  epoch_based: False # if True, exhausted all data for each epoch
+  iters_per_epoch: 3000 # manually set for each epoch, when epoch_based is False
+  accum_grad_iters: 1 # GBS / (MBS * DP)
+  batch_size_train: 8 # MBS
+  batch_size_eval: 8 # MBS
+  num_workers: 8 # number of dataloader workers
 
   device: "cuda"
   use_distributed: True
-  amp: True
-  world_size: 1
-  dist_url: "env://"
+  amp: True # automatic mixed precision by torch.cuda.amp
+  world_size: 1 # overwritten by actual world_size (n_nodes * n_gpus)
+  dist_url: "env://" # use EnvVars (Master_ADDR, Master_PORT) for distributed training
 
   # optimizer & scheduler
   optims:

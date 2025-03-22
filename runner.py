@@ -96,11 +96,26 @@ class Runner:
             return model
 
     def train_epoch(self, epoch):
+        """
+        Trains the model for one epoch.
+        
+        Performs forward and backward passes, gradient updates, and tracks metrics.
+        Handles gradient accumulation and mixed precision training if enabled.
+        
+        Args:
+            epoch (int): Current epoch number
+            
+        Returns:
+            dict: Dictionary of averaged training metrics for the epoch
+        """
+        # Set model to training mode
         self.model.train()
 
+        # Initialize metric tracking
         metric_logger = MetricLogger(delimiter="  ")
         metric_logger.add_meter("lr", SmoothedValue(window_size=1, fmt="{value:.6f}"))
         metric_logger.add_meter("loss", SmoothedValue(window_size=1, fmt="{value:.4f}"))
+        # TODO: add meter for TFLOPs, samples per second, GBS, vRAM usage, etc.
 
         logging.info(
             "Start training epoch {}, {} iters per inner epoch.".format(
@@ -109,23 +124,30 @@ class Runner:
         )
         header = "Train: data epoch: [{}]".format(epoch)
 
+        # Main training loop
         for i in metric_logger.log_every(range(self.iters_per_epoch), self.config.config.run.log_freq, header=header, logger=self.log_writter, start_step=epoch*self.iters_per_epoch):
             if i >= self.iters_per_epoch:
                 break
 
+            # Get batch and move to device
             samples = next(self.train_loader)
             samples = prepare_sample(samples, cuda_enabled=self.cuda_enabled)
 
+            # Update learning rate scheduler
             self.scheduler.step(cur_epoch=epoch, cur_step=i)
 
+            # Forward pass with optional mixed precision
             with torch.cuda.amp.autocast(enabled=self.use_amp):
                 loss = self.model(samples)["loss"]
 
+            # Backward pass with optional mixed precision scaling
             if self.use_amp:
                 self.scaler.scale(loss).backward()
             else:
                 loss.backward()
 
+            # Update weights if gradient accumulation condition is met
+            # accum_grad_iters = GBS / (MBS * DP)
             if (i + 1) % self.config.config.run.accum_grad_iters == 0:
                 if self.use_amp:
                     self.scaler.step(self.optimizer)
@@ -134,11 +156,15 @@ class Runner:
                     self.optimizer.step()
                 self.optimizer.zero_grad()
 
+            # Update metrics
             metric_logger.update(loss=loss.item())
             metric_logger.update(lr=self.optimizer.param_groups[0]["lr"])
 
+        # Synchronize metrics across processes in distributed training
         metric_logger.synchronize_between_processes()
         logging.info("Averaged stats: " + str(metric_logger.global_avg()))
+        
+        # Return formatted metrics
         return {
             k: "{:.3f}".format(meter.global_avg)
             for k, meter in metric_logger.meters.items()
@@ -225,20 +251,36 @@ class Runner:
         return ret
 
     def save_result(self, result, result_dir, filename):
+        """
+        Saves evaluation results to JSON files, handling distributed processing.
+        
+        In distributed mode, each process saves its partial results to a rank-specific file.
+        The main process then aggregates all partial results into a single final file.
+        
+        The function handles UTF-8 encoding issues that may arise with non-ASCII text.
+        
+        Args:
+            result (list): List of result dictionaries to save
+            result_dir (str): Directory to save results
+            filename (str): Base filename for the result files
+        """
         result_file = os.path.join(
             result_dir, "%s_rank%d.json" % (filename, get_rank())
         )
         final_result_file = os.path.join(result_dir, "%s.json" % filename)
 
+        # Save this process's results to rank-specific file
         try:
             json.dump(result, open(result_file, "w"), ensure_ascii=False)
         except Exception as e:
             logging.warning(f"Error saving {result_file}. Error: {e}")
             json.dump(result, open(result_file, "w", encoding="utf-8"), ensure_ascii=False)
 
+        # Synchronize all processes before merging
         if is_dist_avail_and_initialized():
             dist.barrier()
 
+        # Main process aggregates results from all ranks
         if is_main_process():
             logging.info("rank %d starts merging results." % get_rank())
             result = []
@@ -254,6 +296,7 @@ class Runner:
                     res = json.load(open(result_file, "r", encoding="utf-8"))
                 result += res
 
+            # Save merged results to final file
             try:
                 json.dump(result, open(final_result_file, "w"), ensure_ascii=False)
             except Exception as e:

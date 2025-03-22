@@ -322,6 +322,8 @@ class Runner:
             # validating phase
             logging.info("Validating Phase")
             valid_log = self.valid_epoch(cur_epoch, "valid", decode=False, save_json=False)
+            # if online validation is used, will also save a copy of the current best checkpoint
+            # this current best checkpoint is always updated as training goes.
             if valid_log is not None:
                 if is_main_process():
                     agg_metrics = valid_log["agg_metrics"]
@@ -333,7 +335,7 @@ class Runner:
 
                     valid_log.update({"best_epoch": best_epoch})
                     self.log_stats(valid_log, split_name="valid")
-
+            # always save the regular checkpoint at the end of each epoch
             self.save_checkpoint(cur_epoch, is_best=False)
 
             if self.use_distributed:

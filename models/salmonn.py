@@ -184,8 +184,8 @@ class SALMONN(nn.Module):
                 )
             # Modify the QFormer by selectively removing its components for using it as feature extractor 
             # in the modality adapter
-            # Removed: word/position embeddings, layer outputs/intermediates, CLS head
-            # Retained: cross-attention layers, Q tokens, self-attention, FFN
+            # Removed: word/position embeddings, layer outputs/intermediates (FFN), CLS head
+            # Retained: cross-attention layers, Q tokens, self-attention
             with open("Qformer.log", "w") as file:
                 for name, module in self.speech_Qformer.bert.named_modules():
                     file.write(f"{name}: {module}\n")

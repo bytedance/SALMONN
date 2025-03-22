@@ -14,9 +14,9 @@
 
 model:
   # paths
-  llama_path: "path to llama model"
-  whisper_path: "path to whisper model"
-  beats_path: "path to beats model"
+  llama_path: "path to llama model" # huggingface repo_id or local path
+  whisper_path: "path to whisper model" # huggingface repo_id or local path
+  beats_path: "path to beats model" # .pt file path downloaded from main git repo
 
   ckpt: "model ckpt" # if not "", load model from ckpt for training or evaluation
 
@@ -27,7 +27,11 @@ model:
   use_speech_Qformer: True
   freeze_speech_QFormer: False
   window_level_Qformer: True
-  num_speech_query_token: 1
+  num_speech_query_token: 1 # Q-Former hyper-parameter
+  # Given audio length L seconds, Number of windows = floor((L - second_per_window) / second_stride) + 1
+  # With current values (1/3 second), each second produces 3 non-overlapping windows
+  # Numeric example:
+  # - For a 10-second audio: Number of windows = floor((10 - 0.333333) / 0.333333) + 1 = 29 + 1 = 30 windows
   second_per_window: 0.333333
   second_stride: 0.333333
 
@@ -42,9 +46,9 @@ model:
 
   multi_prompt: True
   prompt_template: "USER: {}\nASSISTANT:"
-  prompt_path: "prompts/train_prompt.json"
-  test_prompt_path: "prompts/test_prompt.json"
-  max_txt_len: 300
+  prompt_path: "prompts/train_prompt.json" # local path to train prompt
+  test_prompt_path: "prompts/test_prompt.json" # local path to test prompt
+  max_txt_len: 300 # text token limit, beyond which the text will be truncated
   end_sym: "</s>"
 
 datasets:
@@ -61,6 +65,7 @@ run:
   evaluate: False # if True, only evaluate model on test data
 
   log_freq: 5
+  save_freq: 1000  # save checkpoint every 1000 iterations 
   epoch_based: False # if True, exhausted all data for each epoch
   iters_per_epoch: 3000 # manually set for each epoch, when epoch_based is False
   accum_grad_iters: 1 # GBS / (MBS * DP)

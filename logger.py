@@ -114,7 +114,7 @@ class MetricLogger(object):
     def add_meter(self, name, meter):
         self.meters[name] = meter
 
-    def log_every(self, iterable, print_freq, header=None, logger=None, start_step=None):
+    def log_every(self, iterable, print_freq, header=None, logger=None, start_step=None, use_wandb=False):
         i = 0
         if not header:
             header = ""
@@ -144,11 +144,8 @@ class MetricLogger(object):
                     if logger is not None:
                         assert start_step is not None, "start_step is needed to compute global_step!"
                         
-                        # Detect logger type and log accordingly
-                        if hasattr(logger, 'add_scalar'):  # TensorBoard logger
-                            for name, meter in self.meters.items():
-                                logger.add_scalar("{}".format(name), float(str(meter)), global_step=start_step+i)
-                        elif hasattr(logger, 'log'):  # WandB logger
+                        # Use the use_wandb flag to determine logger type
+                        if use_wandb:  # WandB logger
                             log_dict = {}
                             for name, meter in self.meters.items():
                                 # Only log raw values to WandB
@@ -162,6 +159,18 @@ class MetricLogger(object):
                                 # Peak reserved memory in GB if available
                                 if hasattr(torch.cuda, 'max_memory_reserved'):
                                     log_dict["vRAM_peak_reserved(GB)"] = torch.cuda.max_memory_reserved() / (MB * 1024)
+                                
+                                # Add GPU temperature if available (requires pynvml)
+                                try:
+                                    import pynvml
+                                    pynvml.nvmlInit()
+                                    device_count = pynvml.nvmlDeviceGetCount()
+                                    if device_count > 0:
+                                        handle = pynvml.nvmlDeviceGetHandleByIndex(0)  # First GPU
+                                        temp = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
+                                        log_dict["GPU_Temperature(degC)"] = temp
+                                except (ImportError, Exception):
+                                    pass  # Skip if pynvml not available or other error
                             
                             # Log to WandB
                             logger.log(log_dict)

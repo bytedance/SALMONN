@@ -11,6 +11,7 @@ import torch
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 from tensorboardX import SummaryWriter
+import wandb  # Add wandb import
 
 from dist_utils import main_process, is_dist_avail_and_initialized, is_main_process, get_rank, get_world_size
 from logger import MetricLogger, SmoothedValue
@@ -25,7 +26,26 @@ class Runner:
         # log
         self.output_dir = Path(self.config.config.run.output_dir) / job_id
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.log_writter = SummaryWriter(self.output_dir)
+        
+        # Determine which logger to use
+        self.use_wandb = self.config.config.run.get("use_wandb", False)
+        
+        if self.use_wandb and is_main_process():
+            # Create wandb local directory if it doesn't exist
+            wandb_dir = Path(self.config.config.run.wandb_local_dir)
+            wandb_dir.mkdir(parents=True, exist_ok=True)
+            # Initialize wandb            
+            wandb.init(
+                project=self.config.config.run.wandb_project,
+                dir=wandb_dir,
+                name=self.config.config.run.wandb_name,
+                entity=self.config.config.run.wandb_entity,
+                config=self.config.to_dict()
+            )
+            self.log_writter = wandb
+        else:
+            # Use TensorBoard
+            self.log_writter = SummaryWriter(self.output_dir)
 
         # settings
         self.device = torch.device(self.config.config.run.device)
@@ -303,6 +323,10 @@ class Runner:
         total_time = time.time() - start_time
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))
         logging.info("Training time {}".format(total_time_str))
+
+        # Finish wandb run if enabled
+        if self.use_wandb and is_main_process():
+            wandb.finish()
 
     @main_process
     def log_config(self):

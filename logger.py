@@ -143,8 +143,31 @@ class MetricLogger(object):
                 if is_main_process():
                     if logger is not None:
                         assert start_step is not None, "start_step is needed to compute global_step!"
-                        for name, meter in self.meters.items():
-                            logger.add_scalar("{}".format(name), float(str(meter)), global_step=start_step+i)
+                        
+                        # Detect logger type and log accordingly
+                        if hasattr(logger, 'add_scalar'):  # TensorBoard logger
+                            for name, meter in self.meters.items():
+                                logger.add_scalar("{}".format(name), float(str(meter)), global_step=start_step+i)
+                        elif hasattr(logger, 'log'):  # WandB logger
+                            log_dict = {}
+                            for name, meter in self.meters.items():
+                                # Only log raw values to WandB
+                                log_dict[name] = meter.value
+                            
+                            # Add GPU memory metrics in GB instead of MB
+                            if torch.cuda.is_available():
+                                # Max allocated memory in GB
+                                log_dict["vRAM_max_allocated(GB)"] = torch.cuda.max_memory_allocated() / (MB * 1024)
+                                
+                                # Peak reserved memory in GB if available
+                                if hasattr(torch.cuda, 'max_memory_reserved'):
+                                    log_dict["vRAM_peak_reserved(GB)"] = torch.cuda.max_memory_reserved() / (MB * 1024)
+                            
+                            # Log to WandB
+                            logger.log(log_dict)
+                        else:
+                            print("Warning: Unknown logger type. No metrics will be logged.")
+                            
                 eta_seconds = iter_time.global_avg * (len(iterable) - i)
                 eta_string = str(datetime.timedelta(seconds=int(eta_seconds)))
                 if torch.cuda.is_available():

@@ -81,3 +81,9 @@ run:
     min_lr: 1e-5
     weight_decay: 0.05
     beta2: 0.999
+
+  use_wandb: True # if False, use default tensorboard logger
+  wandb_project: "salmonn-experiments" # the project name in wandb
+  wandb_local_dir: "logs" # the local directory to save the wandb logs
+  wandb_name: "run_name" # the name of the wandb run
+  wandb_entity: "my_org" # the entity/organization name in wandb

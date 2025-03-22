@@ -109,6 +109,9 @@ class Runner:
 
         self.log_config()
 
+        # Initialize training time
+        self.start_training_time = time.time()
+
     def unwrap_dist_model(self, model):
         if self.use_distributed:
             return model.module
@@ -136,7 +139,9 @@ class Runner:
             header=header, 
             logger=self.log_writter, 
             start_step=epoch*self.iters_per_epoch,
-            use_wandb=self.use_wandb  # Pass the use_wandb flag
+            use_wandb=self.use_wandb,  # Pass the use_wandb flag
+            start_training_time=self.start_training_time,
+            max_epoch=self.max_epoch
         ):
             if i >= self.iters_per_epoch:
                 break

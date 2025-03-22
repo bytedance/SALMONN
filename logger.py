@@ -7,7 +7,7 @@ from collections import defaultdict, deque
 
 import torch
 import torch.distributed as dist
-
+import pynvml
 from dist_utils import is_dist_avail_and_initialized, is_main_process
 
 
@@ -114,8 +114,18 @@ class MetricLogger(object):
     def add_meter(self, name, meter):
         self.meters[name] = meter
 
-    def log_every(self, iterable, print_freq, header=None, logger=None, start_step=None, use_wandb=False):
-        i = 0
+    def log_every(
+        self, 
+        iterable, 
+        print_freq, 
+        header=None, 
+        logger=None, 
+        start_step=None, 
+        use_wandb=False, 
+        start_training_time=None,
+        max_epoch=None
+    ):
+        i = 0 # epoch counter
         if not header:
             header = ""
         start_time = time.time()
@@ -135,6 +145,7 @@ class MetricLogger(object):
             log_msg.append("max mem: {memory:.0f}")
         log_msg = self.delimiter.join(log_msg)
         MB = 1024.0 * 1024.0
+        GB = MB * 1024
         for obj in iterable:
             data_time.update(time.time() - end)
             yield obj
@@ -154,15 +165,15 @@ class MetricLogger(object):
                             # Add GPU memory metrics in GB instead of MB
                             if torch.cuda.is_available():
                                 # Max allocated memory in GB
-                                log_dict["vRAM_max_allocated(GB)"] = torch.cuda.max_memory_allocated() / (MB * 1024)
+                                log_dict["vRAM_max_allocated(GB)"] = torch.cuda.max_memory_allocated() / GB
                                 
                                 # Peak reserved memory in GB if available
                                 if hasattr(torch.cuda, 'max_memory_reserved'):
-                                    log_dict["vRAM_peak_reserved(GB)"] = torch.cuda.max_memory_reserved() / (MB * 1024)
+                                    log_dict["vRAM_peak_reserved(GB)"] = torch.cuda.max_memory_reserved() / GB
                                 
                                 # Add GPU temperature if available (requires pynvml)
                                 try:
-                                    import pynvml
+
                                     pynvml.nvmlInit()
                                     device_count = pynvml.nvmlDeviceGetCount()
                                     if device_count > 0:
@@ -172,11 +183,23 @@ class MetricLogger(object):
                                 except (ImportError, Exception):
                                     pass  # Skip if pynvml not available or other error
                             
+                            # Add training time metrics if provided
+                            if start_training_time is not None:
+                                # Calculate cumulative training time in hours
+                                cumulative_time_hours = (time.time() - start_training_time) / 3600.0
+                                log_dict["Training_Time(hours)"] = cumulative_time_hours
+                            
+                            if max_epoch is not None:
+                                global_eta_seconds = iter_time.global_avg * (len(iterable) * max_epoch - i)
+                                log_dict["Global_ETA(hours)"] = global_eta_seconds / 3600.0
+
                             # Log to WandB
                             logger.log(log_dict)
-                        else:
-                            print("Warning: Unknown logger type. No metrics will be logged.")
+                        else:  # TensorBoard logger
+                            for name, meter in self.meters.items():
+                                logger.add_scalar("{}".format(name), float(str(meter)), global_step=start_step+i)
                             
+
                 eta_seconds = iter_time.global_avg * (len(iterable) - i)
                 eta_string = str(datetime.timedelta(seconds=int(eta_seconds)))
                 if torch.cuda.is_available():

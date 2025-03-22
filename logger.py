@@ -123,7 +123,9 @@ class MetricLogger(object):
         start_step=None, 
         use_wandb=False, 
         start_training_time=None,
-        max_epoch=None
+        max_epoch=None,
+        gbs=None,
+        mbs=None,
     ):
         i = 0 # epoch counter
         if not header:
@@ -162,6 +164,12 @@ class MetricLogger(object):
                                 # Only log raw values to WandB
                                 log_dict[name] = meter.value
                             
+                            # Add batch size information if provided
+                            if gbs is not None:
+                                log_dict["GBS"] = gbs
+                            if mbs is not None:
+                                log_dict["MBS"] = mbs
+
                             # Add GPU memory metrics in GB instead of MB
                             if torch.cuda.is_available():
                                 # Max allocated memory in GB

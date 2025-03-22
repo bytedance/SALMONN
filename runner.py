@@ -139,9 +139,11 @@ class Runner:
             header=header, 
             logger=self.log_writter, 
             start_step=epoch*self.iters_per_epoch,
-            use_wandb=self.use_wandb,  # Pass the use_wandb flag
+            use_wandb=self.use_wandb,
             start_training_time=self.start_training_time,
-            max_epoch=self.max_epoch
+            max_epoch=self.config.config.run.optims.max_epoch,
+            gbs=self.config.config.run.batch_size_train * self.config.config.run.accum_grad_iters * get_world_size(),
+            mbs=self.config.config.run.batch_size_train,
         ):
             if i >= self.iters_per_epoch:
                 break

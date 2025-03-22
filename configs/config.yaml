@@ -52,8 +52,6 @@ datasets:
   valid_ann_path: "path to valid data"
   test_ann_path: "path to test data"
 
-  whisper_path: "path to whisper model"
-
 run:
   # log & settings
   seed: 42

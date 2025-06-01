@@ -95,4 +95,13 @@ If you find SALMONN / video-SALMONN useful, please cite the paper:
   year={2024},
   url={https://openreview.net/forum?id=nYsh5GFIqX}
 }
+
+@inproceedings{
+  sun2025videosalmonno1,
+  title={{video-SALMONN-o1}: Reasoning-enhanced Audio-visual Large Language Model},
+  author={Guangzhi Sun and Yudong Yang and Jimin Zhuang and Changli Tang and Yixuan Li and Wei Li and Zejun MA and Chao Zhang},
+  booktitle={Forty-second International Conference on Machine Learning},
+  year={2025}
+  url={https://openreview.net/forum?id=ojwYmwLaUu}
+}
 ```

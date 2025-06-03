@@ -1,0 +1,14 @@
+{
+    "videos": [
+        {
+            "filename": "synth_1.mp4",
+            "question": "An AI-generated video contains unnatural distorted things, such as distorted hands or faces. Is the given video AI generated? Answer YES or NO. Answer step by step and output each step clearly.",
+            "description": "The video shows a man running towards a train, then collapsing in pain.\nThe background is blurred and the colors are distorted, suggesting motion blur.\nAI-generated videos often use techniques like motion blur to create a sense of speed or urgency. \nThis can sometimes result in unnatural distortions in the image.\nIn this case, the blurring and distortion are more pronounced than what would be expected from natural camera shake or movement.\nThe hands of the man appear particularly distorted, which is not typical for real-life footage.\nTherefore, based on the visual cues of the video, it is likely that the video is AI generated.\nSo the answer is YES."
+        },
+        {
+            "filename": "synth_2.mp4",
+            "question": "An AI-generated video contains unnatural distorted things, such as distorted hands or faces. Is the given video AI generated? Answer YES or NO. Answer step by step and output each step clearly.",
+            "description": "The video shows a cyclist riding on a road with a field of flowers in the background.\nThe colors are vibrant and the scene is smooth, suggesting it might be AI generated.\nUpon closer inspection, we can see that the cyclist's shadow is perfectly aligned with the cyclist, which is unusual for a moving object. This suggests a lack of natural motion blur or distortion, a common characteristic of AI-generated videos.\nTherefore, based on the smoothness of the scene and the unnatural alignment of the cyclist's shadow, it is highly likely that the video is AI generated.\nSo the answer is YES."
+        }
+    ]
+}

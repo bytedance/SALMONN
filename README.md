@@ -15,7 +15,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## ⚡️ Future Plans
 
-- Release the code. 
+- ~~Release the code. ~~
 - Release the visual base model and audio weight. 
 - Release final video-SALMONN 2.
 

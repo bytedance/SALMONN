@@ -1,0 +1,24 @@
+[
+    {
+        "video": "path_to_video",
+        "audio": "path_to_audio",
+        "conversations":[
+            {
+                "from": "human", 
+                "value": "<image>\nPrompt"
+            },
+            {
+                "from": "gpt",
+                "value": "Chosen response"
+            },
+            {
+                "from": "reject_gpt", 
+                "value": "Rejected response"
+            },
+            {
+                "from": "gt", 
+                "value": "Ground truth response"
+            }
+        ]
+    }
+]

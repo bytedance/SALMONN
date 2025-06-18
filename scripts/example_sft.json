@@ -1,0 +1,16 @@
+[
+    {
+        "video": "path_to_video",
+        "audio": "path_to_audio",
+        "conversations":[
+            {
+                "from": "human", 
+                "value": "<image>\nPrompt"
+            },
+            {
+                "from": "gpt",
+                "value": "Response"
+            }
+        ]
+    }
+]

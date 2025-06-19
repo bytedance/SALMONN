@@ -5,7 +5,7 @@
 video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **generates high-quality audio-visual video captions**, which is developed by the Department of Electronic Engineering at Tsinghua University and ByteDance. 
 
 <div style='display:flex; gap: 0.25rem; '>
-<a href='https://arxiv.org/abs/2410.06682'><img src='https://img.shields.io/badge/video_SALMONN_2_paper-PDF-green'></a>
+<a href='https://arxiv.org/abs/2506.15220'><img src='https://img.shields.io/badge/video_SALMONN_2_paper-PDF-green'></a>
 <a href='https://video-salmonn-2.github.io'><img src='https://img.shields.io/badge/demo-green'></a>
 </div>
 
@@ -15,8 +15,6 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## ⚡️ Future Plans
 
-- ~~Release the code.~~
-- Release the visual base model and audio weight. 
 - Release final video-SALMONN 2.
 
 ## 🌈 How to Use
@@ -44,10 +42,10 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 If you find video-SALMONN 2 useful, please cite the paper:
 
 ```
-@article{tang2024enhancing,
-  title={Enhancing Multimodal LLM for Detailed and Accurate Video Captioning using Multi-Round Preference Optimization},
-  author={Tang, Changli and Li, Yixuan and Yang, Yudong and Zhuang, Jimin and Sun, Guangzhi and Li, Wei and Ma, Zujun and Zhang, Chao},
-  journal={arXiv preprint arXiv:2410.06682},
-  year={2024}
+@article{tang2025video,
+    title={{video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models}}, 
+    author={Changli Tang and Yixuan Li and Yudong Yang and Jimin Zhuang and Guangzhi Sun and Wei Li and Zejun Ma and Chao Zhang},
+    journal={arXiv preprint arXiv:2506.15220},
+    year={2025},
 }
 ```

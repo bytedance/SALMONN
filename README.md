@@ -13,17 +13,12 @@
 SALMONN is a large language model (LLM) enabling **speech, audio events, and music inputs**, which is developed by the Department of Electronic Engineering at Tsinghua University and ByteDance. Instead of speech-only input or audio-event-only input, SALMONN can perceive and understand all kinds of audio inputs and therefore obtain emerging capabilities such as multilingual speech recognition and translation and audio-speech co-reasoning. This can be regarded as giving the LLM "ears" and cognitive hearing abilities, which makes SALMONN a step towards hearing-enabled artificial general intelligence.
 
 <div style='display:flex; gap: 0.25rem; '>
-<a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/SALMONN_13B-Demo-blue'></a>
-<a href='https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio'><img src='https://img.shields.io/badge/SALMONN_7B-Demo-orange'></a>
 <a href='https://openreview.net/pdf?id=14rn7HpKVk'><img src='https://img.shields.io/badge/SALMONN_paper-PDF-green'></a>
-<a href='https://openreview.net/pdf?id=nYsh5GFIqX'><img src='https://img.shields.io/badge/video_SALMONN_paper-PDF-green'></a>
-<a href='https://huggingface.co/tsinghua-ee/SALMONN'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
+<a href='https://huggingface.co/tsinghua-ee/SALMONN'><img src='https://img.shields.io/badge/SALMONN--13B-checkpoint-yellow'></a> 
+<a href='https://huggingface.co/tsinghua-ee/SALMONN-7B'><img src='https://img.shields.io/badge/SALMONN--7B-checkpoint-yellow'></a>
 </div>
 
 ## 🔥 News
-- [2025-06-01] We have opensourced **QualiSpeech** dataset - A speech quality assessment dataset with natural language reasoning. You can use QualiSpeech to develop your own audio LLM for speech quality assessment or to evaluate the low-level speech perception capabilities of existing audio LLMs. Feel free to download it [here](https://huggingface.co/datasets/tsinghua-ee/QualiSpeech)!
-- [2025-03-03] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](quality_assessment/README.md)!
-- [2024-09-04] We have released the model and inference code for **video-SALMONN**! See [here](video_salmonn/README.md)!
 - [2024-05-28] 🧳 We have released all the annotations (including 600k SQA/AQA data and 50k audio-based storytelling data) for the 3-stage training of SALMONN! Feel free to download them [here](https://drive.google.com/file/d/15cQO--rtMM9JD22y-A5oXXvT3DujgE2e/view?usp=sharing)!
 - [2024-04-07] 🤖 We have released all the codes you need to train your own SALMONN! Try some cool things!
 - [2024-01-16] 💖 Our paper was accepted by ICLR 2024!
@@ -77,7 +72,7 @@ For SALMONN-13B v1, you need to use the following dependencies:
 **Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
 
 ## ✨ Citation
-If you find SALMONN / video-SALMONN useful, please cite the paper:
+If you find SALMONN useful, please cite the paper:
 ```
 @inproceedings{
   tang2024salmonn,
@@ -86,14 +81,5 @@ If you find SALMONN / video-SALMONN useful, please cite the paper:
   booktitle={The Twelfth International Conference on Learning Representations},
   year={2024},
   url={https://openreview.net/forum?id=14rn7HpKVk}
-}
-
-@inproceedings{
-  sun2024videosalmonn,
-  title={video-{SALMONN}: Speech-Enhanced Audio-Visual Large Language Models},
-  author={Guangzhi Sun and Wenyi Yu and Changli Tang and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Yuxuan Wang and Chao Zhang},
-  booktitle={Forty-first International Conference on Machine Learning},
-  year={2024},
-  url={https://openreview.net/forum?id=nYsh5GFIqX}
 }
 ```

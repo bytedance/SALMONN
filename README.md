@@ -55,7 +55,7 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 
 @inproceedings{
   tang2024salmonn,
-  title={{SALMONN}: Towards Generic Hearing Abilities for Large Language Models},
+  title={SALMONN: Towards Generic Hearing Abilities for Large Language Models},
   author={Changli Tang and Wenyi Yu and Guangzhi Sun and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Chao Zhang},
   booktitle={The Twelfth International Conference on Learning Representations},
   year={2024},

@@ -30,10 +30,10 @@ Our finetuned SALMONN-7B checkpoint can also be downloaded [here](https://huggin
 
 ## Run and inference
 
-Just follow the [salmonn branch](https://huggingface.co/tsinghua-ee/Speech_Quality_Assessment).
+Just follow the [salmonn branch](https://github.com/bytedance/SALMONN/tree/salmonn).
 
 ## License & CODE_OF_CONDUCT
-Please refer to [salmonn branch](https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main) for more details.
+Please refer to [salmonn branch](https://github.com/bytedance/SALMONN/tree/salmonn) for more details.
 
 ## ✨ Citation
 If you find this work useful, please cite our papers.

@@ -1,99 +1,52 @@
-# SALMONN: Speech Audio Language Music Open Neural Network
+## Inference
 
-<div align=center><img src="resource/salmon.png" height="256px" width="256px"/></div>
-
-<h1 align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+There!+👋;Welcome+to+SALMONN;&center=true&size=30">
-  </a>
-</h1>
-
-🚀🚀 Welcome to the repo of **SALMONN**!
-
-SALMONN is a large language model (LLM) enabling **speech, audio events, and music inputs**, which is developed by the Department of Electronic Engineering at Tsinghua University and ByteDance. Instead of speech-only input or audio-event-only input, SALMONN can perceive and understand all kinds of audio inputs and therefore obtain emerging capabilities such as multilingual speech recognition and translation and audio-speech co-reasoning. This can be regarded as giving the LLM "ears" and cognitive hearing abilities, which makes SALMONN a step towards hearing-enabled artificial general intelligence.
-
-<div style='display:flex; gap: 0.25rem; '>
-<a href='https://bytedance.github.io/SALMONN/'><img src='https://img.shields.io/badge/SALMONN_13B-Demo-blue'></a>
-<a href='https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio'><img src='https://img.shields.io/badge/SALMONN_7B-Demo-orange'></a>
-<a href='https://openreview.net/pdf?id=14rn7HpKVk'><img src='https://img.shields.io/badge/SALMONN_paper-PDF-green'></a>
-<a href='https://openreview.net/pdf?id=nYsh5GFIqX'><img src='https://img.shields.io/badge/video_SALMONN_paper-PDF-green'></a>
-<a href='https://huggingface.co/tsinghua-ee/SALMONN'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
-</div>
-
-## 🔥 News
-- [2025-06-01] We have opensourced **QualiSpeech** dataset - A speech quality assessment dataset with natural language reasoning. You can use QualiSpeech to develop your own audio LLM for speech quality assessment or to evaluate the low-level speech perception capabilities of existing audio LLMs. Feel free to download it [here](https://huggingface.co/datasets/tsinghua-ee/QualiSpeech)!
-- [2025-03-03] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](quality_assessment/README.md)!
-- [2024-09-04] We have released the model and inference code for **video-SALMONN**! See [here](video_salmonn/README.md)!
-- [2024-05-28] 🧳 We have released all the annotations (including 600k SQA/AQA data and 50k audio-based storytelling data) for the 3-stage training of SALMONN! Feel free to download them [here](https://drive.google.com/file/d/15cQO--rtMM9JD22y-A5oXXvT3DujgE2e/view?usp=sharing)!
-- [2024-04-07] 🤖 We have released all the codes you need to train your own SALMONN! Try some cool things!
-- [2024-01-16] 💖 Our paper was accepted by ICLR 2024!
-- [2023-11-13] 🎁 We have released a **7B version of SALMONN** at [tsinghua-ee/SALMONN-7B](https://huggingface.co/tsinghua-ee/SALMONN-7B) and built the 7B demo [here](https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio)!
-- [2023-10-08] ✨ We have released [**the model checkpoint**](https://huggingface.co/tsinghua-ee/SALMONN) and **the inference code** for SALMONN-13B!
-
-## 🌟 Structure
-
-The model architecture of SALMONN is shown below. A window-level Q-Former is used as the connection module to fuse the outputs from a Whisper speech encoder and a BEATs audio encoder as augmented audio tokens, which are aligned with the LLM input space. The LoRA adaptor aligns the augmented LLM input space with its output space. The text prompt is used to instruct SALMONN to answer open-ended questions about the general audio inputs and the answers are in the LLM text responses. 
-
-<div align=center><img src="resource/structure.png" height="100%" width="75%"/></div>
-
-## ⚡️ Demos
-
-Compared with traditional speech and audio processing tasks such as speech recognition and audio caption, SALMONN leverages the general knowledge and cognitive abilities of the LLM to achieve a cognitively oriented audio perception, which dramatically improves the versatility of the model and the richness of the task. In addition, SALMONN is able to follow textual commands and even spoken commands with a relatively high degree of accuracy. Since SALMONN only uses training data based on textual commands, listening to spoken commands is also a cross-modal emergent ability.
-
-Here are some examples of SALMONN.
-
-| Audio                                                  | Response                                     |
-| ------------------------------------------------------ | -------------------------------------------- |
-| [gunshots.wav](./resource/audio_demo/gunshots.wav)     | ![sac](resource/response_demo/sac.png)       |
-| [duck.wav](./resource/audio_demo/duck.wav)             | ![story](resource/response_demo/story.png)   |
-| [music.wav](./resource/audio_demo/music.wav)           | ![mc](resource/response_demo/mc.png)         |
-
-
-## 🌈 How to train a model
-
-For SALMONN-13B v1, you need to use the following dependencies:
-1. Our environment: The python version is 3.9.17, and other required packages can be installed with the following command: ```pip install -r requirements.txt```.
-2. Download [whisper large v2](https://huggingface.co/openai/whisper-large-v2/tree/main) to ```whisper_path```.
-3. Download [Fine-tuned BEATs_iter3+ (AS2M) (cpt2)](https://1drv.ms/u/s!AqeByhGUtINrgcpj8ujXH1YUtxooEg?e=E9Ncea) to `beats_path`.
-4. Download [vicuna 13B v1.1](https://huggingface.co/lmsys/vicuna-13b-v1.1/tree/main) to ```llama_path```.
-5. Running with ```python3 train.py --cfg-path configs/config.yaml``` in A100-SXM-80GB.
-
-## 🌈 How to inference in CLI
-
-1. Same as **How to train a model: 1-4**.
-2. Download [salmonn v1](https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth) to ```ckpt```.
-3. Running with ```python3 cli_inference.py --cfg-path configs/decode_config.yaml``` in A100-SXM-80GB. Now you can input ```wav_path``` and ```prompt```. Enjoy yourself !
-
-## 🌈 How to launch a web demo
-
-1. Same as **How to train a model: 1-4**.
-2. Download [salmonn v1](https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth) to ```ckpt```.
-3. Running with ```python3 web_demo.py --cfg-path configs/decode_config.yaml``` in A100-SXM-80GB.
-
-## 👀 Team
-
-**Team Tsinghua**: Wenyi Yu, Changli Tang, Guangzhi Sun, Chao Zhang
-
-**Team ByteDance**: Xianzhao Chen, Wei Li, Tian Tan, Lu Lu, Zejun Ma
-
-## ✨ Citation
-If you find SALMONN / video-SALMONN useful, please cite the paper:
+### Preparation
+The python version is 3.9.20, and other required packages can be installed with the following command: 
 ```
-@inproceedings{
-  tang2024salmonn,
-  title={{SALMONN}: Towards Generic Hearing Abilities for Large Language Models},
-  author={Changli Tang and Wenyi Yu and Guangzhi Sun and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Chao Zhang},
-  booktitle={The Twelfth International Conference on Learning Representations},
-  year={2024},
-  url={https://openreview.net/forum?id=14rn7HpKVk}
-}
+pip install -r requirements.txt
+```
+Create directory to store checkpoints (If modify the structure/rename directories, need to change config files and model files accordingly)
+```
+mkdir -p ckpt/MultiResQFormer
+mkdir -p ckpt/pretrained_ckpt
+```
+Then download the following model checkpoints:
 
-@inproceedings{
-  sun2024videosalmonn,
-  title={video-{SALMONN}: Speech-Enhanced Audio-Visual Large Language Models},
-  author={Guangzhi Sun and Wenyi Yu and Changli Tang and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Yuxuan Wang and Chao Zhang},
-  booktitle={Forty-first International Conference on Machine Learning},
-  year={2024},
-  url={https://openreview.net/forum?id=nYsh5GFIqX}
-}
+1. Main video-SALMONN model [checkpoint](https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main), then put it under `ckpt/MultiResQFormer`
+2. InstructBLIP [checkpoint](https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/instruct_blip_vicuna13b_trimmed.pth) for Vicuna-13B model, then put it under `ckpt/pretrained_ckpt`
+3. EVA_VIT model [checkpoint](https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/eva_vit_g.pth) for InstructBLIP, then put it under `ckpt/pretrained_ckpt`
+4. BEATs encoder [checkpoint](https://huggingface.co/spaces/fffiloni/SALMONN-7B-gradio/blob/677c0125de736ab92751385e1e8664cd03c2ce0d/beats/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt), then put it under `ckpt/pretrained_ckpt`
+
+
+### Run inference
+```
+python inference.py --cfg-path config/test.yaml 
+```
+
+### Check the result
+The result is saved in the following path:
+```
+./ckpt/MultiResQFormer/<DateTime>/eval_result.json
+```
+
+Expecting the following result:
+```
+[
+    {
+        "id": "./dummy/4405327307.mp4_Describe the video and audio in detail",
+        "conversation": [
+            {
+                "from": "human",
+                "value": "Describe the video and audio in detail"
+            },
+            {
+                "from": "gpt",
+                "value": "None"
+            }
+        ],
+        "task": "audiovisual_video_input",
+        "ref_answer": "None",
+        "gen_answer": "The video shows a group of musicians performing on stage, with a man singing into a microphone and playing the piano. There is also a drum set and a saxophone on stage. The audience is not visible in the video. The music is upbeat and energetic, and the performers seem to be enjoying themselves.</s>"
+    }
+]
 ```

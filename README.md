@@ -26,3 +26,39 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 - [2023-11-13] 🎁 We have released a **7B version of SALMONN** at [tsinghua-ee/SALMONN-7B](https://huggingface.co/tsinghua-ee/SALMONN-7B) and built the 7B demo [here](https://huggingface.co/spaces/tsinghua-ee/SALMONN-7B-gradio)!
 - [2023-10-08] ✨ We have released [**the model checkpoint**](https://huggingface.co/tsinghua-ee/SALMONN) and **the inference code** for SALMONN-13B!
 
+## 📖 Paper List
+```
+@inproceedings{wang2024enabling,
+  title={Enabling Auditory Large Language Models for Automatic Speech Quality Evaluation},
+  author={Wang, Siyin and Yu, Wenyi and Yang, Yudong and Tang, Changli and Li, Yixuan and Zhuang, Jimin and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Sun, Guangzhi and others},
+  booktitle={Proc. ICASSP},
+  address={Hyderabad},
+  year={2025}
+}
+
+@inproceedings{wang2024enabling,
+  title={QualiSpeech: A Speech Quality Assessment Dataset with Natural Language Reasoning and Descriptions},
+  author={Wang, Siyin and Yu, Wenyi and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Sun, Guangzhi and others},
+  booktitle={Proc. ACL},
+  address={Vienna},
+  year={2025}
+}
+
+@inproceedings{
+  sun2024videosalmonn,
+  title={video-{SALMONN}: Speech-Enhanced Audio-Visual Large Language Models},
+  author={Guangzhi Sun and Wenyi Yu and Changli Tang and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Yuxuan Wang and Chao Zhang},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024},
+  url={https://openreview.net/forum?id=nYsh5GFIqX}
+}
+
+@inproceedings{
+  tang2024salmonn,
+  title={{SALMONN}: Towards Generic Hearing Abilities for Large Language Models},
+  author={Changli Tang and Wenyi Yu and Guangzhi Sun and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Chao Zhang},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2024},
+  url={https://openreview.net/forum?id=14rn7HpKVk}
+}
+```

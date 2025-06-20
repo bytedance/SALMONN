@@ -2,7 +2,7 @@
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://openreview.net/pdf?id=nYsh5GFIqX'><img src='https://img.shields.io/badge/video_SALMONN_paper-PDF-green'></a>
-<a href='https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
+<a href='https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main'><img src='https://img.shields.io/badge/video--SALMONN-checkpoint-yellow'></a> 
 </div>
 
 ## Inference

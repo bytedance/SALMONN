@@ -2,7 +2,7 @@
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://ieeexplore.ieee.org/abstract/document/10890590'><img src='https://img.shields.io/badge/SALMONN_for_speech_quality assessment-PDF-green'></a>
-<a href='https://openreview.net/pdf?id=nYsh5GFIqX'><img src='https://img.shields.io/badge/QualiSpeech-PDF-green'></a>
+<a href='https://arxiv.org/abs/2503.20290'><img src='https://img.shields.io/badge/QualiSpeech-PDF-green'></a>
 <a href='https://huggingface.co/tsinghua-ee/Speech_Quality_Assessment'><img src='https://img.shields.io/badge/SALMONN--SQA--7B-checkpoint-yellow'></a> 
 </div>
 

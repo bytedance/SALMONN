@@ -32,8 +32,11 @@ Our finetuned SALMONN-7B checkpoint can also be downloaded [here](https://huggin
 
 Just follow the [salmonn branch](https://huggingface.co/tsinghua-ee/Speech_Quality_Assessment).
 
-## Citation
-If you find this work useful, please cite our paper
+## License & CODE_OF_CONDUCT
+Please refer to [salmonn branch](https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main) for more details.
+
+## ✨ Citation
+If you find this work useful, please cite our papers.
 ```
 @inproceedings{wang2024enabling,
   title={Enabling Auditory Large Language Models for Automatic Speech Quality Evaluation},

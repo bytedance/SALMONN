@@ -59,7 +59,7 @@ Expecting the following result:
 ```
 
 ## License & CODE_OF_CONDUCT
-Please refer to [salmonn branch](https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main) for more details.
+Please refer to [salmonn branch](https://github.com/bytedance/SALMONN/tree/salmonn) for more details.
 
 ## ✨ Citation
 If you find video-SALMONN useful, please cite the paper:

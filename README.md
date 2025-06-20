@@ -12,9 +12,9 @@
 
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
-- [SALMONN]([https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth](https://github.com/bytedance/SALMONN/tree/salmonn))
-- [video-SALMONN]([https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth](https://github.com/bytedance/SALMONN/tree/videosalmonn))
-- [SALMONN for speech quality assessment]([https://huggingface.co/tsinghua-ee/SALMONN/blob/main/salmonn_v1.pth](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment))
+- [SALMONN](https://github.com/bytedance/SALMONN/tree/salmonn)
+- [video-SALMONN](https://github.com/bytedance/SALMONN/tree/videosalmonn)
+- [SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
 
 ## 🔥 News
 - [2025-06-01] We have opensourced **QualiSpeech** dataset - A speech quality assessment dataset with natural language reasoning. You can use QualiSpeech to develop your own audio LLM for speech quality assessment or to evaluate the low-level speech perception capabilities of existing audio LLMs. Feel free to download it [here](https://huggingface.co/datasets/tsinghua-ee/QualiSpeech)!

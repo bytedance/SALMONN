@@ -1,3 +1,10 @@
+# video-SALMONN: Speech-Enhanced Audio-Visual Large Language Models
+
+<div style='display:flex; gap: 0.25rem; '>
+<a href='https://openreview.net/pdf?id=nYsh5GFIqX'><img src='https://img.shields.io/badge/video_SALMONN_paper-PDF-green'></a>
+<a href='https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main'><img src='https://img.shields.io/badge/huggingface-checkpoint-yellow'></a> 
+</div>
+
 ## Inference
 
 ### Preparation
@@ -49,4 +56,20 @@ Expecting the following result:
         "gen_answer": "The video shows a group of musicians performing on stage, with a man singing into a microphone and playing the piano. There is also a drum set and a saxophone on stage. The audience is not visible in the video. The music is upbeat and energetic, and the performers seem to be enjoying themselves.</s>"
     }
 ]
+```
+
+## License & CODE_OF_CONDUCT
+Please refer to [salmonn branch](https://huggingface.co/tsinghua-ee/Video-SALMONN/tree/main) for more details.
+
+## ✨ Citation
+If you find video-SALMONN useful, please cite the paper:
+```
+@inproceedings{
+  sun2024videosalmonn,
+  title={video-{SALMONN}: Speech-Enhanced Audio-Visual Large Language Models},
+  author={Guangzhi Sun and Wenyi Yu and Changli Tang and Xianzhao Chen and Tian Tan and Wei Li and Lu Lu and Zejun MA and Yuxuan Wang and Chao Zhang},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024},
+  url={https://openreview.net/forum?id=nYsh5GFIqX}
+}
 ```

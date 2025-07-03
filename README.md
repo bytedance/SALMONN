@@ -7,6 +7,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://arxiv.org/abs/2506.15220'><img src='https://img.shields.io/badge/video_SALMONN_2_paper-PDF-green'></a>
 <a href='https://video-salmonn-2.github.io'><img src='https://img.shields.io/badge/demo-green'></a>
+<a href='https://huggingface.co/tsinghua-ee/video-SALMONN-2'><img src='https://img.shields.io/badge/video_SALMONN_2-checkpoint-yellow'></a>
 </div>
 
 ## 🔥 News

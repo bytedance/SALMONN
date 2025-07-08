@@ -12,11 +12,12 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## 🔥 News
 
+- **2025-07-08**: We release the 7B version of video-SALMONN 2.
 - **2025-06-18**: We release the code of video-SALMONN 2.
 
 ## ⚡️ Future Plans
 
-- Release final video-SALMONN 2.
+- Release the high-frame-rate version and 72B verison.
 
 ## 🌈 How to Use
 

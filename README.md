@@ -12,6 +12,7 @@
 
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
+- [video-SALMONN 2](https://github.com/bytedance/video-SALMONN-2)
 - [SALMONN](https://github.com/bytedance/SALMONN/tree/salmonn)
 - [video-SALMONN](https://github.com/bytedance/SALMONN/tree/videosalmonn)
 - [SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
@@ -28,6 +29,13 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 
 ## 📖 Paper List
 ```
+@article{tang2025video,
+    title={{video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models}}, 
+    author={Changli Tang and Yixuan Li and Yudong Yang and Jimin Zhuang and Guangzhi Sun and Wei Li and Zejun Ma and Chao Zhang},
+    journal={arXiv preprint arXiv:2506.15220},
+    year={2025},
+}
+
 @inproceedings{wang2024enabling,
   title={Enabling Auditory Large Language Models for Automatic Speech Quality Evaluation},
   author={Wang, Siyin and Yu, Wenyi and Yang, Yudong and Tang, Changli and Li, Yixuan and Zhuang, Jimin and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Sun, Guangzhi and others},

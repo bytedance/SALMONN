@@ -18,6 +18,7 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 - [SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
 
 ## 🔥 News
+- [2025-07-08] We have opensourced **video-SALMONN 2**! video-SALMONN 2 is a powerful audio-visual LLM that generates high-quality audio-visual video captions and achieves competitive performance on general video QA benchmarks.
 - [2025-06-01] We have opensourced **QualiSpeech** dataset - A speech quality assessment dataset with natural language reasoning. You can use QualiSpeech to develop your own audio LLM for speech quality assessment or to evaluate the low-level speech perception capabilities of existing audio LLMs. Feel free to download it [here](https://huggingface.co/datasets/tsinghua-ee/QualiSpeech)!
 - [2025-03-03] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)!
 - [2024-09-04] We have released the model and inference code for **video-SALMONN**! See [here](https://github.com/bytedance/SALMONN/tree/videosalmonn)!

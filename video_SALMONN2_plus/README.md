@@ -1,30 +1,30 @@
 # video-SALMONN 2+ (Qwen 2.5-VL Based video-SALMONN 2)
 
-video-SALMONN 2+ is Qwen 2.5-VL version of video-SALMONN 2. Based on better baseline and some minor optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
+video-SALMONN 2+ is built on Qwen 2.5-VL. Based on a better baseline and some minor optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://arxiv.org/abs/2506.15220'><img src='https://img.shields.io/badge/paper-PDF-green'></a>
-<a href='https://huggingface.co/tsinghua-ee/video-SALMONN-2_plus_7B'><img src='https://img.shields.io/badge/7B-checkpoint-yellow'></a>
-<a href='https://huggingface.co/tsinghua-ee/video-SALMONN-2_plus_72B'><img src='https://img.shields.io/badge/72B-checkpoint-yellow'></a>
+<a href='https://huggingface.co/tsinghua-ee/video-SALMONN-2_plus_7B'><img src='https://img.shields.io/badge/video_SALMONN_2+_7B-checkpoint-yellow'></a>
+<a href='https://huggingface.co/tsinghua-ee/video-SALMONN-2_plus_72B'><img src='https://img.shields.io/badge/video_SALMONN_2+_72B-checkpoint-yellow'></a>
 </div>
 
 ## Results
 
-Video-MME (w/o sub / w/ sub)
+### Video-MME (w/o sub / w/ sub)
 
 | **7B Model**         | **Short**         | **Medium**        | **Long**      | **Avg**           |
 | -------------------- | ----------------- | ----------------- | ------------- | ----------------- |
-| LinVT 7B             | 79.0/71.7         | 71.6/68.7         | 63.2/63.3     | 70.3/71.7         |
-| VideoLLaMA3 7B       | **80.1**/**80.2** | 63.7/69.6         | 54.9/61.0     | 66.2/70.3         |
-| Qwen 2.5-VL 7B       | -                 | -                 | -             | 65.1/71.6         |
-| video-SALMONN 2+ 7B  | 79.0/79.4         | **72.1**/**73.1** | 62.3/**63.9** | **71.1**/**72.1** |
+| LinVT 7B             | 79.0 / 71.7         | 71.6 / 68.7         | 63.2 / 63.3     | 70.3 / 71.7         |
+| VideoLLaMA3 7B       | **80.1** / **80.2** | 63.7 / 69.6         | 54.9 / 61.0     | 66.2 / 70.3         |
+| Qwen 2.5-VL 7B       | -                 | -                 | -             | 65.1 / 71.6         |
+| video-SALMONN 2+ 7B  | 79.0 / 79.4         | **72.1** / **73.1** | 62.3 / **63.9** | **71.1** / **72.1** |
 | **Larger Model**     |                   |                   |               |                   |
-| GPT-4o               | 80.0/82.8         | 70.3/76.6         | 65.3/72.1     | 71.9/77.2         |
-| Gemini-1.5-pro       | 81.7/84.5         | 74.3/**81.0**     | 67.4/**77.4** | 75.0/**81.3**     |
-| Qwen 2.5-VL 72B      | -                 | -                 | -             | 73.3/79.1         |
-| video-SALMONN 2+ 72B | **84.3**/**85.1** | **79.4**/79.7     | **71.2**/72.0 | **78.3**/78.9     |
+| GPT-4o               | 80.0 / 82.8         | 70.3 / 76.6         | 65.3 / 72.1     | 71.9 / 77.2         |
+| Gemini-1.5-pro       | 81.7 / 84.5         | 74.3 / **81.0**     | 67.4 / **77.4** | 75.0 / **81.3**     |
+| Qwen 2.5-VL 72B      | -                 | -                 | -             | 73.3 / 79.1         |
+| video-SALMONN 2+ 72B | **84.3** / **85.1** | **79.4** / 79.7     | **71.2** / 72.0 | **78.3** / 78.9     |
 
-Other benchmarks
+### Other Audio-Visual Video Benchmarks
 
 | **Model**            | **MLVU** | **LongVideoBench** | **DailyOmni** | **VideoHolmes** |
 | -------------------- | -------- | ------------------ | ------------- | --------------- |

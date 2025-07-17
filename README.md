@@ -19,7 +19,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 - **2025-07-08**: We release the 7B version of video-SALMONN 2.
 - **2025-06-18**: We release the code of video-SALMONN 2.
 
-## Results
+## ⚡️ Results
 
 ### Video-MME (w/o sub / w/ sub)
 

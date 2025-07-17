@@ -1,4 +1,4 @@
-# video-SALMONN 2+ (Qwen 2.5-VL Based video-SALMONN 2)
+# video-SALMONN 2+: an updated version of video-SALMONN 2
 
 video-SALMONN 2+ is built on Qwen 2.5-VL. Based on a better baseline and some other optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
 

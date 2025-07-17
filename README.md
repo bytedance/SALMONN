@@ -35,7 +35,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 | Qwen 2.5-VL 72B      | -                 | -                 | -             | 73.3 / 79.1         |
 | video-SALMONN 2+ 72B | **84.3** / **85.1** | **79.4** / 79.7     | **71.2** / 72.0 | **78.3** / 78.9     |
 
-### Other Audio-Visual Benchmarks
+### Other Audio-Visual Video Benchmarks
 
 | **Model**            | **MLVU** | **LongVideoBench** | **DailyOmni** | **VideoHolmes** |
 | -------------------- | -------- | ------------------ | ------------- | --------------- |

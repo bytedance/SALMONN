@@ -46,7 +46,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## 🌈 How to Use
 
-### How to train a model
+### How to train video-SALMONN 2
 
 1. Prepare the dataset following `scripts/example_sft.json` and `scripts/example_dpo.json`.
 2. Download LLaVA-OneVision Model from [huggingface](https://huggingface.co/lmms-lab/llava-onevision-qwen2-7b-ov).
@@ -58,6 +58,8 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 1. Prepare the dataset following `scripts/example_sft.json`.
 2. Modify the parameters in `scripts/eval.sh`.
 3. Run `bash scripts/eval.sh`.
+
+### For video-SALMONN 2+, please refer to [video_SALMONN2_plus](https://github.com/bytedance/video-SALMONN-2/tree/main/video_SALMONN2_plus)
 
 ## 👀 Team
 

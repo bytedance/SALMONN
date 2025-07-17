@@ -12,7 +12,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## 🔥 News
 
-- **2025-07-17**: We release the code and checkpoint of video-SALMONN 2 plus at [video-SALMONN 2 plus](https://github.com/bytedance/video-SALMONN-2/tree/main/video_SALMONN2_plus)
+- **2025-07-17**: We release the code and checkpoint of video-SALMONN 2+ at [video-SALMONN 2+](https://github.com/bytedance/video-SALMONN-2/tree/main/video_SALMONN2_plus)
 - **2025-07-08**: We release the 7B version of video-SALMONN 2.
 - **2025-06-18**: We release the code of video-SALMONN 2.
 

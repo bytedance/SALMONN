@@ -1,4 +1,4 @@
-<img width="1283" height="1029" alt="image" src="https://github.com/user-attachments/assets/e00e77f8-eba7-4f4f-aef6-55573082c2d8" /># video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models
+# video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models
 
 🚀🚀 Welcome to the repo of **video-SALMONN 2**!
 

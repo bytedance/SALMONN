@@ -1,4 +1,4 @@
-# video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models
+<img width="1283" height="1029" alt="image" src="https://github.com/user-attachments/assets/e00e77f8-eba7-4f4f-aef6-55573082c2d8" /># video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models
 
 🚀🚀 Welcome to the repo of **video-SALMONN 2**!
 
@@ -18,22 +18,22 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## Results
 
-Video-MME (w/o sub / w/ sub)
+### Video-MME (w/o sub / w/ sub)
 
 | **7B Model**         | **Short**         | **Medium**        | **Long**      | **Avg**           |
 | -------------------- | ----------------- | ----------------- | ------------- | ----------------- |
-| LinVT 7B             | 79.0/71.7         | 71.6/68.7         | 63.2/63.3     | 70.3/71.7         |
-| VideoLLaMA3 7B       | **80.1**/**80.2** | 63.7/69.6         | 54.9/61.0     | 66.2/70.3         |
-| Qwen 2.5-VL 7B       | -                 | -                 | -             | 65.1/71.6         |
-| video-SALMONN 2 7B   | 79.8/-            | 65.0/-            | 57.3/-        | 67.4/-            |
-| video-SALMONN 2+ 7B  | 79.0/79.4         | **72.1**/**73.1** | 62.3/**63.9** | **71.1**/**72.1** |
+| LinVT 7B             | 79.0 / 71.7         | 71.6 / 68.7         | 63.2 / 63.3     | 70.3 / 71.7         |
+| VideoLLaMA3 7B       | **80.1** / **80.2** | 63.7 / 69.6         | 54.9 / 61.0     | 66.2 / 70.3         |
+| Qwen 2.5-VL 7B       | -                 | -                 | -             | 65.1 / 71.6         |
+| video-SALMONN 2 7B   | 79.8 / -            | 65.0 / -            | 57.3 / -        | 67.4 / -            |
+| video-SALMONN 2+ 7B  | 79.0 / 79.4         | **72.1** / **73.1** | 62.3 / **63.9** | **71.1** / **72.1** |
 | **Larger Model**     |                   |                   |               |                   |
-| GPT-4o               | 80.0/82.8         | 70.3/76.6         | 65.3/72.1     | 71.9/77.2         |
-| Gemini-1.5-pro       | 81.7/84.5         | 74.3/**81.0**     | 67.4/**77.4** | 75.0/**81.3**     |
-| Qwen 2.5-VL 72B      | -                 | -                 | -             | 73.3/79.1         |
-| video-SALMONN 2+ 72B | **84.3**/**85.1** | **79.4**/79.7     | **71.2**/72.0 | **78.3**/78.9     |
+| GPT-4o               | 80.0 / 82.8         | 70.3 / 76.6         | 65.3 / 72.1     | 71.9 / 77.2         |
+| Gemini-1.5-pro       | 81.7 / 84.5         | 74.3 / **81.0**     | 67.4 / **77.4** | 75.0 / **81.3**     |
+| Qwen 2.5-VL 72B      | -                 | -                 | -             | 73.3 / 79.1         |
+| video-SALMONN 2+ 72B | **84.3** / **85.1** | **79.4** / 79.7     | **71.2** / 72.0 | **78.3** / 78.9     |
 
-Other benchmarks
+### Other Audio-Visual Benchmarks
 
 | **Model**            | **MLVU** | **LongVideoBench** | **DailyOmni** | **VideoHolmes** |
 | -------------------- | -------- | ------------------ | ------------- | --------------- |

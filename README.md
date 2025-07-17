@@ -18,8 +18,6 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## Results
 
-## Results
-
 Video-MME (w/o sub / w/ sub)
 
 | **7B Model**         | **Short**         | **Medium**        | **Long**      | **Avg**           |

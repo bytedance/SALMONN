@@ -14,7 +14,7 @@ video-SALMONN 2 is a powerful audio-visual large language model (LLM) that **gen
 
 ## 🔥 News
 
-- **2025-07-17**: We release the code and checkpoint of video-SALMONN 2+ at [video-SALMONN 2+](https://github.com/bytedance/video-SALMONN-2/tree/main/video_SALMONN2_plus). video-SALMONN 2+ is Qwen 2.5-VL version of video-SALMONN 2. Based on better baseline and some minor optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
+- **2025-07-17**: We release the code and checkpoint of video-SALMONN 2+ at [video-SALMONN 2+](https://github.com/bytedance/video-SALMONN-2/tree/main/video_SALMONN2_plus). video-SALMONN 2+ achieves SOTA results on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
 - **2025-07-08**: We release the 7B version of video-SALMONN 2.
 - **2025-06-18**: We release the code of video-SALMONN 2.
 

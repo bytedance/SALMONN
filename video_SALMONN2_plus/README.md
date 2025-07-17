@@ -1,6 +1,6 @@
 # video-SALMONN 2+ (Qwen 2.5-VL Based video-SALMONN 2)
 
-video-SALMONN 2+ is built on Qwen 2.5-VL. Based on a better baseline and some minor optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
+video-SALMONN 2+ is built on Qwen 2.5-VL. Based on a better baseline and some other optimizations, video-SALMONN 2+ achieves SOTA on [Video-MME](https://video-mme.github.io/home_page.html) benchmark.
 
 <div style='display:flex; gap: 0.25rem; '>
 <a href='https://arxiv.org/abs/2506.15220'><img src='https://img.shields.io/badge/paper-PDF-green'></a>
@@ -34,16 +34,13 @@ video-SALMONN 2+ is built on Qwen 2.5-VL. Based on a better baseline and some mi
 | video-SALMONN 2+ 72B | **77.8** | 66.4               | **69.84**     | **55.6**        |
 
 ## How to Use
-
-**Due to unknown BUGs, when using `from_pretrained` and `device_map="auto"`, the model generates weird result, which forces the code to use [ZeRO Inference](https://www.deepspeed.ai/2022/09/09/zero-inference.html) when testing the 72B model.**
-
 1. Prepare the dataset following `scripts/example_av.json`, `scripts/example_v.json`, `scripts/example_dpo.json`, and `scripts/example_a.json`
 2. Prepare base audio model through modifying the path in `gen_audio_model.py`
 3. To conduct audio alignment, use the following script:
    ```bash
    bash scripts/train.sh --interval 0.1 --run_name audio_alignment --dataset path_to_dataset --lr 2e-5 --train_qformer --max_frames 768 --max_pixels 61250 --model path_to_audio_model --model_base path_to_audio_model --bs 16 --epoch 5 --save_steps 5000
    ```
-4. To conduct audio visual SFT, use the following script:
+4. To conduct audio-visual SFT, use the following script:
     ```bash
     bash scripts/train.sh --interval 0.1 --run_name av_sft --dataset path_to_dataset --lr 2e-5 --train_qformer --train_proj --max_frames 768 --max_pixels 61250 --model audio_align_model --model_base path_to_audio_model --epoch 5 --save_steps 2000 --use_lora --lora_r 128 --lora_alpha 256
     ```

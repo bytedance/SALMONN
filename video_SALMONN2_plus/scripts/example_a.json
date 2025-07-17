@@ -1,0 +1,15 @@
+[
+    {
+        "audio": "path_to_audio",
+        "conversations":[
+            {
+                "from": "human", 
+                "value": "<audio>\nPrompt"
+            },
+            {
+                "from": "gpt",
+                "value": "Response"
+            }
+        ]
+    }
+]

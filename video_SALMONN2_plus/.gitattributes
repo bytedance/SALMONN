@@ -1,0 +1,45 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+* text=auto
+
+###############################################################################
+# behavior for image files
+# image files are treated as binary by default.
+###############################################################################
+*.jpg   binary
+*.png   binary
+*.gif   binary
+*.bmp   binary
+*.ico   binary
+*.jpeg  binary
+*.jfif  binary
+
+###############################################################################
+# diff behavior for common document formats
+# Convert binary document formats to text before diffing them.
+###############################################################################
+*.doc   diff=astextplain
+*.DOC   diff=astextplain
+*.docx  diff=astextplain
+*.DOCX  diff=astextplain
+*.dot   diff=astextplain
+*.DOT   diff=astextplain
+*.pdf   diff=astextplain
+*.PDF   diff=astextplain
+*.rtf   diff=astextplain
+*.RTF   diff=astextplain
+
+###############################################################################
+# Force Windows cmd and batch scripts to always use crlf line endings so that if
+# a repo is accessed in Windows via a file share from Unix, the scripts will
+# work.
+###############################################################################
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+###############################################################################
+# Force bash scripts to always use lf line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+###############################################################################
+*.sh text eol=lf

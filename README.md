@@ -31,6 +31,14 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 
 ## 📖 Paper List
 ```
+@inproceedings{
+  sun2025videosalmonno1,
+  title={{video-SALMONN-o1}: Reasoning-enhanced Audio-visual Large Language Model},
+  author={Guangzhi Sun, Yudong Yang, Jimin Zhuang, Changli Tang, Yixuan Li, Wei Li, Zejun MA, Chao Zhang},
+  booktitle={ICML},
+  year={2025}
+}
+
 @article{tang2025video,
     title={{video-SALMONN 2: Captioning-Enhanced Audio-Visual Large Language Models}}, 
     author={Changli Tang and Yixuan Li and Yudong Yang and Jimin Zhuang and Guangzhi Sun and Wei Li and Zejun Ma and Chao Zhang},

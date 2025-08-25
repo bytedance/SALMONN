@@ -13,9 +13,9 @@
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
 - [video-SALMONN 2](https://github.com/bytedance/video-SALMONN-2)
-- [SALMONN](https://github.com/bytedance/SALMONN/tree/salmonn)
-- [video-SALMONN](https://github.com/bytedance/SALMONN/tree/videosalmonn)
-- [SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
+- [[ICASSP 2025 & ACL 2025] SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
+- [[ICML 2024] video-SALMONN](https://github.com/bytedance/SALMONN/tree/videosalmonn)
+- [[ICLR 2024] SALMONN](https://github.com/bytedance/SALMONN/tree/salmonn)
 
 ## 🔥 News
 - [2025-07-08] We have opensourced **video-SALMONN 2**! video-SALMONN 2 is a powerful audio-visual LLM that generates high-quality audio-visual video captions and achieves competitive performance on general video QA benchmarks.

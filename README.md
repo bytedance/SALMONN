@@ -13,6 +13,7 @@
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
 - [video-SALMONN 2](https://github.com/bytedance/video-SALMONN-2)
+- [[ICML 2025] F-16](https://github.com/bytedance/F-16)
 - [[ICML 2025] video-SALMONN-o1](https://github.com/bytedance/SALMONN/tree/video-salmonn-o1)
 - [[ICASSP 2025 & ACL 2025] SALMONN for speech quality assessment](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)
 - [[ICML 2024] video-SALMONN](https://github.com/bytedance/SALMONN/tree/videosalmonn)

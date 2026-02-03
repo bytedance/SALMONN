@@ -1,4 +1,4 @@
-# video-SALMONN-S
+# video-SALMONN S
 
 ## Abstract
 Long-duration streaming video understanding is fundamental for future AI agents, yet remains limited by ineffective long-term memory. We introduce video-SALMONN S, a memory-enhanced streaming audio-visual large language model that processes over 3-hour videos at 1 FPS and 360p resolution, outperforming strong non-streaming models under the same memory budget.

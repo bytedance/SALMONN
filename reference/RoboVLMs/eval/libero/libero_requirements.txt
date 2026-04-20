@@ -1,0 +1,7 @@
+imageio[ffmpeg]
+termcolor
+robosuite==1.4.0
+bddl
+easydict
+cloudpickle
+gym

@@ -1,0 +1,75 @@
+
+# Copyright (2026) Tsinghua University, Bytedance Ltd. and/or its affiliates
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+DATAPATH=''
+ACTION_TOKENIZER_PATH=""
+EXP_NAME=""
+
+torchrun \
+    --nproc_per_node=${GPU_NUM} \
+    --nnodes=${NODE_NUM} \
+    --node-rank=${NODE_RANK} \
+    --master_addr=${MASTER_ADDR} \
+    --master_port=${MASTER_PORT} \
+    train/train_moe.py \
+    --model_name_or_path \
+    --model_config_path \
+    --deepspeed scripts/sft/zero2.json \
+    --output_dir "output/"${EXP_NAME} \
+    --learning_rate 2e-4 \
+    --null_prompt_prob 0 \
+    --weight_decay 0.1 \
+    --min_learning_rate 1e-5 \
+    --max_grad_norm 5.0 \
+    --adam_beta1 0.9 \
+    --adam_beta2 0.95 \
+    --adam_epsilon 1e-6 \
+    --bf16 True \
+    --tf32 True \
+    --data_path ${DATAPATH} \
+    --max_steps 20000 \
+    --dataloader_num_workers 12 \
+    --lr_scheduler_type "cosine_with_min_lr" \
+    --warmup_steps 200 \
+    --per_device_train_batch_size 4 \
+    --frames 2 \
+    --action_frames 10 \
+    --max_position_embeddings 6400 \
+    --seed 42 \
+    --logging_steps 10 \
+    --gradient_checkpointing True \
+    --gradient_accumulation_steps 8 \
+    --save_strategy steps \
+    --save_steps 2000 \
+    --eval_strategy no \
+    --apply_loss_on_only_vision False \
+    --apply_loss_on_only_action True \
+    --actions True \
+    --actions_format "fast" \
+    --use_gripper True \
+    --video_format "interleave" \
+    --action_tokenizer_path ${ACTION_TOKENIZER_PATH} \
+    --report_to "wandb" \
+    --run_name ${EXP_NAME} \
+    --speech True \
+    --speech_only True \
+    --peft True \
+    --freeze False \
+    --llama True \
+    --debug_mode False \
+    --time_block 0.48 \
+    --token_per_second 4 \
+    --encoder_type "zipformer2" \
+    --speech_encoder_path "" \

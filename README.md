@@ -12,6 +12,7 @@
 
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
+- [[ICLR 2026] ELLSA](https://github.com/bytedance/SALMONN/tree/ELLSA)
 - [video-SALMONN 2](https://github.com/bytedance/video-SALMONN-2)
 - [[ICML 2025] F-16](https://github.com/bytedance/F-16)
 - [[ICML 2025] video-SALMONN-o1](https://github.com/bytedance/SALMONN/tree/video-salmonn-o1)
@@ -20,6 +21,7 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 - [[ICLR 2024] SALMONN](https://github.com/bytedance/SALMONN/tree/salmonn)
 
 ## 🔥 News
+- [2026-04-20] We have released the model and inference code for **ELLSA**! See [here](https://github.com/bytedance/SALMONN/tree/ELLSA)! ELLSA is the first end-to-end model that unifies vision, speech, text and action in a streaming full-duplex framework, enabling joint multimodal perception and concurrent generation.
 - [2025-07-08] We have opensourced **video-SALMONN 2**! video-SALMONN 2 is a powerful audio-visual LLM that generates high-quality audio-visual video captions and achieves competitive performance on general video QA benchmarks.
 - [2025-06-01] We have opensourced **QualiSpeech** dataset - A speech quality assessment dataset with natural language reasoning. You can use QualiSpeech to develop your own audio LLM for speech quality assessment or to evaluate the low-level speech perception capabilities of existing audio LLMs. Feel free to download it [here](https://huggingface.co/datasets/tsinghua-ee/QualiSpeech)!
 - [2025-03-03] We have released the data processing scripts and finetuned model checkpoints for **SALMONN** for speech quality assessment! See [here](https://github.com/bytedance/SALMONN/tree/speech_quality_assessment)!
@@ -32,6 +34,14 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 
 ## 📖 Paper List
 ```
+@inproceedings{wang2026end,
+  title={End-to-end Listen, Look, Speak and Act},
+  author={Wang, Siyin and Yu, Wenyi and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Lu, Lu and Zhang, Chao},
+  journal={Proc. ICLR},
+  year={2026},
+  address={Rio de Janeiro}
+}
+
 @inproceedings{
   sun2025videosalmonno1,
   title={{video-SALMONN-o1}: Reasoning-enhanced Audio-visual Large Language Model},

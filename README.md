@@ -8,7 +8,7 @@
   </a>
 </h1>
 
-🚀🚀 Welcome to the repo of **SALMONN**!
+🚀🚀 Welcome to the repo of **SALMONN**!!
 
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 

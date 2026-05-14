@@ -37,7 +37,7 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
 @inproceedings{wang2026end,
   title={End-to-end Listen, Look, Speak and Act},
   author={Wang, Siyin and Yu, Wenyi and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Lu, Lu and Zhang, Chao},
-  journal={Proc. ICLR},
+  booktitle={Proc. ICLR},
   year={2026},
   address={Rio de Janeiro}
 }

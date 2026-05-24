@@ -1,0 +1,16 @@
+[
+    {
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Select the best answer to the following multiple-choice question based on the video. <video>\nRespond with only the letter (A, B, C, or D) of the correct option.\nAccording to what is shown in the video, which of the following events happened before 1613?\nA. The fall of Teutonic Knights.\nB. The Zemsky Sobor elected Mikhail Romanov as Tsar.\nC. Catherine the Great ascends the throne.\nD. Peter the Great transformed Russia into a modern European power.\nThe best answer is:"
+            },
+            {
+                "from": "gpt",
+                "value": "A"
+            }
+        ],
+        "use_audio": true,
+        "video": "/mnt/bn/tiktok-mm-2/aiic/public/model/huggingface/videomme/w0Wmc8C0Eq0.mp4"
+    }
+]

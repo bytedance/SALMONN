@@ -18,6 +18,7 @@ transformers=4.57.0
 torch==2.7.1+cu126
 line-profiler
 ```
+Our implementation also depends on Liger-kernel. Please find the official installation of [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) or do `pip install liger-kernel`
 
 ## Inference
 First, download model checkpoints from <a href='https://huggingface.co/datasets/tsinghua-ee/video_SALMONN_S'><img src='https://img.shields.io/badge/checkpoints-videoSALMONNS-orange'></a>  \

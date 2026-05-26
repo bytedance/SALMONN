@@ -1,0 +1,12 @@
+{
+    "activation_checkpointing": true,
+    "limit_all_gathers": true,
+    "auto_wrap_policy": "transformer_based_wrap",
+    "mixed_precision": {
+        "param_dtype": "bf16",
+        "reduce_dtype": "fp32"
+    },
+    "transformer_layer_cls_to_wrap": [
+        "Qwen3VLTextDecoderLayer", "Qwen3VLVisionBlock", "WhisperEncoderLayer"
+    ]
+}

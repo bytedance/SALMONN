@@ -1,0 +1,17 @@
+[
+    {
+        "id": "/mnt/bn/tiktok-mm-2/aiic/public/model/huggingface/videomme/TGom0uiW130.mp4",
+        "video": "/mnt/bn/tiktok-mm-2/aiic/public/model/huggingface/videomme/TGom0uiW130.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Select the best answer to the following multiple-choice question based on the video. <image>\nRespond with only the letter (A, B, C, or D) of the correct option.\nWhat is the video mainly about?\nA. Planes invented by the Wright Brothers.\nB. The structural difference between the planes created by Whitehead and planes created by the Wright Brothers.\nC. Who invented the first plane.\nD. How Whitehead and the Wright Brothers cooperated to invent the first motorized flight.\nThe best answer is:"
+            },
+            {
+                "from": "gpt",
+                "value": "A"
+            }
+        ],
+        "audio": "/mnt/bn/tiktok-mm-2/aiic/public/data/audio/videomme/TGom0uiW130.wav"
+    }
+]

@@ -1,0 +1,30 @@
+### model
+method: retake
+scaling_factor: 4
+attn_implementation: "flash_attention_2"
+longvideo_kwargs: {
+  'frame_chunk_size': 64,
+  'chunked_prefill_frames': 32,
+  # KVCache compression
+  'kvcache_compression': True,
+  'kvcache_compression_kwargs': {
+    'compression_method': 'stdvidlkv',
+    'dynamic_compression_ratio': True,
+    'prompt_guided_compression': True,
+    'pos_embed_reforge': False,
+    'max_input_length': 16000,
+    # Temporal
+    'enable_temporal_adaptation': True,
+    'temporal_adaptation_ratio': 4,
+    # Layer
+    'budget_allocation_method': 'adakv',
+  },
+}
+
+### data
+sample_fps: 4
+max_num_frames: 2048
+longsize_resolution: 448
+
+### generate
+do_sample: false

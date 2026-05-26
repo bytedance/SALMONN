@@ -3,6 +3,11 @@
 Audio-visual large language models (LLMs) hold strong promise for long-form video understanding, yet their long-video inference is fundamentally limited by the linear growth of video tokens and key-value (KV) caches. We present OmniMem, a memory-efficient streaming framework designed specifically for audio-visual LLMs.
 Unlike existing compression methods that treat all tokens uniformly, OmniMem introduces a modality-aware memory allocation strategy that separately manages visual and audio contexts, addressing the severe token imbalance between the two modalities. OmniMem further preserves informative and non-redundant KV states through perturbation-aware memory selection, enabling compact memory without sacrificing long-range understanding. To strengthen compression under realistic deployment constraints, we also explore budget-aware fine-tuning, which encourages the model to consolidate useful information into retained memory. Experiments on VideoMME Long, LVBench, and LVOmniBench with video-SALMONN 2+ and Qwen-2.5-Omni show that OmniMem consistently improves over strong training-free compression baselines by 2–4\% absolute accuracy under the same memory budgets, with an additional 1–2\% gain after fine-tuning.
 
+<div style='display:flex; gap: 0.25rem; '>
+<a href=''><img src='https://img.shields.io/badge/arXiv-PDF-red'></a>
+<a href='https://huggingface.co/BrianatCambridge/OmniMem'><img src='https://img.shields.io/badge/checkpoints-OmniMem-orange'></a> 
+</div>
+
 ## Requirements
 ```
 transformers=4.57.0
@@ -13,7 +18,7 @@ Our implementation also depends on Liger-kernel. Please find the official instal
 
 ## Preparation
 - Setup your data in the format shown in example.json
-- Download model checkpoints
+- Download finetuned video-SALMONN 2+ checkpoints from [here](https://huggingface.co/BrianatCambridge/OmniMem), and save it in a folder name `vs2_finetune`
 
 ## Inference with OmniMem
 
@@ -25,8 +30,8 @@ bash test.sh \
     --run_name <your_own_run_name> \
     --dataset <path_to_dataset> \
     --max_frames 100000 \
-    --model path_to_vs2_checkpoint \
-    --model_base path_to_model_base \
+    --model vs2_finetune/vs2_checkpoint \
+    --model_base vs2_finetune/base \
     --model_type dense \
     --fixed_memory_size 20480 \
     --workingmemsize 20480 \

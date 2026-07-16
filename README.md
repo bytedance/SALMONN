@@ -12,6 +12,7 @@
 
 The SALMONN model family consists of a series of advanced multi-modal large language models. For more details, please refer to the corresponding branches.
 
+- [SALMONN 2](https://github.com/bytedance/SALMONN/tree/salmonn2)
 - [[ICLR 2026] ELLSA](https://github.com/bytedance/SALMONN/tree/ELLSA)
 - [video-SALMONN 2](https://github.com/bytedance/video-SALMONN-2)
 - [[ICML 2025] F-16](https://github.com/bytedance/F-16)

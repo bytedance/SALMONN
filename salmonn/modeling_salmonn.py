@@ -138,9 +138,9 @@ class SalmonnForConditionalGeneration(PreTrainedModel):
             token_ids = torch.tensor(
                 self.nl_timestamp_token_ids_list[token_index],
                 dtype=torch.long,
-                device=audio_embeds.device,
+                device=embeddings.weight.device,
             )
-            value = embeddings(token_ids).to(audio_embeds.dtype)
+            value = embeddings(token_ids).to(device=audio_embeds.device, dtype=audio_embeds.dtype)
             timestamp_embeddings.append(value)
             timestamp_lengths.append(value.size(0))
         pieces = []
@@ -157,6 +157,7 @@ class SalmonnForConditionalGeneration(PreTrainedModel):
     ):
         audio_embeds, audio_embed_lengths = self.encode_audio(audio_features, audio_lengths)
         token_embeds = self.get_input_embeddings()(input_ids)
+        audio_embeds = audio_embeds.to(device=token_embeds.device, dtype=token_embeds.dtype)
         vision_start_id = self.config.qwen_config.get("vision_start_token_id", 151652)
         output_embeds, output_masks, output_labels, cursor = [], [], [], 0
         for row in range(input_ids.size(0)):

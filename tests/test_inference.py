@@ -1,10 +1,5 @@
-import array
-import math
-import wave
-
 import torch
 
-from salmonn import AudioProcessor
 from scripts.infer import generate
 
 
@@ -13,26 +8,29 @@ class TokenBatch(dict):
         return TokenBatch({key: value.to(device) for key, value in self.items()})
 
 
-class StubTokenizer:
-    def apply_chat_template(self, messages, tokenize, add_generation_prompt):
-        assert messages == [{"role": "user", "content": "<audio>Describe the audio."}]
-        assert tokenize is False
-        assert add_generation_prompt is True
-        return messages[0]["content"]
+class StubProcessor:
+    def __init__(self):
+        self.calls = []
 
-    def __call__(self, text, return_tensors, add_special_tokens):
-        assert text == "<|vision_start|><|vision_end|>Describe the audio."
-        assert return_tensors == "pt"
-        assert add_special_tokens is False
+    def __call__(self, audios, instruction=None, formatted_prompt=None):
+        self.calls.append(
+            {
+                "audios": audios,
+                "instruction": instruction,
+                "formatted_prompt": formatted_prompt,
+            }
+        )
         return TokenBatch(
             input_ids=torch.tensor([[1, 2, 3]]),
             attention_mask=torch.ones(1, 3, dtype=torch.long),
+            audio_features=torch.zeros(1, 10, 128),
+            audio_lengths=torch.tensor([10]),
+            audio_counts=torch.tensor([1]),
         )
 
-    def decode(self, token_ids, skip_special_tokens):
+    def decode(self, token_ids):
         assert token_ids.tolist() == [7]
-        assert skip_special_tokens is True
-        return "<think>\n\n</think>\n\nA synthetic tone."
+        return "A synthetic tone."
 
 
 class StubModel:
@@ -41,41 +39,42 @@ class StubModel:
     def generate(self, **inputs):
         assert inputs["input_ids"].device.type == "cpu"
         assert inputs["audio_features"].device.type == "cpu"
-        assert inputs["audio_features"].shape[0] == 1
-        assert inputs["audio_features"].shape[2] == 128
-        assert inputs["audio_lengths"].tolist() == [inputs["audio_features"].shape[1]]
-        assert inputs["audio_counts"].tolist() == [1]
         assert inputs["max_new_tokens"] == 4
         assert inputs["do_sample"] is False
         return torch.tensor([[7]])
 
 
-def write_tone(path, sample_rate=16000, duration=0.25, frequency=440):
-    samples = array.array(
-        "h",
-        (
-            round(10000 * math.sin(2 * math.pi * frequency * index / sample_rate))
-            for index in range(round(sample_rate * duration))
-        ),
-    )
-    with wave.open(str(path), "wb") as handle:
-        handle.setnchannels(1)
-        handle.setsampwidth(samples.itemsize)
-        handle.setframerate(sample_rate)
-        handle.writeframes(samples.tobytes())
-
-
-def test_single_audio_cpu_inference(tmp_path):
-    audio_path = tmp_path / "tone.wav"
-    write_tone(audio_path)
-
+def test_generate_uses_instruction_for_simple_prompt():
+    processor = StubProcessor()
     response = generate(
         StubModel(),
-        StubTokenizer(),
-        AudioProcessor(),
-        [audio_path],
+        processor,
+        ["tone.wav"],
         "Describe the audio.",
         max_new_tokens=4,
     )
 
     assert response == "A synthetic tone."
+    assert processor.calls == [
+        {
+            "audios": ["tone.wav"],
+            "instruction": "Describe the audio.",
+            "formatted_prompt": None,
+        }
+    ]
+
+
+def test_generate_preserves_explicit_audio_placement():
+    processor = StubProcessor()
+    prompt = "<audio>Compare this recording with <audio>this example."
+    response = generate(
+        StubModel(),
+        processor,
+        ["main.wav", "example.wav"],
+        prompt,
+        max_new_tokens=4,
+    )
+
+    assert response == "A synthetic tone."
+    assert processor.calls[0]["instruction"] is None
+    assert processor.calls[0]["formatted_prompt"] == prompt

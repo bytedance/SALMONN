@@ -1,7 +1,7 @@
 # SALMONN-2
-[![arXiv](https://img.shields.io/badge/arXiv-26xx-brightgreen.svg?logo=Arxiv&style=flat-square)](https://arxiv.org/abs/)
+[![arXiv](https://img.shields.io/badge/arXiv-26xx-brightgreen.svg?logo=Arxiv&style=flat-square)](https://arxiv.org/abs/2607.17079)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/wsntxxn/SALMONN-2)
-[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow?style=flat-square)](https://huggingface.co/marcoyang/salmonn-2-8b-test)
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow?style=flat-square)](https://huggingface.co/marcoyang/SALMONN-2-8B)
 
 This repository contains the supported inference and fine-tuning code for SALMONN-2.
 
@@ -166,70 +166,52 @@ pre-commit hooks and unit tests run in GitHub Actions on every push and pull req
 
 Download the checkpoint from HuggingFace first:
 ```bash
-hf download marcoyang/salmonn-2-8b-test --repo-type model --local-dir /path/to/salmonn-2-hf
+hf download marcoyang/SALMONN-2-8B --repo-type model --local-dir /path/to/salmonn-2-hf
 ```
 
 Below is the code snippet to use SALMONN-2:
 
 ```python
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-from salmonn import AudioProcessor, clean_decoded_response, prepare_audio_prompt
-from salmonn.audio import pad_audio_features
+from transformers import AutoModelForCausalLM, AutoProcessor
 
 model_path = "/path/to/salmonn-2-hf"
-audio_paths = ["example.wav"]
-instruction = "Please describe the audio."
 
-tokenizer = AutoTokenizer.from_pretrained(model_path)
+processor = AutoProcessor.from_pretrained(
+    model_path,
+    trust_remote_code=True,
+    fix_mistral_regex=False,
+)
 model = AutoModelForCausalLM.from_pretrained(
     model_path,
     trust_remote_code=True,
     dtype=torch.bfloat16,
     device_map="auto",
 ).eval()
+processor.prepare_model(model)
 
-if model.config.inject_temporal_embedding_nl:
-    model.register_nl_timestamp_tokenizer(tokenizer)
-
-messages = [{
-    "role": "user",
-    "content": prepare_audio_prompt(instruction, len(audio_paths)),
-}]
-text = tokenizer.apply_chat_template(
-    messages,
-    tokenize=False,
-    add_generation_prompt=True,
-).replace("<audio>", "<|vision_start|><|vision_end|>")
-
-text_inputs = tokenizer(text, return_tensors="pt", add_special_tokens=False)
-processor = AudioProcessor()
-audio_features, audio_lengths = pad_audio_features(
-    [processor(path) for path in audio_paths]
+inputs = processor(
+    audios=["example.wav"],
+    instruction="Please describe the audio.",
 )
 device = next(model.parameters()).device
 
 with torch.inference_mode():
     output_ids = model.generate(
-        **text_inputs.to(device),
-        audio_features=audio_features.to(device),
-        audio_lengths=audio_lengths.to(device),
-        audio_counts=torch.tensor([len(audio_paths)], device=device),
+        **inputs.to(device),
         max_new_tokens=256,
         do_sample=False,
     )
 
-output = tokenizer.decode(output_ids[0], skip_special_tokens=True)
-print(clean_decoded_response(output))
+print(processor.decode(output_ids[0]))
 ```
 
 
 ## Inference
 
-Released checkpoints use the standard Hugging Face auto classes with bundled custom model code.
-Pass `trust_remote_code=True` when loading them. The repository CLI uses this Hugging Face loading
-path:
+Released checkpoints use the standard Hugging Face auto classes with bundled custom model and
+processor code. Pass `trust_remote_code=True` when loading them. The repository CLI uses this
+Hugging Face loading path:
 
 ```bash
 python scripts/infer.py \
@@ -244,8 +226,10 @@ responses. This is output formatting only and does not alter generation or token
 ### MICL-based Contextual ASR
 
 Repeat `--audio` for prompts containing multiple audio inputs. If the prompt contains no `<audio>`
-placeholder, the CLI places all audio inputs before the prompt. To control their positions, include
-one `<audio>` placeholder per audio file; files are matched to placeholders from left to right.
+placeholder, the processor places all audio inputs before the prompt. To control their positions,
+include one `<audio>` placeholder per audio file; files are matched to placeholders from left to
+right. This advanced prompt mode keeps the existing batch-manifest format while the processor
+handles audio loading, feature extraction, prompt validation, and decoding.
 
 For a concrete MICL contextual-ASR example, the repository includes a main utterance containing the
 uncommon name `Howes`, together with pronunciation examples for the contextual words `howes` and

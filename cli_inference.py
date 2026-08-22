@@ -28,9 +28,7 @@ parser.add_argument("--device", type=str, default="cuda:0")
 parser.add_argument(
     "--options",
     nargs="+",
-    help="override some settings in the used config, the key-value pair "
-    "in xxx=yyy format will be merged into config file (deprecate), "
-    "change to --cfg-options instead.",
+    help="override configuration settings with space-separated key=value pairs.",
 )
 
 args = parser.parse_args()

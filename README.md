@@ -66,9 +66,9 @@ The SALMONN model family consists of a series of advanced multi-modal large lang
   year={2025}
 }
 
-@inproceedings{wang2024enabling,
+@inproceedings{wang-etal-2025-qualispeech,
   title={QualiSpeech: A Speech Quality Assessment Dataset with Natural Language Reasoning and Descriptions},
-  author={Wang, Siyin and Yu, Wenyi and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Sun, Guangzhi and others},
+  author={Wang, Siyin and Yu, Wenyi and Chen, Xianzhao and Tian, Xiaohai and Zhang, Jun and Lu, Lu and Tsao, Yu and Yamagishi, Junichi and Wang, Yuxuan and Zhang, Chao},
   booktitle={Proc. ACL},
   address={Vienna},
   year={2025}

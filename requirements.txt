@@ -1,5 +1,6 @@
 torch==2.0.1
 torchaudio==2.0.2
+numpy<2
 peft==0.3.0
 soundfile 
 librosa

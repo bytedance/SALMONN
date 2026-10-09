@@ -13,10 +13,10 @@
       <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow" alt="Hugging Face Models">
     </a>
     <a href="https://huggingface.co/datasets/tsinghua-ee/ELLSA_train_data" target="_blank">
-      <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="Train data">
+      <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Train%20Dataset-yellow" alt="Train data">
     </a>
     <a href="https://huggingface.co/datasets/tsinghua-ee/ELLSA_test_data" target="_blank">
-      <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="Test data">
+      <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Test%20Dataset-yellow" alt="Test data">
     </a>
     <img src="https://img.shields.io/badge/License-Apache%202.0-green" alt="License">
 </div>

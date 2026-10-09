@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)
+source "$REPO_ROOT/scripts/training_env.sh"
 
 # Copyright (2026) Tsinghua University, Bytedance Ltd. and/or its affiliates
 #
@@ -13,23 +17,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DATAPATH=''
-ACTION_TOKENIZER_PATH=""
-EXP_NAME=""
+DATAPATH="${DATAPATH:-$ELLSA_DATA_PATH/libero/metadata.json}"
+EXP_NAME="${EXP_NAME:-ellsa_tts}"
 
-torchrun \
+: "${SPEECH_EXPERT_PATH:?Set SPEECH_EXPERT_PATH to the merged speech-stage checkpoint}"
+
+exec torchrun \
     --nproc_per_node=${GPU_NUM} \
-    --nnodes=${NODE_NUM} \
-    --node-rank=${NODE_RANK} \
-    --master_addr=${MASTER_ADDR} \
-    --master_port=${MASTER_PORT} \
+    "${DISTRIBUTED_ARGS[@]}" \
     train/train_moe.py \
-    --model_name_or_path  \
-    --speech_expert_path  \
+    --model_name_or_path "$SPEECH_EXPERT_PATH" \
+    --speech_expert_path "$SPEECH_EXPERT_PATH" \
     --speech_encoder_path "" \
-    --vision_expert_path  \
-    --config_speech_path  \
-    --config_vision_path  \
+    --vision_expert_path "$UNIVLA_CKPT_PATH" \
+    --config_speech_path "$LLAMA_CKPT_PATH/config.json" \
+    --config_vision_path configs/moe_fast_video.json \
     --deepspeed scripts/sft/zero2.json \
     --output_dir "output/"${EXP_NAME} \
     --learning_rate 1e-4 \
@@ -42,22 +44,22 @@ torchrun \
     --adam_epsilon 1e-6 \
     --bf16 True \
     --tf32 True \
-    --data_path ${DATAPATH} \
-    --data_speech_path  \
-    --max_steps 20000 \
-    --dataloader_num_workers 16 \
+    --data_path "$DATAPATH" \
+    --data_speech_path "$DATA_SPEECH_PATH" \
+    --max_steps "${MAX_STEPS:-20000}" \
+    --dataloader_num_workers "${DATALOADER_NUM_WORKERS:-16}" \
     --lr_scheduler_type "cosine_with_min_lr" \
-    --warmup_steps 200 \
-    --per_device_train_batch_size 1 \
+    --warmup_steps "${WARMUP_STEPS:-200}" \
+    --per_device_train_batch_size "${BATCH_SIZE:-1}" \
     --frames 2 \
     --action_frames 10 \
     --max_position_embeddings 6400 \
     --seed 42 \
-    --logging_steps 10 \
+    --logging_steps "${LOGGING_STEPS:-10}" \
     --gradient_checkpointing True \
-    --gradient_accumulation_steps 32 \
+    --gradient_accumulation_steps "${GRADIENT_ACCUMULATION_STEPS:-32}" \
     --save_strategy steps \
-    --save_steps 1000 \
+    --save_steps "${SAVE_STEPS:-1000}" \
     --eval_strategy no \
     --apply_loss_on_only_vision False \
     --apply_loss_on_only_action True \
@@ -65,8 +67,8 @@ torchrun \
     --actions_format "fast" \
     --use_gripper True \
     --video_format "interleave" \
-    --action_tokenizer_path ${ACTION_TOKENIZER_PATH} \
-    --report_to "wandb" \
+    --action_tokenizer_path "$ACTION_TOKENIZER_PATH" \
+    --report_to "${REPORT_TO:-none}" \
     --run_name ${EXP_NAME} \
     --speech True \
     --mix True \
@@ -81,5 +83,5 @@ torchrun \
     --merge_speech_lora True \
     --lora_modules qkv \
     --encoder_type zipformer2 \
-    --pt_ckpt  \
-    --generate True \
+    --pt_ckpt "${PT_CKPT_PATH:?Set PT_CKPT_PATH to the mixed-stage checkpoint}" \
+    --generate True "$@"

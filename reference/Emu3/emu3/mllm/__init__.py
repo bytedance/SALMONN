@@ -41,10 +41,7 @@ else:
         "Emu3PretrainedModel",
         "Emu3ForCausalLM",
         "Emu3MoE",
-        "Emu3MoEWithSpeech",
         "Emu3ForMix",
-        "Emu3ForMix_FourExpert",
-        "Emu3ForMix_FourExpert_Text",
         "LlamaWithSpeech"
     ]
 
@@ -64,10 +61,7 @@ if TYPE_CHECKING:
             Emu3PretrainedModel,
             Emu3ForCausalLM,
             Emu3MoE,
-            Emu3MoEWithSpeech,
             Emu3ForMix,
-            Emu3ForMix_FourExpert,
-            Emu3ForMix_FourExpert_Text,
             LlamaWithSpeech
         )
 

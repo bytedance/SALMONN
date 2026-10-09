@@ -99,3 +99,11 @@ logs/
 cache/
 ckpt/
 output/
+training_data/
+
+# Keep data documentation/metadata in Git; publish large assets separately.
+!training_data/
+training_data/*
+!training_data/README.md
+!training_data/manifest.json
+!training_data/json/

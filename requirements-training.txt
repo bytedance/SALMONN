@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# Training/data preparation dependencies; retain the original inference pins.
+numpy==1.26.4
+opencv-python==4.11.0.86
+accelerate==1.8.1
+einops==0.8.1
+soundfile==0.13.1
+ijson==3.4.0

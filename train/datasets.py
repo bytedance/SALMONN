@@ -32,6 +32,7 @@ COSY_CKPT_PATH = os.environ.get("COSY_CKPT_PATH")
 LLAMA_CKPT_PATH = os.environ.get("LLAMA_CKPT_PATH")
 
 sys.path.append(ELLSA_BASE_PATH)
+from train.data_utils import load_robot_data, load_visual_tokens, resolve_data_paths
 from models.tokenizer.action_tokenizer import ActionTokenizer
 from transformers import AutoModel, AutoImageProcessor, GenerationConfig, AutoProcessor
 import kaldifeat, torchaudio, math
@@ -55,8 +56,7 @@ class Emu3SFTDataset(Dataset):
         self.raw_image = args.raw_image
         self.data_path = args.data_path
         
-        with open(args.data_path,'rb') as f:
-            self.data = pickle.load(f)
+        self.data = load_robot_data(args.data_path, ELLSA_DATA_PATH)
         
         if not self.random_frame_sampling:
             self.data = list(self.sliding_window_sampling(self.data, interval=args.action_frames*args.frames))
@@ -219,13 +219,13 @@ class Emu3SFTDataset(Dataset):
                 selected_actions = action_prompt[start_idx:start_idx + T]
                 return image_code, selected_actions
         else:
-            selected_frames = [np.load(img_path) for img_path in img_list[start_idx:start_idx + T]]
+            selected_frames = [load_visual_tokens(img_path) for img_path in img_list[start_idx:start_idx + T]]
             tensor_frames = [torch.from_numpy(frame) for frame in selected_frames]
             tensor = torch.stack(tensor_frames, dim=1)
 
             if gripper is not None and action_prompt is not None:
                 selected_actions = action_prompt[start_idx:start_idx + T]
-                selected_gripper = [np.load(img_path) for img_path in gripper[start_idx:start_idx + T]]
+                selected_gripper = [load_visual_tokens(img_path) for img_path in gripper[start_idx:start_idx + T]]
                 tensor_gripper = [torch.from_numpy(frame) for frame in selected_gripper]
                 if return_start:
                     return tensor.squeeze(0), selected_actions, torch.stack(tensor_gripper, dim=1).squeeze(0), start_idx
@@ -238,7 +238,7 @@ class Emu3SFTDataset(Dataset):
                 else:
                     return tensor.squeeze(0), selected_actions
             elif gripper is not None:
-                selected_gripper = [np.load(img_path) for img_path in gripper[start_idx:start_idx + T]]
+                selected_gripper = [load_visual_tokens(img_path) for img_path in gripper[start_idx:start_idx + T]]
                 tensor_gripper = [torch.from_numpy(frame) for frame in selected_gripper]
                 if return_start:
                     return tensor.squeeze(0), torch.stack(tensor_gripper, dim=1).squeeze(0), start_idx
@@ -616,13 +616,13 @@ class Emu3SpeechDataset(Emu3SFTDataset):
                 selected_actions = action_prompt[start_idx:start_idx + T]
                 return image_code, selected_actions
         else:
-            selected_frames = [np.load(img_path) for img_path in img_list[start_idx:start_idx + T]]
+            selected_frames = [load_visual_tokens(img_path) for img_path in img_list[start_idx:start_idx + T]]
             tensor_frames = [torch.from_numpy(frame) for frame in selected_frames]
             tensor = torch.stack(tensor_frames, dim=1)
 
             if gripper is not None and action_prompt is not None:
                 selected_actions = action_prompt[start_idx:start_idx + T]
-                selected_gripper = [np.load(img_path) for img_path in gripper[start_idx:start_idx + T]]
+                selected_gripper = [load_visual_tokens(img_path) for img_path in gripper[start_idx:start_idx + T]]
                 tensor_gripper = [torch.from_numpy(frame) for frame in selected_gripper]
                 if return_start:
                     return tensor.squeeze(0), selected_actions, torch.stack(tensor_gripper, dim=1).squeeze(0), start_idx
@@ -635,7 +635,7 @@ class Emu3SpeechDataset(Emu3SFTDataset):
                 else:
                     return tensor.squeeze(0), selected_actions
             elif gripper is not None:
-                selected_gripper = [np.load(img_path) for img_path in gripper[start_idx:start_idx + T]]
+                selected_gripper = [load_visual_tokens(img_path) for img_path in gripper[start_idx:start_idx + T]]
                 tensor_gripper = [torch.from_numpy(frame) for frame in selected_gripper]
                 if return_start:
                     return tensor.squeeze(0), torch.stack(tensor_gripper, dim=1).squeeze(0), start_idx
@@ -888,7 +888,7 @@ class Emu3SpeechOnlyDataset(Dataset):
     def __init__(self, args, tokenizer, generate=False, encoder_type="mamba"):
         super().__init__()
 
-        self.data = json.load(open(args.data_path, "r"))["annotation"]
+        self.data = resolve_data_paths(json.load(open(args.data_path, "r"))["annotation"], ELLSA_DATA_PATH)
         self.tokenizer = tokenizer
         self.encoder_type = encoder_type
         self.time_block = args.time_block
@@ -1079,7 +1079,7 @@ class Emu3MixDataset(Emu3SpeechDataset):
     def __init__(self, args, tokenizer, moe, contemporary=False, stop=False, stop_ratio=0.1, vqa=False, context_vqa=False, generate=False, encoder_type="mamba"):
         super().__init__(args, tokenizer=tokenizer[0], moe=moe, encoder_type=encoder_type)
 
-        self.data_speech = json.load(open(args.data_speech_path, "r"))["annotation"]
+        self.data_speech = resolve_data_paths(json.load(open(args.data_speech_path, "r"))["annotation"], ELLSA_DATA_PATH)
         self.moe = moe
         self.contemporary = contemporary
         self.vqa = vqa
@@ -1101,6 +1101,7 @@ class Emu3MixDataset(Emu3SpeechDataset):
         if self.context_vqa:
             self.context_questions = json.load(open(os.path.join(ELLSA_DATA_PATH,"json/split.json"), "r"))
             self.context_questions_speech = json.load(open(os.path.join(ELLSA_DATA_PATH,"json/10_vqa_questions_speech.json"), "r"))
+            self.context_questions_speech = {q: osp.join(ELLSA_DATA_PATH, p) for q, p in self.context_questions_speech.items()}
         self.speech_tokenizer = tokenizer[0]
         self.vision_tokenizer = tokenizer[1]
         self.tokenizer = tokenizer[1]

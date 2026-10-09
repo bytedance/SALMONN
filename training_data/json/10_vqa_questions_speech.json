@@ -1,0 +1,13 @@
+{
+  "Is the stove on?": "10_vqa_wav/0.wav",
+  "Where is the black bowl now?": "10_vqa_wav/1.wav",
+  "Is there anything in the bottom drawer?": "10_vqa_wav/2.wav",
+  "Has the yellow and white mug been placed inside the microwave yet?": "10_vqa_wav/3.wav",
+  "How many moka pots have been placed on the stove so far?": "10_vqa_wav/4.wav",
+  "Is there anything inside the basket yet?": "10_vqa_wav/5.wav",
+  "What is you currently grasping?": "10_vqa_wav/6.wav",
+  "What is you currently holding?": "10_vqa_wav/8.wav",
+  "Which mug is you currently holding?": "10_vqa_wav/9.wav",
+  "What object is you currently holding?": "10_vqa_wav/10.wav",
+  "Has the white mug been placed on the plate yet?": "10_vqa_wav/11.wav"
+}

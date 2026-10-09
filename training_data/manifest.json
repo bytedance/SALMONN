@@ -1,0 +1,27 @@
+{
+  "robot_episodes": 1693,
+  "robot_frames_per_camera": 273465,
+  "refusal_episodes": 1692,
+  "audio_files": 7372,
+  "audio_bytes": 2320255680,
+  "vision_bytes": 2735083408,
+  "speech_tasks": {
+    "dia_qa": 727458,
+    "dia_asr": 481241
+  },
+  "speech_source_fields": {
+    "Q": 727458,
+    "text": 1208699,
+    "sentences": 727458,
+    "q_speaker": 528900,
+    "a_speaker": 727458,
+    "task": 1208699,
+    "text_succ": 727458,
+    "path": 1208699,
+    "path_a": 1208699,
+    "succ": 727458
+  },
+  "qa_without_question_text": 0,
+  "successful_refusal_episodes": 1638,
+  "qa_with_empty_sentences": 234
+}

@@ -32,7 +32,7 @@ UNIVLA_CKPT_PATH = os.environ.get("UNIVLA_CKPT_PATH")
 sys.path.append(os.path.join(ELLSA_BASE_PATH,"reference/Emu3"))
 from safetensors.torch import safe_open
 
-from emu3.mllm import Emu3Config, Emu3Tokenizer, Emu3ForCausalLM, Emu3MoE, Emu3MoEConfig, Emu3MoEWithSpeech, Emu3ForMix, LlamaWithSpeech, Emu3ForMix_FourExpert, Emu3ForMix_FourExpert_Text
+from emu3.mllm import Emu3Config, Emu3Tokenizer, Emu3ForCausalLM, Emu3MoE, Emu3MoEConfig, Emu3ForMix, LlamaWithSpeech
 from transformers import AutoModel, Trainer, AutoTokenizer, AutoConfig
 from datasets import Emu3WorldModelDataset,Emu3RealRobotDataset,Emu3CoTDataset,Emu3SpeechDataset,Emu3SpeechOnlyDataset,Emu3MixDataset
 from torch.utils.data import WeightedRandomSampler, DataLoader
@@ -143,7 +143,18 @@ def load_model(model_args, model_config, training_args, tokenizer=None, time_blo
     """
     if training_args.speech:
         if training_args.moe:
-            model = Emu3ForMix(model_config[0],model_config[1],tokenizer,model_args.speech_encoder_path,training_args.peft,training_args.freezetraining_args.debug_mode,attn_adapter=training_args.attn_adapter,attn_adapter_type=training_args.attn_adapter_typemerge_speech_lora=training_args.merge_speech_lora,lora_modules=training_args.lora_modules,generate=training_args.generateaction_loss_weight=training_args.action_loss_weight,time_block=time_block)
+            model = Emu3ForMix(
+                model_config[0], model_config[1], tokenizer,
+                model_args.speech_encoder_path, training_args.peft,
+                training_args.freeze, training_args.debug_mode,
+                attn_adapter=training_args.attn_adapter,
+                attn_adapter_type=training_args.attn_adapter_type,
+                merge_speech_lora=training_args.merge_speech_lora,
+                lora_modules=training_args.lora_modules,
+                generate=training_args.generate,
+                action_loss_weight=training_args.action_loss_weight,
+                encoder_type=model_args.encoder_type, time_block=time_block,
+            )
             model.set_from_pretrained(
                 speech_path=model_args.speech_expert_path,
                 vision_path=model_args.vision_expert_path,
@@ -275,6 +286,11 @@ def train():
     # Parse arguments
     parser = tf.HfArgumentParser((ModelArguments, DataArguments, TrainingArguments))
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+    if training_args.deepspeed:
+        # DeepSpeed manages ZeRO gradient synchronization and accumulation.
+        accumulation_kwargs = training_args.accelerator_config.gradient_accumulation_kwargs or {}
+        accumulation_kwargs["sync_each_batch"] = True
+        training_args.accelerator_config.gradient_accumulation_kwargs = accumulation_kwargs
 
     # Set environment variable for WANDB logging
     os.environ["WANDB_PROJECT"] = "vla_speech"
@@ -418,7 +434,7 @@ def train():
     # Save model and training state
     trainer.save_state()
     torch.cuda.synchronize()
-    # trainer.save_model(training_args.output_dir)
+    trainer.save_model(training_args.output_dir)
 
 if __name__ == "__main__":
     train()

@@ -12,71 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
+import argparse
 import os
-sys.path.append("/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/reference/Emu3")
-from emu3.mllm import Emu3Config, Emu3MoEConfig, Emu3Tokenizer, Emu3MoEWithSpeech, Emu3MoE, LlamaWithSpeech
+import sys
+
+sys.path.append(os.path.join(os.environ["ELLSA_BASE_PATH"], "reference/Emu3"))
+from emu3.mllm import LlamaWithSpeech
 from transformers import AutoTokenizer, AutoConfig
 import torch
 
-llama = True
-model_name_or_path = "/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/output/speechonly_node32_bs256_step40000_peftnewlora256_asrqa_tokenpersecond8_llama_zipformer/checkpoint-20000"
-speech_encoder_path = ""
-if llama:
-    model_config = AutoConfig.from_pretrained(os.path.join(model_name_or_path,"config.json"))
-    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
-    model = LlamaWithSpeech.from_pretrained(
-        model_name_or_path,
-        config=model_config,
-        tokenizer=tokenizer,
-        llama_path="/mnt/bn/audio-visual-llm-data5/wangsiyin/models/Llama-3.1-8B-Instruct",
-        speech_encoder_path=speech_encoder_path,
-        attn_implementation="flash_attention_2",
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-        peft=True,
-        freeze=True,
-        encoder_type="zipformer2"
-    )
-else:
-    model_config = Emu3MoEConfig.from_pretrained("/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/configs/moe_fast_video.json")
-
-    tokenizer = Emu3Tokenizer.from_pretrained(
-        model_name_or_path,
-        model_max_length=6400,
-        padding_side="right",
-        use_fast=False,
-    )
-
-    model = Emu3MoEWithSpeech.from_pretrained(
-        model_name_or_path,
-        config=model_config,
-        tokenizer=tokenizer,
-        speech_encoder_path=speech_encoder_path,
-        attn_implementation="flash_attention_2",
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-        peft=True,
-        freeze=True
-    )
-
-model.merge_lora()
-
-model.save_pretrained(model_name_or_path+"-merged")
-tokenizer.save_pretrained(model_name_or_path+"-merged")
-
-
-"""
-model_name_or_path = "/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/ckpt/WORLD_MODEL_POSTTRAIN"
-model_config = Emu3MoEConfig.from_pretrained("/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/configs/moe_fast_video.json")
-
-model = Emu3MoE.from_pretrained(
-    model_name_or_path,
+parser = argparse.ArgumentParser(description="Merge the speech-stage LoRA into its Llama weights")
+parser.add_argument("checkpoint")
+parser.add_argument("--output")
+args = parser.parse_args()
+model_config = AutoConfig.from_pretrained(args.checkpoint)
+tokenizer = AutoTokenizer.from_pretrained(args.checkpoint)
+model = LlamaWithSpeech.from_pretrained(
+    args.checkpoint,
     config=model_config,
+    tokenizer=tokenizer,
+    llama_path=os.environ["LLAMA_CKPT_PATH"],
+    speech_encoder_path="",
     attn_implementation="flash_attention_2",
     torch_dtype=torch.bfloat16,
-    trust_remote_code=True,
+    peft=True,
+    freeze=True,
+    encoder_type="zipformer2",
 )
-
-torch.save(model.lm_head,"/mnt/bn/audio-visual-llm-data5/wangsiyin/models/UniVLA/ckpt/lm_head_worldmodel.pt")
-"""
+model.merge_lora()
+output = args.output or args.checkpoint + "-merged"
+model.save_pretrained(output)
+tokenizer.save_pretrained(output)

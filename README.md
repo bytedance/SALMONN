@@ -21,7 +21,7 @@ line-profiler
 Our implementation also depends on Liger-kernel. Please find the official installation of [Liger-Kernel](https://github.com/linkedin/Liger-Kernel) or do `pip install liger-kernel`
 
 ## Inference
-First, download model checkpoints from <a href='https://huggingface.co/datasets/tsinghua-ee/video_SALMONN_S'><img src='https://img.shields.io/badge/checkpoints-videoSALMONNS-orange'></a>  \
+First, download model checkpoints from <a href='https://huggingface.co/tsinghua-ee/video_SALMONN_S'><img src='https://img.shields.io/badge/checkpoints-videoSALMONNS-orange'></a>  \
 Put the model checkpoints under `models/` directory
 
 The model checkpoints contains one base model and one lora weight with TTT layer:

@@ -25,6 +25,11 @@ class WeightedRoundRobinBatchSampler(Sampler):
         # 计算权重（比例 ~ 数据量大小）
         self.weights = {k: len(v) for k, v in self.indices.items()}
         total = sum(self.weights.values())
+        if total == 0:
+            raise ValueError(
+                "WeightedRoundRobinBatchSampler got an empty dataset: none of the "
+                "'av'/'v'/'a'/'t' modality buckets contains any sample."
+            )
         self.probs_template = {k: self.weights[k] / total for k in self.weights}  # 原始概率模板
 
         # 初始化状态
@@ -62,6 +67,14 @@ class WeightedRoundRobinBatchSampler(Sampler):
                 self.out_data.append(batch)
             else:
                 # 如果该 modality 数据用完，就把它的概率置 0
+                if self.cursors[m] == 0:
+                    # 该 modality 的样本总数不足一个 batch_size，本 epoch 一条都不会被采样到。
+                    # 每个 epoch 都会重复发生，必须显式告警，不能静默丢弃。
+                    print(
+                        f"[WeightedRoundRobinBatchSampler] WARNING: modality '{m}' has only "
+                        f"{len(self.indices[m])} samples, fewer than batch_size="
+                        f"{self.batch_size}; all of them are skipped for this whole epoch."
+                    )
                 self.probs[m] = 0
                 total = sum(self.probs.values())
                 if total == 0:

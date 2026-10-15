@@ -155,19 +155,4 @@ An AI-generated video contains unnatural distorted things, such as distorted han
 7. Therefore, based on the visual cues of the video, it is likely that the video is AI generated. 
 8. So the answer is YES.
 
----
-[Figure 17 Video](video/synth_2.mp4)
-
-**Question**:
-An AI-generated video contains unnatural distorted things, such as distorted hands or faces. Is the given video AI generated? Answer YES or NO. Answer step by step and output each step clearly.
-
-**Reasoning**:
-1. The video shows a cyclist riding on a road with a field of flowers in the background. 
-2. The colors are vibrant and the scene is smooth, suggesting it might be AI generated.
-3. Upon closer inspection, we can see that the cyclist's shadow is perfectly aligned with the cyclist, which is unusual for a moving object. This suggests a lack of natural motion blur or distortion, a common characteristic of AI-generated videos.
-4. Therefore, based on the smoothness of the scene and the unnatural alignment of the cyclist's shadow, it is highly likely that the video is AI generated. 
-5. So the answer is YES.
-
-## Training
-Coming soon...
 

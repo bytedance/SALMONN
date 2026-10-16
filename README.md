@@ -33,7 +33,9 @@ ELLSA 2 studies how a dialogue model can coordinate **speech, gestures, and faci
 - **Contextual semantic gestures.** The paper separates deciding when to invoke a semantic gesture from realizing it through template guidance, supported by dialogue representations and curriculum training.
 - **Data and evaluation for conversation.** Speaker filtering and facial supervision support training; a human-verified benchmark measures speaking/listening activity, prosodic alignment, duplex behavior, gesture meaning, and facial motion.
 
-![ELLSA 2 architecture from the manuscript](code/assets/paper/architecture.png)
+<p align="center">
+    <img src="code/assets/paper/architecture.png" width="60%" height="60%">
+</p>
 
 *Overview of ELLSA 2. ELLSA 2 jointly models full-duplex speech, gesture, and facial expression generation.*
 
@@ -41,17 +43,17 @@ ELLSA 2 studies how a dialogue model can coordinate **speech, gestures, and faci
 
 | Package | Contents | Distribution |
 | --- | --- | --- |
-| [Data](data/README.md) | 138-clip test set, selected training manifest, speaker/quality selection, facial-label preparation, and RVQ preprocessing | [Hugging Face dataset package](https://huggingface.co/datasets/tsinghua-ee/ELLSA2_data) |
-| [Code](code/README.md) | Standalone generator, training, inference, rendering, evaluation, and Gradio demo | [GitHub code package](https://github.com/bytedance/SALMONN/tree/ELLSA2) |
-| [Checkpoints](checkpoints/README.md) | Causal Standalone generator, ASR-only training initializer, and RVQs | [Hugging Face model package](https://huggingface.co/models/tsinghua-ee/ELLSA2) |
+| [Data](data/README.md) | 138-clip dialogue gesture benchmark, speaker selection, facial-label preparation and RVQ preprocessing | [Hugging Face dataset package](https://huggingface.co/datasets/tsinghua-ee/ELLSA2_data) |
+| [Code](code/README.md) | Standalone generator, training, inference, rendering, evaluation and Gradio demo | [GitHub code package](https://github.com/bytedance/SALMONN/tree/ELLSA2) |
+| [Checkpoints](checkpoints/README.md) | Causal Standalone generator, ASR-only training initializer and RVQs | [Hugging Face model package](https://huggingface.co/models/tsinghua-ee/ELLSA2) |
 
-The benchmark contains **67 duplex + 71 semantic clips**, each with 20-second aligned target/partner audio, 600-frame ground-truth motion, a separate 612-frame style reference, transcripts, facial labels, reference video, and frozen evaluation context. The selected training inventory contains **1,318 recordings from 81 speakers**. Source training media are obtained separately.
+<p align="center">
+    <img src="code/assets/paper/data_pipeline.png" width="60%" height="60%">
+</p>
 
-![Data preparation and evaluation in the paper](code/assets/paper/data_pipeline.png)
+*Data preparation and evaluation overview.*
 
-*Research pipeline from the manuscript. The current data package contains speaker selection, expression-label preparation, and the frozen benchmark. The semantic exemplar library shown in the figure belongs to the full-system research pipeline and is not bundled here.*
-
-Public download URLs will be added when the packages are published. For local use, keep the three package directories together:
+For local use, keep the three package directories together:
 
 ```text
 ELLSA2/
@@ -64,23 +66,13 @@ ELLSA2/
 
 ## Setup
 
-Use Linux x86_64, Python 3.12, and an NVIDIA GPU. The GPU execution host needs **glibc 2.32 or newer** for the pinned FlashAttention wheel (PyTorch itself needs glibc 2.28 or newer). The release environment pins PyTorch 2.9.0 with CUDA 12.6 and Transformers 5.2.0.
-
-From the directory shown above:
+Here we provide a conda environment setup for the project. The release environment pins PyTorch 2.9.0 with CUDA 12.6 and Transformers 5.2.0.
 
 ```bash
 conda create -n ellsa2 python=3.12 pip -y
 conda activate ellsa2
 cd code
 bash scripts/install_environment.sh
-```
-
-The installer first installs build tools from PyPI, then CUDA PyTorch with PyPI available for its ordinary dependencies, and finally the locked project packages and prebuilt FlashAttention wheel. It finishes with `pip check` and core model imports; when CUDA is available, it also checks the FlashAttention extension. If an earlier installation stopped, rerun the same script in the active environment. See the [installation guide](code/README.md#installation) for prerequisites and optional dependencies.
-
-The setup machine needs access to PyPI, the PyTorch/NVIDIA wheel hosts, and GitHub release assets. CUDA runtime libraries are installed by pip; running the model additionally requires a compatible NVIDIA driver and GPU. On the GPU machine, confirm availability with:
-
-```bash
-python -c "import torch, flash_attn; print(torch.__version__, torch.version.cuda, torch.cuda.is_available(), flash_attn.__version__)"
 ```
 
 If data or weights are downloaded elsewhere, set their roots before running commands:
@@ -117,7 +109,6 @@ python infer.py --model-path ../checkpoints/standalone_generator \
   --output-path outputs/custom.npz
 ```
 
-Use aligned mono 16 kHz audio and preserve listening silence. Omit `--audio-listen-path` to use silence for the partner stream. The generator processes audio in 0.8-second blocks, immediately decodes each new six-step RVQ block into 24 frames using bounded history and zero right context, and saves 30 fps body/hand poses and facial parameters in the NPZ. Use `--rvq-decode-mode whole` for complete-sequence reference decoding. By default, inference uses the complete blocks shared by both streams. Set `--num-windows N` for an explicit duration of `N × 0.8` seconds; audio is then padded or cropped to that length.
 
 ### Generate and render together
 
@@ -129,7 +120,7 @@ python infer.py --model-path ../checkpoints/standalone_generator --test-id fro_0
   --smplx-model ../checkpoints/external_assets/smplx/SMPLX_NEUTRAL_2020.npz
 ```
 
-This produces `outputs/example/fro_00038.npz` and `outputs/example/fro_00038.mp4`. Rendering defaults to `false`. It uses the separately obtained SMPL-X neutral 2020 asset (100 expression coefficients), FFmpeg with libx264/AAC, and EGL/OpenGL; install these using the [installation guide](code/README.md#installation). `--smplx-model` defaults to the path shown above under the checkpoint root. The MP4 contains the target audio, padded with silence if needed to retain all generated frames. The option also works with batch `--audio-json` input; each video is saved beside its corresponding NPZ. See the [inference guide](code/README.md#inference) for pose guidance and other settings.
+It uses the separately obtained SMPL-X neutral 2020 asset (100 expression coefficients), FFmpeg with libx264/AAC, and EGL/OpenGL; install these using the [installation guide](code/README.md#installation). `--smplx-model` defaults to the path shown above under the checkpoint root. The option also works with batch `--audio-json` input; each video is saved beside its corresponding NPZ.
 
 ## Interactive demo
 
@@ -155,7 +146,7 @@ NPROC_PER_NODE=8 bash scripts/train.sh --stage expression
 NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture_expression
 ```
 
-The ASR-only base is already trained. The recipe trains expression for 5,000 updates, then joint gesture/expression for 50,000 updates, with 300/240-frame RVQ context caps. See the [training guide](code/README.md#training) for stage transfer, GPU batch settings and fine-tuning.
+The ASR-only base is already trained. See the [training guide](code/README.md#training) for stage transfer, GPU batch settings and fine-tuning.
 
 ## Evaluation
 
@@ -178,7 +169,7 @@ python evaluation/evaluate.py --metrics face \
   --flame-asset-dir ../checkpoints/external_assets/flame --device cuda:0
 ```
 
-For online `mllm` or `all`, configure Gemini and Seed independently with `--gemini-api-key` / `--seed-api-key`, or the `GEMINI_API_KEY` / `SEED_API_KEY` environment variables. Endpoints and model identifiers are also explicit options. The [evaluation guide](code/evaluation/README.md#choose-a-metric-group) provides complete commands, Azure-compatible settings, and offline aggregation with `--mllm-score-dir`. Online evaluation uses two judgments per provider per clip, with independent Gemini/Seed limits through `--gemini-max-pending` and `--seed-max-pending`. Results are grouped under `motion`, `face`, and `mllm` in the output summary.
+For online `mllm` or `all`, configure Gemini and Seed independently with `--gemini-api-key` / `--seed-api-key`, or the `GEMINI_API_KEY` / `SEED_API_KEY` environment variables. Endpoints and model identifiers are also explicit options. The [evaluation guide](code/evaluation/README.md#choose-a-metric-group) provides complete commands, Azure-compatible settings and offline aggregation with `--mllm-score-dir`. 
 
 ## Code structure
 
@@ -195,14 +186,18 @@ code/
 └── tests/                 # Regression tests
 ```
 
-Data preparation lives in `data/preprocess/`; weights live in `checkpoints/`. The packages run independently of the development repository. Package manifests list the upload payload; runtime outputs, local training links under `data/source/`, and licensed SMPL-H/SMPL-X/FLAME geometry are excluded from distribution. KaoLRM mono configuration, weights, and their license are included in the checkpoint package. See the [package checks](code/README.md#package-checks) for integrity and distribution commands.
 
 ## Acknowledgements and license
 
-This work builds on Qwen, SPEAR, Seamless Interaction, GestureLSM, KaoLRM, SMPL-H/SMPL-X, FLAME, and UniLS. We thank their authors for the datasets, pretrained components, and evaluation implementations.
+This work builds on Qwen, MECO, SPEAR, Seamless Interaction, GestureLSM, KaoLRM, SMPL-H/SMPL-X, FLAME, and UniLS. We thank their authors for the datasets, pretrained components and evaluation implementations.
 
 Repository-authored code retains the [Apache-2.0 license](code/LICENSE). Third-party code, datasets, weights, and body/face assets retain their respective upstream terms; see the [code notices](code/THIRD_PARTY_NOTICES.md) and [asset sources and download guide](checkpoints/README.md#external-assets-sources-and-download-guide).
 
 ## Citation
 
-<!-- Add the public paper link, author list, and BibTeX here. -->
+@article{wang2026ellsa2,
+    title={Full-Duplex Interaction with Speech, Expressions and Gestures}, 
+    author={Siyin Wang and Wenyi Yu and Terumi Chiba and Xianzhao Chen and Xiaohai Tian and Jun Zhang and Lu Lu and Chao Zhang},
+    journal={arXiv preprint arXiv:2610.21452},
+    year={2026}
+}

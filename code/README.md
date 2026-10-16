@@ -105,10 +105,10 @@ The selected inventory contains **1,318 recordings from 81 speakers**. Download 
 
 ```bash
 conda activate ellsa2
-# Stage 1: gesture only, 5,000 updates from the ASR base.
-NPROC_PER_NODE=8 bash scripts/train.sh --stage expression
+# Stage 1: gesture only, 10,000 updates from the ASR base.
+NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture
 
-# Stage 2: joint expression/gesture, 50,000 updates from runs/expression.
+# Stage 2: joint expression/gesture, 50,000 updates from runs/gesture.
 NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture_expression
 ```
 

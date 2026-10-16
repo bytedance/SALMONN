@@ -37,14 +37,18 @@ class TrainingStageTests(unittest.TestCase):
         for before, head in zip(gestures_before, joint.motion_heads[:12]):
             torch.testing.assert_close(before, head.weight)
 
-    def test_recipe_contains_expression_then_joint_with_distinct_initializers(self):
+    def test_recipe_contains_gesture_then_joint_with_distinct_initializers(self):
         recipe = json.loads((Path(__file__).resolve().parents[1] / 'configs/training.json').read_text())
-        self.assertEqual(list(recipe['stages']), ['expression', 'gesture_expression'])
-        expression = resolve_config(recipe, 'expression')
+        self.assertEqual(list(recipe['stages']), ['gesture', 'gesture_expression'])
+        gesture = resolve_config(recipe, 'gesture')
         joint = resolve_config(recipe, 'gesture_expression')
-        self.assertEqual(expression['model_args']['num_motion_codebooks'], 6)
-        self.assertFalse(expression['data_args']['add_speaker_id'])
-        self.assertEqual(joint['model_args']['model_name_or_path'], expression['training_args']['output_dir'])
+        self.assertEqual(gesture['model_args']['num_motion_codebooks'], 12)
+        self.assertEqual(gesture['model_args']['gesture_num_codebooks'], 12)
+        self.assertEqual(gesture['model_args']['expression_num_codebooks'], 0)
+        self.assertEqual(gesture['data_args']['task_type'], 'gesture')
+        self.assertEqual(gesture['training_args']['max_steps'], 10000)
+        self.assertTrue(gesture['data_args']['add_speaker_id'])
+        self.assertEqual(joint['model_args']['model_name_or_path'], gesture['training_args']['output_dir'])
         self.assertEqual(joint['model_args']['gesture_num_codebooks'], 12)
         self.assertEqual(joint['model_args']['expression_num_codebooks'], 6)
         self.assertNotIn('no_filter', joint['data_args'])

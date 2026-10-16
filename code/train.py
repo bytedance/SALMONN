@@ -1,4 +1,4 @@
-"""Train the expression or gesture-expression stage from the released recipe."""
+"""Train the gesture or gesture-expression stage from the released recipe."""
 import argparse
 import json
 from pathlib import Path
@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parent
 
 def main_release():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--stage", choices=["expression", "gesture_expression"], required=True)
+    parser.add_argument("--stage", choices=["gesture", "gesture_expression"], required=True)
     parser.add_argument("--config", default=str(ROOT / "configs/training.json"))
     args, overrides = parser.parse_known_args()
     from release_paths import resolve_config

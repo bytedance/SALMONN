@@ -138,11 +138,11 @@ Open **http://127.0.0.1:7860**, upload aligned target and partner audio, and gen
 
 ## Training
 
-Prepare source files and raw facial labels using the [data guide](data/README.md#prepare-the-selected-training-inventory), then run the two stages:
+Prepare source files and raw facial labels using the [data guide](data/README.md#prepare-the-selected-training-inventory), then train gesture-only followed by joint gesture-expression:
 
 ```bash
 conda activate ellsa2
-NPROC_PER_NODE=8 bash scripts/train.sh --stage expression
+NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture
 NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture_expression
 ```
 

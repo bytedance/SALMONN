@@ -68,34 +68,40 @@
     "min_learning_rate": 1e-05
   },
   "stages": {
-    "expression": {
+    "gesture": {
       "model_args": {
         "model_name_or_path": "checkpoints/base_asr_model",
-        "num_motion_codebooks": 6,
-        "gesture_num_codebooks": 0,
-        "expression_num_codebooks": 6,
+        "num_motion_codebooks": 12,
+        "gesture_num_codebooks": 12,
+        "expression_num_codebooks": 0,
         "motion_level_weights": [
           1.0,
           0.5,
           0.25,
           0.1,
+          0.05,
+          0.025,
           1.0,
-          0.5
+          0.5,
+          0.25,
+          0.1,
+          0.05,
+          0.025
         ]
       },
       "data_args": {
-        "task_type": "expression",
-        "add_speaker_id": false
+        "task_type": "gesture",
+        "add_speaker_id": true
       },
       "training_args": {
-        "output_dir": "runs/expression",
-        "max_steps": 5000,
-        "run_name": "ellsa2_expression"
+        "output_dir": "runs/gesture",
+        "max_steps": 10000,
+        "run_name": "ellsa2_gesture"
       }
     },
     "gesture_expression": {
       "model_args": {
-        "model_name_or_path": "runs/expression",
+        "model_name_or_path": "runs/gesture",
         "num_motion_codebooks": 18,
         "gesture_num_codebooks": 12,
         "expression_num_codebooks": 6,

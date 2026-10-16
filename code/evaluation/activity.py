@@ -30,6 +30,10 @@ def parse(response, entry):
     if isinstance(d, list) and len(d) == 1:
         d = d[0]
     assert isinstance(d, dict)
+    assert d.get("Analysis", "").strip() != (
+        "reference time/start-change-end; candidate same-time start-change-end; "
+        "strongest local evidence; comparison judgment"
+    ), "Analysis only repeats the output-format placeholder"
     keys = ['Timing', 'Appropriateness', 'Gesture backchannel visibility'] if entry['task'] == 'duplex' else ['Visual clarity', 'Text-motion semantic match', 'Concreteness', 'Beat/fidget penalty']
     for key in keys + ['Silence motion penalty', 'Overactivity penalty']:
         assert type(d[key]) in (int, float) and np.isfinite(d[key]) and (0 <= d[key] <= 1), key

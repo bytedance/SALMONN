@@ -11,13 +11,12 @@ from transformers import AutoConfig, AutoTokenizer, Trainer
 
 from dataset import (
     CoSpeechGestureCollator, CoSpeechGestureDataset,
-    _is_flame_motion_representation, _task_has_gesture, _task_has_expression,
     _resolve_motion_target_flags as _dataset_motion_target_flags,
 )
 from modeling_ellsa2 import CoSpeechGestureLM
 from scripts.gesture_io import (
     maybe_load_legacy_qwen35_state_dict,
-    reset_motion_weight_buffers as _reset_motion_weight_buffers,
+    reset_motion_weight_buffers,
 )
 
 DEFAULT_FLAME_STATS_PATH = str(pathlib.Path(__file__).resolve().parent / "assets/flame_stats.json")
@@ -202,16 +201,6 @@ class TrainingArguments(transformers.TrainingArguments):
     from_scratch: bool = False
 
 
-def maybe_load_legacy_qwen35_ellsa2_state_dict(model_path: str):
-    """Adapt legacy Qwen3.5 checkpoint keys through the shared loading helper."""
-    return maybe_load_legacy_qwen35_state_dict(model_path)
-
-
-def reset_motion_weight_buffers(model, model_args):
-    """Restore nonpersistent RVQ embedding/loss weights after checkpoint loading."""
-    _reset_motion_weight_buffers(model, model_args)
-
-
 def _configure_trainable_parameters(model, model_args):
     """Apply listener-only/gate-only training and optional motion-I/O freezing."""
     if model_args.train_listener_delta_only or model_args.train_listener_gate_only:
@@ -317,7 +306,7 @@ def load_model_and_dataset(model_args, data_args, training_args):
         if model_args.base_llm_path:
             model.load_base_llm_from_pretrained(model_args.base_llm_path)
     else:
-        remapped_state_dict = maybe_load_legacy_qwen35_ellsa2_state_dict(model_args.model_name_or_path)
+        remapped_state_dict = maybe_load_legacy_qwen35_state_dict(model_args.model_name_or_path)
         if source_task == "expression" and has_gesture_target and has_expression_target:
             from safetensors.torch import load_file
             state_dict = remapped_state_dict or load_file(

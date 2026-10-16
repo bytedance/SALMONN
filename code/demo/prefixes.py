@@ -5,16 +5,12 @@ import re
 
 from release_paths import DATA_ROOT
 
-DEFAULT_PREFIX = "r2s_00099"
-# Four references with high source-motion quality, plus the previous default.
-# Descriptions refer to their source motion, not a guarantee
-# about generated motion quality.
+DEFAULT_PREFIX = "r2d_00073"
+# Reference motions paired with the three selected dialogue examples.
 PREFIX_LABELS = {
-    "r2s_00099": "P1303 · Balanced gestures",
-    "fro_00771": "P0092 · Moderate gestures",
-    "r2d_00073": "P0421 · More active gestures",
-    "fro_00892": "P4104 · Subtle gestures",
-    "fro_00038": "P1305A · Previous default",
+    "r2d_00073": "r2d_00073 · P0421",
+    "fro_00079": "fro_00079 · P0093",
+    "fro_00251": "fro_00251 · P1307A",
 }
 
 

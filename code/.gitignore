@@ -3,6 +3,7 @@ __pycache__/
 outputs/
 runs/
 cache/
+.cache/
 external_assets/
 !assets/motion_stats/*.npy
 !assets/flame_stats.json

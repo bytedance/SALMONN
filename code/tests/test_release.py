@@ -1,5 +1,7 @@
 """CPU regressions for release metadata, cache identity and pooled metrics."""
 import json
+import os
+from types import SimpleNamespace
 from pathlib import Path
 import sys
 import tempfile
@@ -16,6 +18,21 @@ from evaluation.activity import parse
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_alignment_threshold_uses_ellsa2_namespace_and_cli_priority(self):
+        from dataset import _get_alignment_score_threshold
+        with patch.dict(os.environ, {
+            'ELLSA2_ALIGNMENT_SCORE_THRESHOLD': '.7',
+            'GESTURE_ALIGNMENT_SCORE_THRESHOLD': '.6',
+            'COSYVOICE_ALIGNMENT_SCORE_THRESHOLD': '.9',
+        }, clear=True):
+            self.assertEqual(_get_alignment_score_threshold(SimpleNamespace()), .7)
+            self.assertEqual(_get_alignment_score_threshold(
+                SimpleNamespace(alignment_score_threshold=.8)), .8)
+            del os.environ['ELLSA2_ALIGNMENT_SCORE_THRESHOLD']
+            self.assertEqual(_get_alignment_score_threshold(SimpleNamespace()), .6)
+            del os.environ['GESTURE_ALIGNMENT_SCORE_THRESHOLD']
+            self.assertIsNone(_get_alignment_score_threshold(SimpleNamespace()))
+
     def test_private_npz_metadata(self):
         # NPY Unicode/bytes/object encodings must all expose private paths.
         private = '/' + 'mnt/' + 'bn/' + 'private/example.mp4'

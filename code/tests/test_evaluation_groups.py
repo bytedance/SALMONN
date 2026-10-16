@@ -26,7 +26,7 @@ class EvaluationGroupTests(unittest.TestCase):
             self.assertEqual(run.call_args.kwargs['cwd'], ROOT)
             self.assertIn('--pose-guide', command)
 
-    def test_automatic_guided_checkpoint_selection_is_preserved(self):
+    def test_pose_guide_is_forwarded_without_inventing_a_checkpoint(self):
         with patch.object(sys, 'argv', ['infer.py', '--pose-guide', 'guide.npz']), \
              patch.object(infer.subprocess, 'run') as run:
             infer.main()

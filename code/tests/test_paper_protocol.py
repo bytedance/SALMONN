@@ -94,10 +94,13 @@ class PaperProtocolTests(unittest.TestCase):
             args = SimpleNamespace(output_dir=root, provider='gemini', model='test',
                                    base_url='https://example.invalid', azure_endpoint=None,
                                    video_format='video_url', api_version='2024-03-01-preview', retries=1)
-            payloads = iter(['invalid JSON', json.dumps({
-                'Timing': 0, 'Appropriateness': 0, 'Gesture backchannel visibility': 0,
-                'Silence motion penalty': 0, 'Overactivity penalty': 0,
-                'Silence evidence': [], 'Overactivity evidence': []})])
+            zero = {'Timing': 0, 'Appropriateness': 0, 'Gesture backchannel visibility': 0,
+                    'Silence motion penalty': 0, 'Overactivity penalty': 0,
+                    'Silence evidence': [], 'Overactivity evidence': []}
+            placeholder = ('reference time/start-change-end; candidate same-time start-change-end; '
+                           'strongest local evidence; comparison judgment')
+            payloads = iter(['invalid JSON', json.dumps(dict(zero, Analysis=placeholder)),
+                             json.dumps(dict(zero, Analysis='No visible response during the rated interval.'))])
             calls = []
             def create(**kwargs):
                 calls.append(kwargs)
@@ -107,14 +110,15 @@ class PaperProtocolTests(unittest.TestCase):
                 return SimpleNamespace(model='returned-test-model', choices=[
                     SimpleNamespace(message=SimpleNamespace(content=next(payloads)))])
             client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
-            with self.assertRaises(RuntimeError):
-                score_one(entry, 1, client, args)
+            for _ in range(2):
+                with self.assertRaises(RuntimeError):
+                    score_one(entry, 1, client, args)
             result = score_one(entry, 1, client, args)
             self.assertEqual(result['scores']['final'], 0)
-            self.assertEqual(len(result['attempts']), 1)
+            self.assertEqual(len(result['attempts']), 2)
             self.assertEqual(result['returned_model'], 'returned-test-model')
             self.assertEqual(score_one(entry, 1, client, args)['scores']['final'], 0)
-            self.assertEqual(len(calls), 2)
+            self.assertEqual(len(calls), 3)
 
     def test_face_metrics_preserve_sample_std_and_repeated_vertices(self):
         import torch

@@ -33,4 +33,4 @@ class MicrophoneProcessor extends AudioWorkletProcessor {
         return true;
     }
 }
-registerProcessor("meco-microphone", MicrophoneProcessor);
+registerProcessor("ellsa2-microphone", MicrophoneProcessor);

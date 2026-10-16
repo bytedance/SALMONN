@@ -125,7 +125,7 @@ class MicrophoneTransportTests(unittest.TestCase):
 
 
 class MotionPrefixTests(unittest.TestCase):
-    def test_curated_speakers_pass_selection_and_references_include_both_roles(self):
+    def test_dialogue_prefix_references_include_both_roles(self):
         from demo.prefixes import load_motion_prefixes, DEFAULT_PREFIX
         from release_paths import DATA_ROOT
 
@@ -134,11 +134,6 @@ class MotionPrefixTests(unittest.TestCase):
         selected = json.loads((DATA_ROOT / 'manifests/selected_speakers.json').read_text())
         for key, prefix in prefixes.items():
             self.assertEqual(prefix['in_training_inventory'], prefix['speaker_id'] in selected)
-            if key != 'fro_00038':
-                self.assertGreater(prefix['speaker_quality_mean'], 0.89)
-                self.assertGreater(prefix['speaker_pass_rate'], 0.7)
-            if key in (DEFAULT_PREFIX, 'fro_00771'):
-                self.assertIn(prefix['speaker_id'], selected)
             self.assertGreater(prefix['speaking_seconds'], 3)
             self.assertGreater(prefix['listening_seconds'], 3)
             with np.load(prefix['pose_path']) as pose:
@@ -177,7 +172,8 @@ class MotionPrefixTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, \
                 patch.object(inference, 'use_streaming_rvq', return_value=True), \
                 patch.object(inference, 'iter_gesture_expression_tokens', side_effect=token_stream):
-            for key in ('r2s_00099', 'r2d_00073', 'r2s_00099'):
+            keys = list(engine.prefixes)
+            for key in [*keys, keys[0]]:
                 audio = LiveAudio(Path(directory) / str(len(seen)), 60)
                 audio.feed((16000, np.zeros(12800, np.float32)))
                 audio.finish()
@@ -188,8 +184,8 @@ class MotionPrefixTests(unittest.TestCase):
                 self.assertEqual(metadata['reference_pose'], engine.prefixes[key]['reference_pose'])
                 self.assertFalse('pose_path' in metadata)
         self.assertTrue(torch.equal(engine.style, torch.full((6, 18), 77, dtype=torch.long)))
-        self.assertTrue(torch.equal(seen[0], seen[2]))
-        self.assertFalse(torch.equal(seen[0], seen[1]))
+        self.assertTrue(torch.equal(seen[0], seen[-1]))
+        self.assertTrue(all(not torch.equal(seen[0], value) for value in seen[1:-1]))
 
 
 @unittest.skipUnless(shutil.which('ffmpeg'), 'FFmpeg is required')

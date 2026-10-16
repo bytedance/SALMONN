@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from release_paths import CODE_ROOT, DATA_ROOT, CHECKPOINT_ROOT
 ROOT = CODE_ROOT.parent
-RUNTIME_DIRS = {"outputs", "runs", "cache", "__pycache__", ".git", "external_assets"}
+RUNTIME_DIRS = {"outputs", "runs", "cache", ".cache", "__pycache__", ".git", "external_assets"}
 # Match private infrastructure and credential formats without printing their values.
 PRIVATE = re.compile(
     rb"/mnt/(?:bn|bd)/|/home/[A-Za-z][^/\s\x00]{1,40}/|/roo[t]/|"
@@ -134,15 +134,11 @@ def validate_checkpoints():
     """Check required generator, RVQ tokenizer, and bundled KaoLRM files."""
     for name in ("config.json", "model.safetensors", "LICENSE_WEIGHT.txt"):
         assert (CHECKPOINT_ROOT / "external_assets/kaolrm-mono" / name).is_file(), name
-    generators = ["standalone_generator"]
-    if (CHECKPOINT_ROOT / "standalone_generator_guided").exists():
-        generators.append("standalone_generator_guided")
-    for name in generators:
-        with (CHECKPOINT_ROOT / name / "model.safetensors").open("rb") as handle:
-            size = struct.unpack("<Q", handle.read(8))[0]
-            header = json.loads(handle.read(size))
-        assert {int(k.split(".")[1]) for k in header if k.startswith("motion_heads.")} == set(range(18))
-        assert any(k.startswith("audio_encoder.") for k in header)
+    with (CHECKPOINT_ROOT / "standalone_generator/model.safetensors").open("rb") as handle:
+        size = struct.unpack("<Q", handle.read(8))[0]
+        header = json.loads(handle.read(size))
+    assert {int(k.split(".")[1]) for k in header if k.startswith("motion_heads.")} == set(range(18))
+    assert any(k.startswith("audio_encoder.") for k in header)
     base = CHECKPOINT_ROOT / "base_asr_model"
     for name in ("config.json", "model.safetensors", "tokenizer.json", "tokenizer_config.json"):
         assert (base / name).is_file(), name

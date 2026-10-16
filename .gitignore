@@ -3,5 +3,6 @@ __pycache__/
 outputs/
 runs/
 cache/
+.cache/
 checkpoints/
 data/

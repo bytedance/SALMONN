@@ -1,12 +1,8 @@
 """A direct pose-only reference using the checkpoint's eight-window guide layout."""
 import math
-from pathlib import Path
 
 import numpy as np
 
-
-from release_paths import CHECKPOINT_ROOT
-MODEL_PATH = CHECKPOINT_ROOT / "standalone_generator_guided"
 REFERENCE_FRAMES = 192
 
 

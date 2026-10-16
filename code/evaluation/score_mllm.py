@@ -1,4 +1,4 @@
-"""Score frozen DialogSEG videos through a configurable compatible API."""
+"""Score frozen ELLSA2 videos through a configurable compatible API."""
 import argparse
 import base64
 import concurrent.futures as futures

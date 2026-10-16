@@ -13,9 +13,9 @@ async (key) => {
         await context.audioWorklet.addModule(new URL("processor.js", base));
         stream = await navigator.mediaDevices.getUserMedia({audio: {channelCount: 1}, video: false});
         const source = context.createMediaStreamSource(stream);
-        const processor = new AudioWorkletNode(context, "meco-microphone");
+        const processor = new AudioWorkletNode(context, "ellsa2-microphone");
         const capture = {frames: 0, sampleRate: context.sampleRate, active: true, socket, stop: null};
-        window.mecoMicrophone = capture;
+        window.ellsa2Microphone = capture;
         socket.send(JSON.stringify({sample_rate: context.sampleRate}));
         let resolveStopped, lastStatus = 0;
         const stopped = new Promise(resolve => { resolveStopped = resolve; });

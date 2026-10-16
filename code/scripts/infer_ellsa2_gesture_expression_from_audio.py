@@ -63,7 +63,7 @@ from scripts.gesture_io import (  # noqa: E402
     str2bool,
 )
 from models.vq.precision import resolve_encoding_precision
-from scripts.pose_bias import MODEL_PATH as POSE_BIAS_MODEL, pose_guide_schedule
+from scripts.pose_bias import pose_guide_schedule
 from inline_motion_exemplar import EXEMPLAR_END_TOKEN, EXEMPLAR_START_TOKEN  # noqa: E402
 from modeling_ellsa2 import CoSpeechGestureLM  # noqa: E402
 from models.vq.streaming import make_decoder_stream, supports_strict_streaming
@@ -1215,7 +1215,9 @@ def finalize_args(args):
             raise ValueError("Pose-only guidance requires the trained 30 fps / 0.8 s / six-token layout.")
         args.motion_bias = args.inline_exemplar_enabled = True
     if not args.model_path:
-        args.model_path = str(POSE_BIAS_MODEL) if args.motion_bias else DEFAULT_MODEL_PATH
+        if args.motion_bias:
+            raise ValueError("Motion guidance requires an explicitly supplied compatible trained checkpoint via --model-path.")
+        args.model_path = DEFAULT_MODEL_PATH
     config_path = Path(args.model_path) / "config.json"
     if config_path.is_file():
         checkpoint_config = json.loads(config_path.read_text())

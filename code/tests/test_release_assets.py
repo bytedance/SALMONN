@@ -23,6 +23,9 @@ LOCAL_FILES = (
     'data/external_assets/model.safetensors',
     'data/source/local.wav',
     'checkpoints/outputs/output.npz',
+    'code/.cache/huggingface/download/metadata.json',
+    'data/.cache/huggingface/download/metadata.json',
+    'checkpoints/.cache/huggingface/upload/metadata.json',
 )
 
 

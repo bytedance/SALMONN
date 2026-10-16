@@ -72,12 +72,13 @@ class PoseBiasTests(unittest.TestCase):
         from scripts import infer_ellsa2_gesture_expression_from_audio as inference
         base = inference.finalize_args(inference.parse_args([]))
         self.assertEqual(base.model_path, inference.DEFAULT_MODEL_PATH)
-        guided = inference.finalize_args(inference.parse_args(["--pose-guide", str(self.path)]))
-        self.assertTrue(guided.motion_bias and guided.inline_exemplar_enabled)
-        self.assertEqual(guided.model_path, str(inference.POSE_BIAS_MODEL))
+        for options in (["--pose-guide", str(self.path)], ["--motion-bias"]):
+            with self.subTest(options=options), self.assertRaisesRegex(ValueError, "--model-path"):
+                inference.finalize_args(inference.parse_args(options))
         explicit = inference.finalize_args(inference.parse_args([
             "--pose-guide", str(self.path), "--model-path", "custom-checkpoint"]))
         self.assertEqual(explicit.model_path, "custom-checkpoint")
+        self.assertTrue(explicit.motion_bias and explicit.inline_exemplar_enabled)
         with self.assertRaisesRegex(ValueError, "learned"):
             inference.finalize_args(inference.parse_args([
                 "--pose-guide", str(self.path), "--inline-exemplar-copy-mode", "hard_core"]))

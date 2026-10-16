@@ -1,5 +1,7 @@
 """Regression checks for audio expansion, shifted motion targets and gradient flow."""
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import torch
 from torch import nn
@@ -8,6 +10,19 @@ from modeling_ellsa2 import CoSpeechGestureLM
 
 
 class StreamingInputTests(unittest.TestCase):
+    def test_device_map_uses_actual_backbone_decoder_layers(self):
+        from transformers import Qwen2Config, Qwen3Config
+        encoder = nn.Module()
+        encoder.encoder_dim = 4
+        for config_type, layer in [(Qwen2Config, 'Qwen2DecoderLayer'), (Qwen3Config, 'Qwen3DecoderLayer')]:
+            config = config_type(vocab_size=16, hidden_size=16, intermediate_size=32,
+                                 num_hidden_layers=1, num_attention_heads=2, num_key_value_heads=1,
+                                 head_dim=8)
+            with self.subTest(layer=layer), patch.object(CoSpeechGestureLM, '_build_audio_encoder', return_value=encoder):
+                model = CoSpeechGestureLM(config, SimpleNamespace(connector_hid_size=16))
+                self.assertEqual(set(model._no_split_modules), set(model.base_llm._no_split_modules))
+                self.assertIn(layer, model._no_split_modules)
+
     def setUp(self):
         """Build a small embedding-only model without loading external checkpoints."""
         self.model = CoSpeechGestureLM.__new__(CoSpeechGestureLM)

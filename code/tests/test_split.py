@@ -21,7 +21,7 @@ class SplitTests(unittest.TestCase):
             program = (
                 'import sys,json;sys.path.insert(0,sys.argv[1]);'
                 'from release_paths import resolve_config;'
-                'print(json.dumps(resolve_config(json.load(open(sys.argv[2])), "expression")))')
+                'print(json.dumps(resolve_config(json.load(open(sys.argv[2])), "gesture")))')
             config = json.loads(subprocess.check_output([
                 sys.executable, '-I', '-c', program, str(ROOT),
                 str(ROOT / 'configs/training.json')], cwd=root, env=env, text=True))

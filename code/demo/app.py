@@ -17,6 +17,9 @@ import wave
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from release_paths import DATA_ROOT
+from demo.prefixes import DEFAULT_PREFIX, PREFIX_LABELS, load_motion_prefixes
+
+EXAMPLE_IDS = tuple(PREFIX_LABELS)
 
 
 def run(command, log):
@@ -79,7 +82,6 @@ def build_demo(args, worker, engine):
     """Build upload controls, streaming playback and consistent downloads."""
     import gradio as gr
     from demo.microphone import LiveAudio, install_microphone_routes
-    from demo.prefixes import DEFAULT_PREFIX, load_motion_prefixes
 
     prefixes = load_motion_prefixes()
 
@@ -172,7 +174,7 @@ def build_demo(args, worker, engine):
                                  interactive=False, height=110)
                 gr.Markdown("Video audio: **target on the left**, **partner on the right**. "
                             "The download contains body, hand and facial animation at 30 fps. "
-                            + ("Playback starts while later motion is being generated and rendered. Upper-body and hand block boundaries are smoothed when enabled."
+                            + ("Playback starts while later motion is being generated and rendered."
                              if args.decode_window_blocks else
                              "Playback begins after motion generation, then continues while rendering."))
         async def stream_segment(value, output_id, first_chunk):
@@ -189,9 +191,10 @@ def build_demo(args, worker, engine):
                            "orig_name": "video-stream.mp4", "meta": {"_type": "gradio.FileData"}}
 
         video.stream_output = stream_segment
-        gr.Examples(examples=[[str(DATA_ROOT / f"testset/audio/fro_00038_{role}.wav")
-                              for role in ("target", "partner")]],
-                    inputs=[target, partner], label="Try the included conversation", cache_examples=False)
+        gr.Examples(examples=[[str(DATA_ROOT / f"testset/audio/{clip_id}_{role}.wav")
+                               for role in ("target", "partner")] for clip_id in EXAMPLE_IDS],
+                    inputs=[target, partner], example_labels=list(EXAMPLE_IDS),
+                    label="Try a conversation", cache_examples=False)
         with gr.Accordion("Animate from your microphone", open=False):
             microphone_key = gr.State(None, delete_callback=cleanup_microphone)
             gr.Markdown(f"Start recording and speak to animate the target person. The partner stays silent. "
@@ -232,7 +235,7 @@ def build_demo(args, worker, engine):
         recording.failure(failed_microphone, inputs=microphone_key, outputs=microphone_record,
                           queue=False, api_name=False)
         microphone_stop.click(fn=None, outputs=microphone_input_status, queue=False,
-                              js="async () => window.mecoMicrophone ? await window.mecoMicrophone.stop() : 'Start recording first.'")
+                              js="async () => window.ellsa2Microphone ? await window.ellsa2Microphone.stop() : 'Start recording first.'")
     demo.microphone_lifespan = microphone_lifespan
     return demo.queue(max_size=8, default_concurrency_limit=1)
 

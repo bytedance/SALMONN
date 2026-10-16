@@ -13,7 +13,7 @@ from lhotse import Fbank
 from torch.nn.utils import rnn
 from models.vq.config import (
     UPPER_JOINTS, FACTORIZED_GESTURE_PARTS, FACTORIZED_UPPER_INDICES,
-    FACTORIZED_NUM_QUANTIZERS, build_motion_tokenizer_cfg, build_motion_rvqvae,
+    build_motion_tokenizer_cfg, build_motion_rvqvae,
 )
 from inline_motion_exemplar import match_action_families, normalize_text
 from utils import rotation_conversions as rc

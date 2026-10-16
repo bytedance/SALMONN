@@ -82,9 +82,8 @@ def _get_alignment_score_threshold(args):
             continue
 
     for env_k in (
+        'ELLSA2_ALIGNMENT_SCORE_THRESHOLD',
         'GESTURE_ALIGNMENT_SCORE_THRESHOLD',
-        'COSYVOICE_ALIGNMENT_SCORE_THRESHOLD',
-        'COSYVOICE_ALIGN_SCORE_THRESHOLD',
     ):
         v = os.environ.get(env_k)
         if v is None or str(v) == '':
@@ -614,13 +613,6 @@ class Gesture_Dataset(Dataset):
             tokenizer_paths["flame_motioncode"] = checkpoint_path
 
         return tokenizer_paths
-
-    def _load_checkpoint_state_dict(self, checkpoint_path):
-        """Extract tokenizer weights from a raw or wrapped checkpoint."""
-        if checkpoint_path.endswith(".safetensors"):
-            return load_file(checkpoint_path)
-        ckpt = torch.load(checkpoint_path, map_location="cpu")
-        return ckpt["net"] if isinstance(ckpt, dict) and "net" in ckpt else ckpt
 
     def _build_motion_tokenizer_cfg(self, body_part):
         """Build the RVQVAE configuration for one motion representation."""

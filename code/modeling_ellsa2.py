@@ -111,7 +111,7 @@ class CoSpeechGestureLM(PreTrainedModel):
     _supports_flex_attn = True
     _can_compile_fullgraph = True
     _supports_attention_backend = True
-    _no_split_modules = ["Qwen3DecoderLayer"]
+    _no_split_modules = []
     all_tied_weights_keys = {}
 
     def __init__(self, config, model_args):
@@ -223,6 +223,7 @@ class CoSpeechGestureLM(PreTrainedModel):
         self.register_buffer("motion_loss_weights", motion_loss_weights, persistent=False)
 
         self.base_llm = AutoModelForCausalLM.from_config(self.llm_config)
+        self._no_split_modules = list(self.base_llm._no_split_modules)
         self._apply_qwen2_rope_precision()
         self._apply_freeze_llm()
 

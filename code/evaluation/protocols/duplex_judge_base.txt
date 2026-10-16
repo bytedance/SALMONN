@@ -1,0 +1,42 @@
+Two synchronized 20-second videos are provided. VIDEO 1 is the human-verified GROUND-TRUTH reference. VIDEO 2 is the CANDIDATE to score. Score VIDEO 2 only. Use VIDEO 1 to locate the intended interaction event, but accept a visibly supported functional fragment or alternative response; exact pose, side, amplitude, and full trajectory need not match.
+
+ANTI-HALLUCINATION RULE: transcript, VAD, category, audio, and VIDEO 1 identify what and when to inspect, but they do not prove that VIDEO 2 performs a motion. Independently verify the candidate's visible change. Do not copy the reference description into the candidate description.
+
+Mandatory observation:
+1. Locate VIDEO 1's clearest full-duplex event and state its time, body parts, starting pose, visible change, and ending pose.
+2. Inspect VIDEO 2 at the same time, including before and after, and state its actual starting pose, visible change, and ending pose.
+3. Compare the visible evidence and judge whether VIDEO 2 contains a full match, a useful functional fragment, a weak boundary-related cue, or only unrelated motion.
+
+This is a sparse strongest-event metric, not a whole-clip average. Give substantial credit when any short candidate segment visibly captures part of the intended listening/speaking transition, interruption reaction, overlap behavior, or acknowledgement. A good local response is not cancelled by generic motion elsewhere. Do not require a large gesture, exact reference trajectory, return motion, or dense coverage.
+
+Functional evidence includes:
+- backchannel: a discrete nod, acknowledgement, orientation change, or intentional listening response;
+- interruption target: a visible launch, escalation, turn claim, or newly initiated gesture near entry;
+- interruption partner: a visible stop, reduction, withdrawal, yielding, reorientation, or transition toward a listening pose after being cut in;
+- overlap: a visible change or maintained interaction behavior associated with the overlap boundary or interval.
+
+Tiny renderer jitter, finger noise, a fully unchanged pose, or generic motion with no temporal relationship to the event receives little credit. A modest but clearly visible boundary-related change may receive partial credit even when its function is not completely unambiguous. Audio or transcript alignment alone cannot make Timing high: when the visible candidate cue is faint, generic, or ambiguous, Timing must not exceed 0.37 even if it happens at the annotated time.
+
+Scoring anchors for each dimension:
+- 0.00-0.10: no independently visible candidate change, or the claimed event exists only in text/audio/reference.
+- 0.11-0.16: only generic motion, micro-fidget, continuous pre-existing motion, or clearly wrong timing.
+- 0.17-0.29: a visible change occurs near the interaction event and weakly suggests the intended function, but is ambiguous, incomplete, or nonspecific.
+- 0.30-0.46: one useful local functional fragment is visible, such as a partial stop, launch, nod, withdrawal, or state change, despite substantial mismatch elsewhere.
+- 0.47-0.66: a clear correctly timed functional response with a noticeable deficiency relative to VIDEO 1.
+- 0.67-0.90: a strong, specific, nearly equivalent response.
+- 0.91-1.00: the relevant candidate and reference events are visually identical or functionally indistinguishable after separate inspection.
+
+Dimensions:
+- Timing: alignment of the independently visible candidate cue with the conversational event, subject to the 0.37 cap for a faint/generic/ambiguous cue.
+- Appropriateness: degree to which the visible cue supports the intended interaction function.
+- Gesture backchannel visibility: clarity of the strongest visible full-duplex cue; this legacy field covers every category.
+
+Return exactly one JSON object and no other text:
+{
+  "Analysis": "reference time/start-change-end; candidate same-time start-change-end; strongest local evidence; comparison judgment",
+  "Timing": 0.0,
+  "Appropriateness": 0.0,
+  "Gesture backchannel visibility": 0.0
+}
+
+Duplex Fit Score = 0.45 * Timing + 0.45 * Appropriateness + 0.10 * Gesture backchannel visibility.

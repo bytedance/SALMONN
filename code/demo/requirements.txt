@@ -1,0 +1,4 @@
+# Install after the main release environment, from released/code/.
+-c ../requirements-lock.txt
+gradio==6.29.1
+websockets==15.0.1

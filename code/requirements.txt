@@ -1,0 +1,36 @@
+# Complete reproduction environment: Linux x86_64, Python 3.12, CUDA 12.6.
+# See scripts/install_environment.sh for the tested installation order.
+-c requirements-lock.txt
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.9.0+cu126
+torchaudio==2.9.0+cu126
+setuptools==80.9.0
+wheel==0.45.1
+packaging==25.0
+ninja==1.13.0
+transformers==5.2.0
+accelerate==1.14.0
+safetensors==0.7.0
+lhotse==1.33.0
+numpy==2.2.6
+scipy==1.16.3
+librosa==0.11.0
+soundfile==0.13.1
+einops==0.8.1
+numba==0.63.1
+llvmlite==0.46.0
+scikit-learn==1.8.0
+huggingface-hub==1.17.0
+tokenizers==0.22.1
+pandas==2.3.3
+tqdm==4.67.1
+deepspeed==0.19.1
+smplx==0.1.28
+openai==2.29.0
+pyrender==0.1.45
+PyOpenGL==3.1.0
+trimesh==4.10.1
+imageio==2.37.2
+pillow==11.3.0
+# Official prebuilt wheel: torch 2.9, CUDA 12, CXX11 ABI, CPython 3.12.
+flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.9cxx11abiTRUE-cp312-cp312-linux_x86_64.whl#sha256=4e2f9e39313266b1544b68138b15b91ee6221eccf14f7902b7c6620351340810

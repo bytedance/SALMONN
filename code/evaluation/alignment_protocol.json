@@ -1,0 +1,52 @@
+{
+  "status": "ALIGNMENT_DEFAULT_REPLAY_OF_PRETEST_DEV_SELECTED_METHOD",
+  "task": "alignment",
+  "method": "traditional_bank:audio.cross.onset.body.s0.25.corr_plausible",
+  "feature": "audio.cross.onset.body.s0.25.corr_plausible",
+  "sign": 1.0,
+  "pair_scale": 0.2067716197551369,
+  "aggregation": "For each comparison convert the feature difference to P(A wins) with sigmoid(sign * difference / Dev MAD scale); convert to matched-condition probability; average by system.",
+  "selection_boundary": {
+    "selection_data": "source-stratified Dev only",
+    "validation": "leave-one-speaker-out; all scale/sign/model fitting repeated inside each training fold",
+    "selection_key": [
+      "mean held-out-Dev-speaker system-pair accuracy",
+      "minimum held-out-Dev-speaker accuracy",
+      "mean held-out-Dev-speaker Spearman",
+      "full Dev accuracy",
+      "full Dev Spearman",
+      "lower feature count",
+      "lexical candidate id"
+    ],
+    "candidate_count": 606,
+    "valid_feature_count": 536,
+    "dev_pair_count": 160,
+    "dev_speaker_count": 5,
+    "selection_metrics": {
+      "speaker_OOF_mean_accuracy": 0.6857142857142857,
+      "speaker_OOF_minimum_accuracy": 0.6428571428571429,
+      "speaker_OOF_mean_spearman": 0.4380952380952382,
+      "full_dev_accuracy": 0.6785714285714286,
+      "full_dev_spearman": 0.4285714285714286,
+      "per_speaker_accuracy": {
+        "12_zhao": 0.6428571428571429,
+        "15_carlos": 0.6785714285714286,
+        "18_daiki": 0.6428571428571429,
+        "21_ayana": 0.8214285714285714,
+        "25_goto": 0.6428571428571429
+      },
+      "per_speaker_spearman": {
+        "12_zhao": 0.4285714285714286,
+        "15_carlos": 0.3333333333333334,
+        "18_daiki": 0.38095238095238104,
+        "21_ayana": 0.7857142857142858,
+        "25_goto": 0.261904761904762
+      }
+    }
+  },
+  "source_protocol_sha256": "e718bad85684b68ac7d9023db79a2e36cb91c363051491e619aee4d0e7421afd",
+  "source_selector_sha256": "34927ec23725d106f6e289185f2b81eed06cfc8fd2981d97b102444be79612cd",
+  "source_dev_manifest_sha256": "9cfc4e2510ddec102d5620ea4d4337ad493faced167e9a3eddfa421ea8696443",
+  "source_dev_feature_bank_sha256": "f8927c0e0678ec464fa9204ec750cb5b0906b21bcc3e0f78f468bda8e435bfdc",
+  "historical_note": "This file promotes an exactly pre-Test Dev-selected component to the default. It does not perform a new search or change its sign/scale after seeing Test labels."
+}

@@ -1,0 +1,53 @@
+Two synchronized 20-second videos are provided. VIDEO 1 is the human-verified GROUND-TRUTH semantic-motion reference. VIDEO 2 is the CANDIDATE to score. Score VIDEO 2 only. Use VIDEO 1 to locate and interpret the intended meaning, while crediting any visibly verified candidate gesture or fragment that supports part of that meaning.
+
+ANTI-HALLUCINATION RULE: transcript, category, audio, annotation, and VIDEO 1 tell you what and when to inspect, but they are not evidence that VIDEO 2 moves. Independently state VIDEO 2's actual visible pose or trajectory. Never invent a candidate action from the words or copy VIDEO 1's trajectory into VIDEO 2's description.
+
+Mandatory observation:
+1. State VIDEO 1's clearest semantic event: time, target meaning, body parts, starting pose, visible trajectory/configuration, and ending pose.
+2. Inspect VIDEO 2 at the same time, including before and after, and state its actual starting pose, visible trajectory/configuration, and ending pose.
+3. Identify the strongest visibly shared semantic property: for example direction, side, height, size, number, shape, grouping, comparison, spatial layout, object handling, action component, emblem, or metaphorical trajectory.
+
+This is a sparse strongest-event metric. One clear semantic gesture or one genuinely useful semantic fragment can earn substantial credit even if the rest of the clip is generic or mismatched. Do not average over every phrase. Do not require the complete reference trajectory, exact pose, exact side, large amplitude, or an independently recognizable rendition of the entire phrase.
+
+A candidate fragment receives partial credit whenever its visible form shares a relevant coarse semantic property with VIDEO 1 at the target time, even if the full intended meaning would remain ambiguous without the reference. The reference may help interpret an actually visible candidate property; it may not supply motion that is absent. Do not dismiss such visible property matches as merely generic beats.
+
+Mandatory partial-credit examples:
+- a visible upward move for reaching, height, or increase;
+- a sideward indication for a location or side;
+- a compact hand shape, pinch, or clench for something small;
+- visible separation or convergence for size, grouping, distance, or comparison;
+- synchronized forward/back travel during "back and forth," even if the two hands do not alternate;
+- a partial object-manipulation action or brief emblematic configuration.
+These examples normally belong in 0.25-0.44 or above when visibly present at the target time. Use the 0.11-0.24 generic-only tier only when no relevant direction, configuration, spatial relation, or action component is visible.
+
+Do not interpret arbitrary arm motion as a named action. Generic beats, fidgeting, self-touch, posture drift, or motion only coincident with a word should remain low when no relevant visible property is present.
+
+LOW-SCORE CALIBRATION: Reserve a final zero only for an unusable video, absent person, or image corruption so severe that the candidate cannot be observed. If VIDEO 2 is a valid observable render but remains static or has no semantic gesture, use about 0.06-0.10 for all three positive dimensions and zero Beat/fidget penalty. This is still a clear failure, not semantic credit. Do not apply a beat/fidget penalty to a static candidate. A visible but unrelated generic motion may score slightly above this floor for Visual clarity, while semantic match and Concreteness remain low.
+
+Scoring anchors for Visual clarity, Text-motion semantic match, and Concreteness:
+- 0.00-0.05: candidate cannot be reliably observed because the video/person is absent or severely corrupted.
+- 0.06-0.10: valid observable candidate, but static or completely missing the target semantic event.
+- 0.11-0.24: visible but generic beat/fidget/motion with no relevant semantic property.
+- 0.25-0.44: a coarse but visibly shared semantic property or action component appears at the target time; useful as a fragment but ambiguous or incomplete.
+- 0.45-0.64: a meaningful partial gesture visibly supports the target meaning, although trajectory, specificity, or clarity is substantially weaker than VIDEO 1.
+- 0.65-0.84: one clear correct semantic gesture or strong fragment, with a noticeable deficiency.
+- 0.85-0.94: a strong and specific semantic equivalent with only minor ambiguity.
+- 0.95-1.00: the semantic event is visually identical or functionally indistinguishable from VIDEO 1.
+
+Beat/fidget penalty:
+- Use 0.00-0.08 when a real semantic event or useful fragment is the strongest local evidence; unrelated motion elsewhere should not erase it.
+- Use 0.09-0.15 when a coarse but relevant visible property is present but generic motion obscures it.
+- Use 0.16-0.25 when generic beat/fidget is the main evidence and no relevant semantic property is visible. This penalty should keep a valid generic-motion candidate low but normally should not clip its final score to zero.
+- Use 0.26-0.40 only when severe unrelated motion or artifacts make even a weak relevant fragment difficult to observe.
+- Use 0.00 for a static candidate because there is no beat/fidget to penalize.
+
+Return exactly one JSON object and no other text:
+{
+  "Analysis": "reference time/meaning/start-trajectory-end; candidate same-time start-trajectory-end; strongest visibly shared semantic property or its absence; scoring judgment",
+  "Visual clarity": 0.0,
+  "Text-motion semantic match": 0.0,
+  "Concreteness": 0.0,
+  "Beat/fidget penalty": 0.0
+}
+
+Semantic Support Score = clip(0.35 * Visual clarity + 0.45 * Text-motion semantic match + 0.20 * Concreteness - 0.30 * Beat/fidget penalty, 0, 1).

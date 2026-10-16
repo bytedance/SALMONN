@@ -1,0 +1,30 @@
+V10 EXPERIMENTAL ADDENDUM: CONVERSATIONAL ACTIVITY PENALTIES.
+This addendum overrides the earlier output schema and the instruction that motion outside the strongest event cannot affect the score. Preserve the earlier metric dimensions as a LOCAL BASE score. Then separately judge inappropriate activity over the FULL 0-20 second candidate clip. Do not lower the base dimensions merely to apply the same global penalty twice.
+
+More movement is not better evidence. Before crediting a semantic property or duplex event, inspect nearby before/after behavior: does the candidate actually change trajectory/configuration in relation to the event, or is essentially the same repeating gesture occurring regardless of speech and meaning? A coincidental instant in a ubiquitous repetitive motion is not sufficient evidence of a meaningful gesture. Name a concrete visible property and its temporal relationship; do not invent a semantic action because a word happens to coincide with motion. Specific meaningful fragments still earn local credit. This check may change the local base assessment and must be explained separately from global deductions.
+
+Evaluate two distinct penalties S and O, each from 0 to 1:
+
+S = Silence motion penalty: sustained unjustified arm/hand gesticulation when the TARGET is not speaking. Candidate acoustic low-energy windows are provided in clip-relative seconds. They are hints, not proof of silence. Corroborate absence of target speech by listening. Only cite S evidence wholly inside one of these windows and lasting at least 1 second. If no qualifying windows exist or no independently verified problematic motion exists, S=0. Compare with VIDEO 1 at the same time.
+Silence does NOT require freezing. Do NOT penalize breathing, small head/posture adjustments, a relaxed hand hold, a natural gesture return or carry-over near a boundary, preparation for an imminent turn, or a distinct meaningful nod/listening backchannel while the partner speaks. The acoustic windows already exclude 0.3 seconds near detected speech boundaries; still allow clearly justified carry-over. Penalize continued unrelated co-speech-like waving, repetitive large beats, looping, or excessive arm/hand travel that fails to settle while the target is silent and lacks a listening function. If movement is justified by a visible reference event or partner turn, explain the exemption and use S=0 for that event. Never infer motion merely from text or audio.
+
+O = Overactivity penalty: excessive, distracting, repetitive, poorly controlled or functionally irrelevant activity during speech or other intervals NOT used for S. Evaluate purposeless repetitions, repeated large excursions, or an unchanging motor loop across different meanings/states. Compare the candidate's range, frequency and purpose with the SAME-TIME human reference; do not reward amplitude or speed by themselves. Do NOT punish lively natural speaking gestures, a single expressive gesture, stylistic variation, or useful sparse gestures simply for moving more. A static candidate has S=0 and O=0, but still receives a low local task score if the target event is absent.
+
+NO DOUBLE COUNTING: a time interval penalized under S cannot also be evidence for O. Local Beat/fidget penalty remains about evidence for the selected semantic event; O must cite additional excessive behavior rather than recoding that same local generic beat. Assign a quiet-interval problem to S first. When no distinct additional problem remains, O=0. Do not reduce S or O just because a strong task gesture exists elsewhere.
+
+Shared severity anchors, incorporating duration, frequency, amplitude and functional justification:
+0.00: absent, unobservable, or fully justified; no penalty evidence needed.
+0.25: a clearly visible but mild isolated problem, limited duration/extent.
+0.50: repeated or sustained moderate unjustified motion over a material portion of eligible time.
+0.75: frequent pronounced purposeless movement, many repetitions or long failure to settle.
+1.00: pervasive severe, nearly continuous unjustified gesticulation across most eligible intervals.
+Choose proportionately; do not assign 1.0 for a single brief uncertain event. No eligible silent time means S=0, not missing data. In uncertain cases, state the uncertainty and do not invent penalty evidence. Scoring is blind to the system name and should not target any particular model or desired ranking.
+
+Return one JSON object retaining ALL earlier LOCAL dimension fields and Analysis, and ADD:
+"Silence motion penalty": 0.0,
+"Overactivity penalty": 0.0,
+"Silence evidence": [],
+"Overactivity evidence": []
+For every evidence entry use numeric "start_sec", "end_sec" within 0-20, strings "candidate_motion", "reference_motion", "why_unjustified". For Silence evidence also include "target_speech_absent": true, only if independently confirmed. Evidence intervals for S and O must not overlap. Positive penalties require concrete timestamped evidence. Zero penalties may use empty arrays. In Analysis separately explain local event evidence, globally excessive activity or its absence, and legitimate motion exemptions.
+
+The scorer computes Base using the earlier formula and Final = Base * (1 - 0.45*S - 0.35*O). Do not return a fabricated final value in place of the required dimensions. Both base and final will be saved so global penalties and changes in local interpretation can be distinguished. These weights are fixed for this experiment and do not depend on system rankings.

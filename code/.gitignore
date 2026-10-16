@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+outputs/
+runs/
+cache/
+external_assets/
+!assets/motion_stats/*.npy
+!assets/flame_stats.json

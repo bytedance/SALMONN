@@ -1,0 +1,134 @@
+{
+  "model_args": {
+    "base_llm_path": "checkpoints/base_asr_model",
+    "llm_type": "Qwen",
+    "attn_implementation": "flash_attention_2",
+    "encoder_type": "transformer_v2",
+    "freeze_encoder": false,
+    "freeze_llm": false,
+    "connector_type": "MLP",
+    "connector_seg_size": 4,
+    "connector_hid_size": 4096,
+    "motion_vocab_size": 2048,
+    "motion_steps_per_window": 6,
+    "expression_steps_per_window": 6,
+    "audio_tokens_per_window": 10
+  },
+  "data_args": {
+    "data_path": "data/manifests/train_selected81.json",
+    "pose_rep": "smplh",
+    "pose_length": 612,
+    "pose_fps": 30,
+    "flame_fps": 30,
+    "motion_downsample_factor": 4,
+    "dialog": true,
+    "motion_tokenizer_type": "upper_hands",
+    "vqvae_upper_path": "checkpoints/tokenizers/upper.pth",
+    "vqvae_hands_path": "checkpoints/tokenizers/hands.pth",
+    "vqvae_flame_path": "checkpoints/tokenizers/flame.pth",
+    "used_num_motion_codebooks": 6,
+    "used_num_expression_codebooks": 6,
+    "window_sec": 0.8,
+    "motion_only": false,
+    "speaker_id_type": "motion",
+    "motion_style_length": 612,
+    "enable_runtime_cache": true,
+    "motion_token_cache_dir": "",
+    "audio_cache_size": 2,
+    "pose_cache_size": 2,
+    "flame_file_key": "flame_file",
+    "flame_stats_path": "assets/flame_stats.json",
+    "rvq_gesture_context_frames": 300,
+    "rvq_expression_context_frames": 240,
+    "rvq_encoder_dtype": "float64",
+    "rvq_quantizer_distance_dtype": "float64"
+  },
+  "training_args": {
+    "per_device_train_batch_size": 8,
+    "learning_rate": 0.0001,
+    "lr_scheduler_type": "cosine_with_min_lr",
+    "warmup_steps": 1000.0,
+    "optim": "adamw_torch_fused",
+    "weight_decay": 0.1,
+    "adam_beta2": 0.95,
+    "adam_epsilon": 1e-06,
+    "gradient_accumulation_steps": 2,
+    "max_grad_norm": 5.0,
+    "bf16": true,
+    "tf32": true,
+    "gradient_checkpointing": false,
+    "logging_steps": 10,
+    "report_to": [],
+    "save_steps": 5000,
+    "seed": 42,
+    "dataloader_num_workers": 2,
+    "dataloader_persistent_workers": true,
+    "dataloader_prefetch_factor": 2,
+    "deepspeed": "configs/deepspeed_zero2.json",
+    "min_learning_rate": 1e-05
+  },
+  "stages": {
+    "expression": {
+      "model_args": {
+        "model_name_or_path": "checkpoints/base_asr_model",
+        "num_motion_codebooks": 6,
+        "gesture_num_codebooks": 0,
+        "expression_num_codebooks": 6,
+        "motion_level_weights": [
+          1.0,
+          0.5,
+          0.25,
+          0.1,
+          1.0,
+          0.5
+        ]
+      },
+      "data_args": {
+        "task_type": "expression",
+        "add_speaker_id": false
+      },
+      "training_args": {
+        "output_dir": "runs/expression",
+        "max_steps": 5000,
+        "run_name": "ellsa2_expression"
+      }
+    },
+    "gesture_expression": {
+      "model_args": {
+        "model_name_or_path": "runs/expression",
+        "num_motion_codebooks": 18,
+        "gesture_num_codebooks": 12,
+        "expression_num_codebooks": 6,
+        "motion_level_weights": [
+          1.0,
+          0.5,
+          0.25,
+          0.1,
+          0.05,
+          0.025,
+          1.0,
+          0.5,
+          0.25,
+          0.1,
+          0.05,
+          0.025,
+          1.0,
+          0.5,
+          0.25,
+          0.1,
+          1.0,
+          0.5
+        ]
+      },
+      "data_args": {
+        "task_type": "gesture_expression",
+        "add_speaker_id": true
+      },
+      "training_args": {
+        "output_dir": "runs/gesture_expression",
+        "max_steps": 50000,
+        "run_name": "ellsa2_gesture_expression"
+      }
+    }
+  }
+}

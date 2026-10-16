@@ -189,15 +189,17 @@ code/
 
 ## Acknowledgements and license
 
-This work builds on Qwen, MECO, SPEAR, Seamless Interaction, GestureLSM, KaoLRM, SMPL-H/SMPL-X, FLAME, and UniLS. We thank their authors for the datasets, pretrained components and evaluation implementations.
+This work builds on [Qwen](https://huggingface.co/Qwen/Qwen2.5-0.5B), [MECo](https://github.com/RobinWitch/MECo), [SPEAR](https://huggingface.co/collections/marcoyang/spear-encoders), [Seamless Interaction](https://github.com/facebookresearch/seamless_interaction), [GestureLSM](https://github.com/andypinxinliu/GestureLSM), [KaoLRM](https://github.com/CyberAgentAILab/KaoLRM), [SMPL-H/SMPL-X](https://github.com/vchoutas/smplx), [FLAME](https://flame.is.tue.mpg.de), and [UniLS](https://github.com/xg-chu/UniLS). We thank their authors for the datasets, pretrained components and evaluation implementations.
 
 Repository-authored code retains the [Apache-2.0 license](code/LICENSE). Third-party code, datasets, weights, and body/face assets retain their respective upstream terms; see the [code notices](code/THIRD_PARTY_NOTICES.md) and [asset sources and download guide](checkpoints/README.md#external-assets-sources-and-download-guide).
 
 ## Citation
-
+If you find this project useful, please consider citing our work:
+```bibtex
 @article{wang2026ellsa2,
     title={Full-Duplex Interaction with Speech, Expressions and Gestures}, 
     author={Siyin Wang and Wenyi Yu and Terumi Chiba and Xianzhao Chen and Xiaohai Tian and Jun Zhang and Lu Lu and Chao Zhang},
     journal={arXiv preprint arXiv:2610.21452},
     year={2026}
 }
+```

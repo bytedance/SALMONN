@@ -81,7 +81,7 @@ python infer.py --model-path ../checkpoints/standalone_generator \
 
 Release decoding is greedy: `temperature=0`, `top_k=0`, `top_p=1`.
 
-Long audio continues automatically with a **12-second context** (`--max-history-sec 12`, including the current block). When the next block would exceed that limit, the last **three completed audio/motion blocks** (`--reset-history-chunks 3`, 2.4 seconds) are retained, then the new 0.8-second block is appended. Both audio streams are re-extracted and re-encoded from the first retained block, and the LLM recomputes the context with the existing motion tokens and style prefix. No encoder or LLM state from the discarded left context is reused. `--reset-history-chunks` must be smaller than the context capacity in blocks.
+Long audio continues automatically with a **12-second context** (`--max-history-sec 12`, including the current block). When the next block would exceed that limit, the last **three completed audio/motion blocks** (`--reset-history-chunks 3`, 2.4 seconds) are retained, then the new 0.8-second block is appended. `--reset-history-chunks` must be smaller than the context capacity in blocks.
 
 Run `python infer.py --help` for other options. For batch `--audio-json` jobs, an explicit `output_path` in each row determines its filename.
 
@@ -97,10 +97,6 @@ python demo/app.py \
 
 Open **http://127.0.0.1:7860** and upload aligned target/partner audio. More details are shown in the [demo guide](demo/README.md).
 
-Joint motion-style conditioning uses aligned pose and raw FLAME references from the same interval. The packaged test jobs supply `motion_style_flame_path`; for your own reference, pass `--motion-style-flame-path style_flame.npz`. A sibling `<pose_stem>_flame.npz` or the packaged `style_flame/` reference is also detected. Invalid/missing expression references fail rather than silently removing the six style expression codebooks. Pose-only inline guides remain gesture-only. Use `--motion-style-expression false` explicitly for a pose-only style ablation.
-
-RVQ encoder and nearest-code distance precision follow `rvq_encoder_dtype` / `rvq_quantizer_distance_dtype` in the selected checkpoint. The released training recipe uses FP64 for both, while RVQ decoders stay FP32. The supplied Standalone checkpoint records FP32 for both; inference follows the checkpoint settings. `--rvq-encoder-dtype` and `--rvq-quantizer-distance-dtype` explicitly override these settings; the resolved values are saved in prediction NPZs. Training checkpoints persist the same settings, and token caches are keyed by precision and context caps. Rebuild caches created before this metadata change.
-
 ## Training
 
 The selected inventory contains **1,318 recordings from 81 speakers**. Download the source data, extract raw KaoLRM facial labels, and create the links in the [data guide](../data/README.md#prepare-the-selected-training-inventory).
@@ -109,14 +105,12 @@ The selected inventory contains **1,318 recordings from 81 speakers**. Download 
 
 ```bash
 conda activate ellsa2
-# Stage 1: expression only, 5,000 updates from the ASR base.
-NPROC_PER_NODE=8 bash scripts/train.sh --stage expression
+# Stage 1: gesture only, 5,000 updates from the ASR base.
+NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture
 
 # Stage 2: joint expression/gesture, 50,000 updates from runs/expression.
 NPROC_PER_NODE=8 bash scripts/train.sh --stage gesture_expression
 ```
-
-Run stage 2 after stage 1 finishes. The loader transfers the backbone, audio modules and six expression codebooks into the joint model's expression slots (12–17), and initializes the 12 gesture slots. Stage 1 uses no motion-style prefix; stage 2 uses a 612-frame style clip. Both stages train from aligned audio and valid motion/face frames. The final usable checkpoint, including tokenizer files, is `runs/gesture_expression/`; pass that directory to `infer.py --model-path`.
 
 The recipe uses BF16 and DeepSpeed ZeRO-2. Adjust `NPROC_PER_NODE`, `--per_device_train_batch_size`, and `--gradient_accumulation_steps` for your GPUs; the published defaults give an effective batch of 128 on eight GPUs. CLI values override the selected stage. If stage 1 uses another output directory, set stage 2's `--model_name_or_path` to it. Existing `checkpoint-*` directories in an output directory resume automatically; choose a new `--output_dir` for a new run.
 
@@ -185,7 +179,3 @@ Verify the packaged files and checksums after downloading:
 ```bash
 python scripts/validate_release.py --package all --checksums
 ```
-
-## Acknowledgements and license
-
-The standalone module builds on Qwen, SPEAR, Seamless Interaction, GestureLSM, KaoLRM, SMPL-H/SMPL-X, FLAME, and UniLS. Repository-authored code retains [Apache-2.0](LICENSE); see [third-party notices](THIRD_PARTY_NOTICES.md) for upstream terms. The code license does not replace data, pretrained-weight, or geometry-asset licenses.

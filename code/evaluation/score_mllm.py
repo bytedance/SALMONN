@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from release_paths import DATA_ROOT
 from evaluation.activity import parse, quiet, task_prompt
-from evaluation.judge_helpers import format_video_context, normalize_seed_response
+from evaluation.judge_helpers import format_video_context, normalize_seed_response, load_entries, video_metadata
 
 
 def make_prompt(entry):
@@ -128,12 +128,13 @@ def prepare_provider(args):
         client = openai.OpenAI(base_url=args.base_url, **options)
     output = Path(args.output_dir)
     output.mkdir(parents=True, exist_ok=True)
-    entries = json.loads((DATA_ROOT / 'testset/judge_context.json').read_text())
+    entries = load_entries(DATA_ROOT)
     if args.test_id:
         assert set(args.test_id) <= {entry['group_id'] for entry in entries}, 'Unknown test ID'
         entries = [entry for entry in entries if entry['group_id'] in args.test_id]
     entries = entries[:args.limit or None]
     for entry in entries:
+        entry['metadata'] = video_metadata(entry, DATA_ROOT)
         entry['video'] = str(Path(args.video_dir).resolve() / (entry['group_id'] + '.mp4'))
         entry['metadata']['reference_video'] = str(DATA_ROOT / entry['metadata']['reference_video'])
         entry['quiet_windows'] = quiet(entry['video'])

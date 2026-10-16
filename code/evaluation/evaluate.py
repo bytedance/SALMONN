@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from release_paths import DATA_ROOT
 from evaluation.statistics import BOOTSTRAP_SEED, BOOTSTRAP_REPLICATES, summarize
+from evaluation.judge_helpers import load_entries
 
 
 def parse_args(argv=None):
@@ -162,7 +163,7 @@ def mllm_metrics(args, out, ids, options):
     else:
         run_many([options[provider] for provider in ['gemini', 'seed']])
         scores = out / 'mllm/judges'
-    entries = json.loads((DATA_ROOT / 'testset/judge_context.json').read_text())
+    entries = load_entries(DATA_ROOT)
     selected = set(ids)
     entries = [row for row in entries if row['group_id'] in selected]
     records = [record for path in scores.rglob('*.json')

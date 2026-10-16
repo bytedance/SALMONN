@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent
 RELEASE_ARGS = [
     "--dialog", "true", "--speaker-id-type", "motion", "--motion-tokenizer-type", "upper_hands",
     "--num-motion-codebooks", "18", "--gesture-num-codebooks", "12", "--expression-num-codebooks", "6",
+    "--motion-style-expression", "true",
 ]
 
 def main():

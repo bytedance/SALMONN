@@ -1,5 +1,32 @@
-"""Frozen judge context formatting and response-key aliases."""
+"""Public test-set context formatting and response-key aliases."""
 import json
+
+
+def load_entries(data_root):
+    rows = (data_root / 'testset/manifest.jsonl').read_text().splitlines()
+    return [dict(row, task=row['human_approved_task'], quiet_windows=[])
+            for row in map(json.loads, filter(None, rows))]
+
+
+def video_metadata(entry, data_root):
+    """Build clip-relative judging context from the published manifest and transcripts."""
+    metadata = dict(
+        candidate_id=entry['candidate_id'],
+        source_start_sec=entry['start_sec'], source_end_sec=entry['end_sec'],
+        clip_start_sec=entry['generation_start_sec'], clip_end_sec=entry['generation_end_sec'],
+        speaker_role='target rendered person',
+        reference_video=f"testset/reference_videos/{entry['group_id']}.mp4",
+        evidence_text=f"Human-approved task: {entry['task']}\nAnnotated scene category: {entry['human_approved_scene']}",
+    )
+    for role in ['target', 'partner']:
+        context = json.loads((data_root / entry[f'metadata20_{role}']).read_text())
+        words = [word for segment in context['metadata:transcript'] for word in segment['words']]
+        metadata[f'{role}_transcript_clip_context'] = ' '.join(
+            f"[{word['start']:.2f}-{word['end']:.2f}] {word['word']}" for word in words)
+        intervals = [[item['start'], item['end']] for item in context['metadata:vad']]
+        metadata['evidence_text'] += f"\n{role.title()} speech/VAD intervals in clip seconds: {json.dumps(intervals)}"
+    return metadata
+
 
 def format_video_context(metadata):
     if not isinstance(metadata, dict) or not metadata:

@@ -82,7 +82,7 @@ python evaluation/evaluate.py --metrics mllm \
   --output-dir outputs/metrics_mllm_offline
 ```
 
-Objective metrics use the central 4–16 seconds. MLLM scoring uses the frozen per-clip context in `data/testset/judge_context.json`, including the original candidate focus intervals. Online scores may vary with provider/model versions. Each metric group writes its summary and per-clip results under the chosen output directory.
+Objective metrics use the central 4–16 seconds. Online scores may vary with provider/model versions. Each metric group writes its summary and per-clip results under the chosen output directory.
 
 ## Render predicted motion
 

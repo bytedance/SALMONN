@@ -98,13 +98,14 @@ Use `--model-path` (also accepted as `--model_path`) to select the generator che
 
 ### Your own audio
 
-Supply the target person's audio, the aligned partner audio, and aligned 30 fps SMPL-H / raw FLAME motion-style references with at least 612 frames. For custom style data, pass both `--motion-style-pose-path` and `--motion-style-flame-path`. You can use the included style clip and its automatically detected FLAME reference:
+Supply the target person's audio, the aligned partner audio, and aligned 30 fps SMPL-H / raw FLAME motion-style references with at least 612 frames. For custom style data, pass both `--motion-style-pose-path` and `--motion-style-flame-path`. You can use the included paired style references:
 
 ```bash
 python infer.py --model-path ../checkpoints/standalone_generator \
   --audio-path /path/to/target.wav \
   --audio-listen-path /path/to/partner.wav \
   --motion-style-pose-path ../data/testset/style/fro_00038.npz \
+  --motion-style-flame-path ../data/testset/style_flame/fro_00038_flame.npz \
   --motion-style-start 0 --motion-style-length 612 \
   --output-path outputs/custom.npz
 ```

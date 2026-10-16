@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from release_paths import DATA_ROOT
 from evaluation.activity import parse
+from evaluation.judge_helpers import load_entries
 from evaluation.statistics import BOOTSTRAP_REPLICATES, BOOTSTRAP_SEED, summarize
 
 
@@ -73,7 +74,7 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--test-id', action='append', help='Selected clips; default requires all 138')
     args = parser.parse_args()
-    entries = json.loads((DATA_ROOT / 'testset/judge_context.json').read_text())
+    entries = load_entries(DATA_ROOT)
     if args.test_id:
         assert set(args.test_id) <= {row['group_id'] for row in entries}, 'Unknown test ID'
         entries = [row for row in entries if row['group_id'] in args.test_id]

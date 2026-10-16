@@ -63,7 +63,7 @@ class EvaluationGroupTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             data = Path(directory)
             (data / 'testset').mkdir()
-            (data / 'testset/judge_context.json').write_text('[]')
+            (data / 'testset/manifest.jsonl').write_text('')
             for azure, direct, expected in [(False, 'explicit-test-key', 'explicit-test-key'),
                                             (True, None, 'environment-test-key')]:
                 endpoint = ['--azure-endpoint', 'https://azure.invalid'] if azure else ['--base-url', 'https://base.invalid/v1']
@@ -81,12 +81,34 @@ class EvaluationGroupTests(unittest.TestCase):
                 other.assert_not_called()
                 self.assertNotIn(expected, (data / 'out/gemini_summary.json').read_text())
 
+    def test_public_context_keeps_clip_relative_word_and_vad_times(self):
+        from evaluation.judge_helpers import load_entries, video_metadata, format_video_context
+
+        with tempfile.TemporaryDirectory() as directory:
+            data = Path(directory)
+            (data / 'testset').mkdir()
+            row = dict(group_id='clip', human_approved_task='duplex', candidate_id='candidate',
+                       human_approved_scene='backchannel', start_sec=10, end_sec=20,
+                       generation_start_sec=8, generation_end_sec=28,
+                       metadata20_target='target.json', metadata20_partner='partner.json')
+            (data / 'testset/manifest.jsonl').write_text(json.dumps(row) + '\n')
+            metadata = {'metadata:transcript': [{'words': [{'word': 'yes', 'start': .25, 'end': .5}]}],
+                        'metadata:vad': [{'start': .1, 'end': .6}]}
+            for role in ['target', 'partner']:
+                (data / f'{role}.json').write_text(json.dumps(metadata))
+            entry, = load_entries(data)
+            context = video_metadata(entry, data)
+            self.assertIn('Candidate time in the provided clip: 2.00-12.00 seconds', format_video_context(context))
+            self.assertEqual(context['target_transcript_clip_context'], '[0.25-0.50] yes')
+            self.assertIn('Target speech/VAD intervals in clip seconds: [[0.1, 0.6]]', context['evidence_text'])
+            self.assertEqual(context['reference_video'], 'testset/reference_videos/clip.mp4')
+            self.assertEqual(entry['quiet_windows'], [])
+
     def test_cached_mllm_needs_neither_objective_assets_nor_api_requests(self):
         with tempfile.TemporaryDirectory() as directory:
             data = Path(directory)
             (data / 'testset').mkdir()
             (data / 'testset/manifest.jsonl').write_text(json.dumps({'group_id': 'clip', 'human_approved_task': 'duplex'}) + '\n')
-            (data / 'testset/judge_context.json').write_text(json.dumps([{'group_id': 'clip', 'task': 'duplex'}]))
             scores = data / 'scores'
             scores.mkdir()
             response = json.dumps({'Timing': 1, 'Appropriateness': 1, 'Gesture backchannel visibility': 1,

@@ -139,6 +139,11 @@ class MotionPrefixTests(unittest.TestCase):
             with np.load(prefix['pose_path']) as pose:
                 self.assertEqual(len(pose['smplh:body_pose']), prefix['source_frames'])
                 self.assertTrue(pose['smplh:is_valid'].all())
+            with np.load(prefix['flame_path']) as flame:
+                self.assertEqual(flame['motioncode'].shape, (prefix['source_frames'], 108))
+                self.assertTrue(np.isfinite(flame['motioncode']).all())
+                self.assertTrue(flame['valid_mask'].all())
+                self.assertEqual(float(flame['motion_fps']), 30)
 
     def test_switching_live_prefix_does_not_change_other_requests_or_upload_style(self):
         import torch
@@ -182,7 +187,8 @@ class MotionPrefixTests(unittest.TestCase):
                 metadata = json.loads(Path(result[1][-1]).read_text())
                 self.assertEqual(metadata['id'], key)
                 self.assertEqual(metadata['reference_pose'], engine.prefixes[key]['reference_pose'])
-                self.assertFalse('pose_path' in metadata)
+                self.assertEqual(metadata['reference_flame'], engine.prefixes[key]['reference_flame'])
+                self.assertFalse({'pose_path', 'flame_path'} & metadata.keys())
         self.assertTrue(torch.equal(engine.style, torch.full((6, 18), 77, dtype=torch.long)))
         self.assertTrue(torch.equal(seen[0], seen[-1]))
         self.assertTrue(all(not torch.equal(seen[0], value) for value in seen[1:-1]))

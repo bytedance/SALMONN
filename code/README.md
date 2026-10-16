@@ -60,12 +60,13 @@ This generates the target person's body, hands and face from both audio streams.
 
 ### Your own audio
 
-Supply aligned 16 kHz mono streams and a 30 fps SMPL-H style NPZ containing at least 612 frames:
+Supply aligned 16 kHz mono streams and paired 30 fps SMPL-H / raw FLAME style NPZs containing at least 612 frames:
 
 ```bash
 python infer.py --model-path ../checkpoints/standalone_generator \
   --audio-path target.wav --audio-listen-path partner.wav \
-  --motion-style-pose-path style.npz --motion-style-start 0 --motion-style-length 612 \
+  --motion-style-pose-path style.npz --motion-style-flame-path style_flame.npz \
+  --motion-style-start 0 --motion-style-length 612 \
   --output-path outputs/example.npz
 ```
 
@@ -75,6 +76,7 @@ Add `--render true` to test-ID, direct-audio, or batch-JSON inference. Rendering
 python infer.py --model-path ../checkpoints/standalone_generator \
   --audio-path target.wav --audio-listen-path partner.wav \
   --motion-style-pose-path ../data/testset/style/fro_00038.npz \
+  --motion-style-flame-path ../data/testset/style_flame/fro_00038_flame.npz \
   --output-path outputs/custom.npz --render true \
   --smplx-model ../checkpoints/external_assets/smplx/SMPLX_NEUTRAL_2020.npz
 ```

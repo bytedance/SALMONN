@@ -21,6 +21,7 @@ class Engine:
         self.args = inference.finalize_args(inference.parse_args([
             *RELEASE_ARGS, *(["--motion-bias"] if options.motion_bias else []),
             "--motion-style-pose-path", str(options.style_path),
+            "--motion-style-flame-path", str(options.style_flame_path),
             "--device", options.device,
             "--rvq-decode-mode", ("whole" if options.decode_window_blocks == 0
                                   and getattr(options, "rvq_decode_mode", "auto") == "auto"
@@ -48,11 +49,12 @@ class Engine:
         self.prefixes = load_motion_prefixes()
         self.prefix_tokens = {}
         for prefix_id, prefix in self.prefixes.items():
-            if prefix["pose_path"].resolve() == Path(options.style_path).resolve():
+            if (prefix["pose_path"].resolve() == Path(options.style_path).resolve()
+                    and prefix["flame_path"].resolve() == Path(options.style_flame_path).resolve()):
                 tokens = self.style
             else:
                 tokens = inference.encode_motion_style_tokens(
-                    str(prefix["pose_path"]), "", 0, prefix["source_frames"], self.decoders,
+                    str(prefix["pose_path"]), str(prefix["flame_path"]), 0, prefix["source_frames"], self.decoders,
                     self.stats, self.flame, self.mean, self.std, self.args)
                 tokens = tokens[:len(tokens) // self.args.motion_steps_per_window * self.args.motion_steps_per_window]
             self.prefix_tokens[prefix_id] = tokens
@@ -132,11 +134,12 @@ class Engine:
             raise ValueError("Live microphone generation requires the released causal RVQ decoders.")
         prefix = self.prefixes[prefix_id]
         args.motion_style_pose_path = str(prefix["pose_path"])
+        args.motion_style_flame_path = str(prefix["flame_path"])
         args.motion_style_start = 0
         args.motion_style_length = prefix["source_frames"]
         prefix_file = audio.directory / "motion_prefix.json"
         prefix_file.write_text(json.dumps(
-            {key: value for key, value in prefix.items() if key != "pose_path"}, indent=2) + "\n")
+            {key: value for key, value in prefix.items() if key not in {"pose_path", "flame_path"}}, indent=2) + "\n")
         args.decode_window_blocks = 1
         args.boundary_smoothing_frames = getattr(self, "boundary_smoothing_frames", 0)
         tokens = inference.iter_gesture_expression_tokens(

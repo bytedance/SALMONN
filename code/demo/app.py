@@ -279,10 +279,11 @@ def main():
     if not all(re.search(r"\b" + name + r"\b", encoders) for name in ("libx264", "aac")):
         parser.error("FFmpeg must include the libx264 and aac encoders")
     rows = [json.loads(line) for line in (DATA_ROOT / "testset/manifest.jsonl").read_text().splitlines()]
-    styles = {row["group_id"]: DATA_ROOT / row["motion_style_pose_path"] for row in rows}
+    styles = {row["group_id"]: row for row in rows}
     if args.style_id not in styles:
         parser.error("--style-id must be an ID in testset/manifest.jsonl")
-    args.style_path = styles[args.style_id]
+    args.style_path = DATA_ROOT / styles[args.style_id]["motion_style_pose_path"]
+    args.style_flame_path = DATA_ROOT / styles[args.style_id]["motion_style_flame_path"]
     args.smplx_model = args.smplx_model.resolve()
     args.output_dir = args.output_dir.resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)

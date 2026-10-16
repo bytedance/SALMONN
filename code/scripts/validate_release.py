@@ -119,11 +119,8 @@ def validate_data():
     assert collections.Counter(row["human_approved_scene"] for row in rows
                                if row["human_approved_task"] == "duplex") == protocol["human_duplex_categories"]
     assert all([row["rating_start_sec"], row["rating_end_sec"]] == [4, 16] for row in rows)
-    context = json.loads((DATA_ROOT / "testset/judge_context.json").read_text())
-    assert len(context) == len(rows)
-    assert {entry["group_id"]: entry["task"] for entry in context} == {
-        row["group_id"]: row["human_approved_task"] for row in rows}
-    assert all((DATA_ROOT / entry["metadata"]["reference_video"]).is_file() for entry in context)
+    assert all((DATA_ROOT / "testset/reference_videos" / (row["group_id"] + ".mp4")).is_file()
+               for row in rows)
     for row in rows:
         for value in row.values():
             if isinstance(value, str) and value.startswith("testset/"):
